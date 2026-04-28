@@ -294,7 +294,7 @@ function ChatScreen() {
         </motion.div>
         <motion.div variants={itemVariants} className="flex items-start gap-3 justify-end">
           <div className="bg-[#1A1A2E] rounded-[20px] rounded-tr-none p-3.5 shadow-md">
-            <p className="text-[11.5px] text-white leading-relaxed">No recognition. I've activated my outer sentinel cams to track pathing.</p>
+            <p className="text-[11.5px] text-white leading-relaxed">No recognition. I&apos;ve activated my outer sentinel cams to track pathing.</p>
           </div>
           <div className="w-8 h-8 rounded-full bg-[#E9ECEF] shrink-0 border border-gray-100 flex items-center justify-center text-xs"></div>
         </motion.div>

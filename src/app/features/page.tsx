@@ -285,13 +285,13 @@ export default function FeaturesPage() {
             POPIA<br />COMPLIANCE<br />BY DESIGN.
           </h2>
           <p className="text-black/50 text-base leading-relaxed mb-6">
-            Security shouldn't come at the cost of privacy. We've built the world's most transparent personal safety data policy, adhering strictly to South African POPIA regulations.
+            Security shouldn&apos;t come at the cost of privacy. We&apos;ve built the world&apos;s most transparent personal safety data policy, adhering strictly to South African POPIA regulations.
           </p>
           <div className="space-y-3">
             {[
               'No background location tracking without active alerts',
               'Automatic data deletion after 30 days of inactivity',
-              "User-owned encryption keys (We can't see your logs)",
+              "User-owned encryption keys (We can&apos;t see your logs)",
             ].map(item => (
               <div key={item} className="flex items-center gap-3 text-sm text-[#1A1A2E]/60">
                 <div className="w-5 h-5 rounded-full border border-[#0B6E4F]/30 bg-[#0B6E4F]/10 flex items-center justify-center flex-shrink-0">

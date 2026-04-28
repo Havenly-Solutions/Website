@@ -45,9 +45,9 @@ export default function PreRegForm() {
       <div className="w-14 h-14 bg-[#0B6E4F]/10 rounded-full flex items-center justify-center mx-auto mb-4">
         <CheckCircle size={28} className="text-[#0B6E4F]" />
       </div>
-      <h3 className="font-display font-bold text-[#1A1A2E] text-xl mb-2">You're on the list.</h3>
+      <h3 className="font-display font-bold text-[#1A1A2E] text-xl mb-2">You&apos;re on the list.</h3>
       <p className="text-gray-500 text-sm leading-relaxed">
-        We'll notify you the moment Havenly Solutions launches on <strong>24 November 2026</strong>.<br />
+        We&apos;ll notify you the moment Havenly Solutions launches on <strong>24 November 2026</strong>.<br />
         Tell someone who needs to know.
           WE ARE BRINGING CHANGE TO THE ECONOMY!!!
       </p>
@@ -90,7 +90,7 @@ export default function PreRegForm() {
       <div className="flex items-start gap-2 mt-2">
         <input type="checkbox" id="consent" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" />
         <label htmlFor="consent" className="text-xs text-gray-600">
-          I agree to Havenly Solutions's <a href="/privacy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
+          I agree to Havenly Solutions&apos;s <a href="/privacy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
         </label>
       </div>
       <button type="submit" disabled={loading}

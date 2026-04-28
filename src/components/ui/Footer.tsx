@@ -125,7 +125,7 @@ export default function Footer() {
             {success ? (
               <div className="flex flex-col items-center justify-center py-4 text-center">
                 <CheckCircle size={32} className="text-[#0B6E4F] mb-2" />
-                <p className="text-sm font-bold text-[#1A1A2E]">You're Subscribed!</p>
+                <p className="text-sm font-bold text-[#1A1A2E]">You&apos;re Subscribed!</p>
                 <p className="text-[10px] text-gray-500 mt-1">Check your inbox for a welcome message.</p>
               </div>
             ) : (

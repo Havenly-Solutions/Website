@@ -311,7 +311,7 @@ export default function SafetyHubPage() {
                 The GBV Command Centre helpline connects you to trained counsellors, emergency shelters, legal assistance, and safe evacuation. No report required. You just need to call.
               </p>
               <p className="text-white/70 text-sm leading-relaxed max-w-xl">
-                Havenly Solutions's silent SOS and encrypted evidence vault were built with GBV survivors in mind. Your evidence is protected the moment you activate it — even before you're ready to report.
+                Havenly Solutions&apos;s silent SOS and encrypted evidence vault were built with GBV survivors in mind. Your evidence is protected the moment you activate it — even before you&apos;re ready to report.
               </p>
             </div>
             <div className="text-center lg:text-right">

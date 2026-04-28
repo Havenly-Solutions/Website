@@ -8,7 +8,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-[#F9F9F9] pt-24 pb-16">
       <div className="max-w-3xl mx-auto px-6">
         <h1 className="font-display font-black text-[#1A1A2E] text-4xl mb-4">Contact Support</h1>
-        <p className="text-gray-600 mb-12">We're here to help. Reach out via any channel below.</p>
+        <p className="text-gray-600 mb-12">We&apos;re here to help. Reach out via any channel below.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {/* Email */}

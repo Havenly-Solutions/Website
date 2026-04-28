@@ -144,7 +144,7 @@ function PageTop({ countdown }: { countdown: any }) {
             </h1>
 
             <p className="text-white/80 text-lg leading-relaxed mt-5 mb-10 max-w-lg">
-              South Africa's first real emergency response platform
+              South Africa&apos;s first real emergency response platform
               built for our realities. From load shedding fallbacks to
               local community grids.
             </p>
@@ -465,7 +465,7 @@ function ChatScreen() {
         </div>
         <div className="flex items-start gap-3 justify-end">
           <div className="bg-[#1A1A2E] rounded-[20px] rounded-tr-none p-3.5 shadow-md">
-            <p className="text-[11.5px] text-white leading-relaxed">No recognition. I've activated my outer sentinel cams to track pathing.</p>
+            <p className="text-[11.5px] text-white leading-relaxed">No recognition. I&apos;ve activated my outer sentinel cams to track pathing.</p>
           </div>
           <div className="w-8 h-8 rounded-full bg-[#E9ECEF] shrink-0 border border-gray-100 flex items-center justify-center text-xs"></div>
         </div>
@@ -639,7 +639,7 @@ function HavenlySolutionsDemoSection() {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1 max-w-xl">
             <h2 className="font-display font-black text-gray-900 text-4xl md:text-5xl mb-5 leading-tight">Designed for Focus.<br />Engineered for Action.</h2>
-            <p className="text-gray-700 text-base mb-10 leading-relaxed">The Havenly Solutions platform is more than an app. it's an intelligent shield that adapts to your environment.</p>
+            <p className="text-gray-700 text-base mb-10 leading-relaxed">The Havenly Solutions platform is more than an app. it&apos;s an intelligent shield that adapts to your environment.</p>
             <div className="space-y-6">
               {[
                 {
@@ -682,7 +682,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <h2 className="font-display font-black text-white text-4xl md:text-5xl mb-4">Designed for our reality.</h2>
-          <p className="text-white/40 text-base mb-14 max-w-lg mx-auto">We didn't just build another app. We built a platform that works when everything else fails.</p>
+          <p className="text-white/40 text-base mb-14 max-w-lg mx-auto">We didn&apos;t just build another app. We built a platform that works when everything else fails.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { label: 'Simple Safety', desc: 'Zero complex menus. One gesture activation because in a crisis, muscle memory is everything.' },

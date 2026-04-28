@@ -23,7 +23,7 @@ export default function NGOPortalPage() {
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Partner with us to protect communities across South Africa. 
-            Together, we're building a safer future through technology and collaboration.
+            Together, we&apos;re building a safer future through technology and collaboration.
           </p>
         </div>
 
