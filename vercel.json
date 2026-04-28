@@ -1,0 +1,33 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["jnb1"],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/pre-registrations",
+      "destination": "https://api.havenly.co.za/api/pre-registrations"
+    },
+    {
+      "source": "/api/ngo-partners/apply",
+      "destination": "https://api.havenly.co.za/api/ngo-partners/apply"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.havenly.co.za/api/:path*"
+    }
+  ]
+}
