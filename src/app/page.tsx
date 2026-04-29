@@ -271,7 +271,7 @@ function PageTop({ countdown }: { countdown: any }) {
                       <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
                     </div>
                     <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
-                      <Image src={image} alt={title} fill className="object-cover" />
+                      <Image src={image!} alt={title} fill className="object-cover" />
                     </div>
                   </div>
                 )
