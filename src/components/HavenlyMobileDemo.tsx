@@ -153,12 +153,7 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
               <div className="absolute w-12 h-12 rounded-full bg-white/[0.12]" />
               <button
                 onClick={onSOS}
-                className="relative w-10 h-10 rounded-full flex items-center justify-center z-10 active:scale-95 transition-transform duration-100 cursor-pointer"
-                style={{
-                  background: 'radial-gradient(circle at 35% 35%, rgba(255,255,255,0.2), rgba(255,255,255,0.04))',
-                  border: '2px solid rgba(255,255,255,0.35)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2)',
-                }}
+                className="relative w-10 h-10 rounded-full flex items-center justify-center z-10 active:scale-95 transition-transform duration-100 cursor-pointer bg-[radial-gradient(circle_at_35%_35%,rgba(255,255,255,0.2),rgba(255,255,255,0.04))] border-[2px] border-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
               >
                 <span className="text-white text-[10px] font-black tracking-wider">SOS</span>
               </button>
@@ -192,7 +187,7 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           ].map((i, idx) => (
             <motion.div key={idx} variants={itemVariants} className="mx-2.5 bg-white rounded-xl p-2.5 border border-gray-100">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px]" style={{ background: i.bg }}>{i.ic}</div>
+                <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px]" style={{ backgroundColor: i.bg }}>{i.ic}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start gap-1">
                     <span className="text-[8px] font-bold text-[#1A1A2E] leading-tight">{i.title}</span>
@@ -237,6 +232,7 @@ function CommunityScreen() {
             desc: 'Anonymous Sentinel reports suspicious vehicle activity near 4th and Main. Neighbors advised to verify exterior lighting.',
             time: '2m ago',
             color: '#34D399',
+            bg: 'bg-[#34D399]',
           },
           {
             type: 'Security',
@@ -244,12 +240,13 @@ function CommunityScreen() {
             desc: 'Volunteer patrol is currently active in Sector 7. All sectors currently reporting green status.',
             time: '3h ago',
             color: '#1A1A2E',
+            bg: 'bg-[#1A1A2E]',
           }
         ].map((post, idx) => (
           <motion.div key={idx} variants={itemVariants} className="bg-white rounded-[24px] p-5 border border-gray-100 shadow-sm">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: post.color }} />
+                 <div className={`w-1.5 h-1.5 rounded-full ${post.bg}`} />
                  <span className="text-[8.5px] font-black text-gray-400 uppercase tracking-widest">{post.type}</span>
               </div>
               <span className="text-[7.5px] font-bold text-gray-400 uppercase tracking-tighter">{post.time}</span>
