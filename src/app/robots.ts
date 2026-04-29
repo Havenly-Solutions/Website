@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next'
- 
+
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://havenly.solutions'
+  
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://havenly.co.za/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
   }
 }
