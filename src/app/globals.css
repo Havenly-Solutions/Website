@@ -49,8 +49,8 @@ body { background: var(--havenly-cream); overflow-x: hidden; }
 
 /* Nav blur */
 .nav-blur {
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 /* Noise texture overlay */

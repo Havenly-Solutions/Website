@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 //  App Types & Shared Styles 
 export type AppScreen = 'home' | 'community' | 'chat' | 'cases' | 'profile'
-const noScroll: CSSProperties = { scrollbarWidth: 'none', msOverflowStyle: 'none' }
+const noScroll = "no-scrollbar"
 
 //  Icons 
 const IC = {
@@ -83,8 +83,7 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 flex flex-col overflow-hidden" 
-      style={{ background: '#F4F5F7' }}
+      className="absolute inset-0 flex flex-col overflow-hidden bg-[#F4F5F7]" 
     >
       <div className="bg-white px-3 py-2 flex items-center justify-between border-b border-gray-100 shrink-0 z-10">
         <div className="flex items-center gap-2">
@@ -98,8 +97,8 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           </div>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden pb-20" style={noScroll}>
-        <motion.div variants={itemVariants} className="mx-2.5 mt-2.5 rounded-2xl p-3 mb-2" style={{ background: '#1A1A2E' }}>
+      <div className={`flex-1 overflow-y-auto pb-20 ${noScroll}`}>
+        <motion.div variants={itemVariants} className="mx-2.5 mt-2.5 rounded-2xl p-3 mb-2 bg-[#1A1A2E]">
           <div className="flex items-center gap-1.5 mb-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-[#0B6E4F] animate-pulse" />
             <span className="text-[6.5px] text-[#4ade80] font-semibold uppercase tracking-widest">Sentinel Live Update</span>
@@ -107,9 +106,9 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           </div>
           <p className="text-[17px] font-black text-white leading-[1.15] mb-2">
             Your area is<br />
-            <span style={{ color: '#7B5EA7' }}>quiet.</span>
+            <span className="text-[#7B5EA7]">quiet.</span>
           </p>
-          <div className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1" style={{ background: 'rgba(11,110,79,0.18)', border: '1px solid rgba(11,110,79,0.3)' }}>
+          <div className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 bg-[#0b6e4f]/[0.18] border border-[#0b6e4f]/30">
             <div className="w-1.5 h-1.5 rounded-full bg-[#0B6E4F]" />
             <span className="text-[6.5px] text-[#4ade80] font-semibold tracking-wide">All Systems Optimal</span>
           </div>
@@ -149,10 +148,9 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
               <motion.div 
                 animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0, 0.1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute w-14 h-14 rounded-full" 
-                style={{ background: 'rgba(255,255,255,0.2)' }} 
+                className="absolute w-14 h-14 rounded-full bg-white/20" 
               />
-              <div className="absolute w-12 h-12 rounded-full" style={{ background: 'rgba(255,255,255,0.12)' }} />
+              <div className="absolute w-12 h-12 rounded-full bg-white/[0.12]" />
               <button
                 onClick={onSOS}
                 className="relative w-10 h-10 rounded-full flex items-center justify-center z-10 active:scale-95 transition-transform duration-100 cursor-pointer"
@@ -218,8 +216,7 @@ function CommunityScreen() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 flex flex-col overflow-hidden" 
-      style={{ background: '#F8F9FB' }}
+      className="absolute inset-0 flex flex-col overflow-hidden bg-[#F8F9FB]" 
     >
       <div className="bg-white/80 backdrop-blur-md px-4 py-4 border-b border-gray-100 flex flex-col gap-3 shrink-0">
         <div className="flex items-center justify-between">
@@ -231,8 +228,7 @@ function CommunityScreen() {
       </div>
       <motion.div 
         variants={listVariants}
-        className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden p-4 space-y-4" 
-        style={noScroll}
+        className={`flex-1 overflow-y-auto p-4 space-y-4 ${noScroll}`} 
       >
         {[
           {
@@ -274,8 +270,7 @@ function ChatScreen() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 flex flex-col overflow-hidden" 
-      style={{ background: '#F8F9FB' }}
+      className="absolute inset-0 flex flex-col overflow-hidden bg-[#F8F9FB]" 
     >
       <div className="bg-white/80 backdrop-blur-md px-4 py-4 border-b border-gray-100 shrink-0">
         <h1 className="text-[20px] font-black text-[#1A1A2E] tracking-tight">Community Chat</h1>
@@ -283,8 +278,7 @@ function ChatScreen() {
       </div>
       <motion.div 
         variants={listVariants}
-        className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden p-4 space-y-6" 
-        style={noScroll}
+        className={`flex-1 overflow-y-auto p-4 space-y-6 ${noScroll}`} 
       >
         <motion.div variants={itemVariants} className="flex items-start gap-3">
           <div className="w-8 h-8 rounded-full bg-[#FFE2E2] shrink-0 border border-[#FFD2D2] flex items-center justify-center text-xs"></div>
@@ -310,13 +304,12 @@ function CasesScreen() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 flex flex-col overflow-hidden" 
-      style={{ background: '#F8F9FB' }}
+      className="absolute inset-0 flex flex-col overflow-hidden bg-[#F8F9FB]" 
     >
       <div className="bg-white/80 backdrop-blur-md px-4 py-4 border-b border-gray-100 shrink-0">
         <h1 className="text-[11px] font-black text-[#1A1A2E] uppercase tracking-[0.2em] text-center">Submit a Concern</h1>
       </div>
-      <div className="flex-1 overflow-y-auto p-6" style={noScroll}>
+      <div className={`flex-1 overflow-y-auto p-6 ${noScroll}`}>
         <motion.h2 variants={itemVariants} className="text-[24px] font-black text-[#1A1A2E] leading-tight mb-4">Report an Incident</motion.h2>
         <motion.p variants={itemVariants} className="text-[12px] text-gray-500 mb-8">All reports are encrypted and strictly anonymous by default.</motion.p>
         <div className="space-y-4">
@@ -345,13 +338,12 @@ function ProfileScreen() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute inset-0 flex flex-col overflow-hidden" 
-      style={{ background: '#F8F9FB' }}
+      className="absolute inset-0 flex flex-col overflow-hidden bg-[#F8F9FB]" 
     >
       <div className="bg-white/80 backdrop-blur-md px-4 py-4 border-b border-gray-100 shrink-0">
         <h1 className="text-[20px] font-black text-[#1A1A2E] tracking-tight">Profile</h1>
       </div>
-      <div className="flex-1 overflow-y-auto p-6 flex flex-col items-center" style={noScroll}>
+      <div className={`flex-1 overflow-y-auto p-6 flex flex-col items-center ${noScroll}`}>
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-20 h-20 rounded-full bg-[#1A1A2E] flex items-center justify-center text-white text-2xl font-black mb-4 border-2 border-white shadow-xl">DS</motion.div>
         <motion.h2 variants={itemVariants} className="text-[18px] font-black text-[#1A1A2E]">Demo Sentinel</motion.h2>
         <motion.p variants={itemVariants} className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1 mb-10">Johannesburg · Zone 3</motion.p>
@@ -389,8 +381,7 @@ function SOSOverlay({ onClose }: { onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden" 
-      style={{ background: '#0a0a0a' }}
+      className="absolute inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-black" 
     >
       <motion.div 
         initial={{ scale: 0.8, opacity: 0 }}
@@ -470,7 +461,7 @@ function HavenlySolutionsApp() {
 
 function IPhoneFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative" style={{ width: 234, height: 488, flexShrink: 0 }}>
+    <div className="relative w-[234px] h-[488px] shrink-0">
       <div className="absolute inset-0 rounded-[44px] bg-[#1a1a1a] p-1 shadow-2xl border border-white/5">
         <div className="w-full h-full rounded-[40px] bg-black overflow-hidden relative">
           <div className="absolute top-0 left-0 right-0 h-8 bg-white flex items-center justify-between px-6 z-20">
@@ -488,7 +479,7 @@ function IPhoneFrame({ children }: { children: ReactNode }) {
 
 function PixelFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative" style={{ width: 234, height: 488, flexShrink: 0 }}>
+    <div className="relative w-[234px] h-[488px] shrink-0">
       <div className="absolute inset-0 rounded-[36px] bg-[#111111] p-1 shadow-2xl">
         <div className="w-full h-full rounded-[33px] bg-black overflow-hidden relative">
           <div className="absolute top-0 left-0 right-0 h-6 bg-white flex items-center justify-center z-20">
