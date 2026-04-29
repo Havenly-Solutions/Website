@@ -99,7 +99,7 @@ const IC = {
     </svg>
   ),
   shield: (size = 13) => (
-    <img src="/logo.png" alt="Havenly Logo" width={size} height={size} className="rounded-sm object-cover" />
+    <Image src="/logo.png" alt="Havenly Logo" width={size} height={size} className="rounded-sm object-cover" priority />
   ),
   pin: () => (
     <svg width="9" height="9" viewBox="0 0 24 24" fill="#9B9B9B">
@@ -270,8 +270,8 @@ function PageTop({ countdown }: { countdown: any }) {
                       <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-2">{title}</h3>
                       <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
                     </div>
-                    <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
-                      <img src={image} alt={title} className="w-full h-full object-cover" />
+                    <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+                      <Image src={image} alt={title} fill className="object-cover" />
                     </div>
                   </div>
                 )
@@ -728,8 +728,13 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src="/pexels-lee-campbell-18167-115655.jpg" alt="Security Command" className="w-full h-auto object-cover" />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[300px]">
+              <Image 
+                src="/pexels-lee-campbell-18167-115655.jpg" 
+                alt="Security Command" 
+                fill 
+                className="object-cover" 
+              />
             </div>
           </div>
         </div>

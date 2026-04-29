@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Shield, Database, ChevronRight, Lock, ArrowRight, Radio, Share2, Satellite } from 'lucide-react'
 
 const GuardianMap = dynamic(() => import('@/components/GuardianMap'), {
@@ -164,10 +165,11 @@ export default function FeaturesPage() {
 
             {/*  Left: full-height image box with text overlay  */}
             <div className="relative rounded-2xl overflow-hidden min-h-[300px]">
-              <img
+              <Image
                   src="/court.jpg"
                   alt="Evidence Chain"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
               <div className="absolute bottom-0 left-0 right-0 p-6">

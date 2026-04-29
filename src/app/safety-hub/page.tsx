@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, Shield, Zap, AlertTriangle, Users, Home, ChevronRight, ArrowRight, MapPin, Radio, Heart, BookOpen, Smartphone } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -70,7 +71,13 @@ export default function SafetyHubPage() {
       <section className="relative bg-[#1A1A2E] pt-40 pb-32 overflow-hidden min-h-[85vh] flex items-center">
         {/* Background Image Setup */}
         <div className="absolute inset-0 z-0">
-          <img src="/police.jpg" alt="Safety Hub Background" className="w-full h-full object-cover opacity-50 mix-blend-overlay" />
+          <Image 
+            src="/police.jpg" 
+            alt="Safety Hub Background" 
+            fill 
+            className="object-cover opacity-50 mix-blend-overlay" 
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCFB] via-[#1A1A2E]/80 to-[#1A1A2E]/90" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E] via-[#1A1A2E]/60 to-transparent" />
         </div>
