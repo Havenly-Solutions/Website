@@ -7,16 +7,24 @@ export default function LoadingScreen() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // FORCE DISMISSAL: Ensure the screen disappears after 3.5 seconds 
+    // even if the 'load' event fails to fire due to network/asset issues.
+    const forceTimer = setTimeout(() => {
+      setLoading(false)
+    }, 3500)
+
     const handleLoad = () => {
-      // Small delay to ensure the animation is seen
-      setTimeout(() => setLoading(false), 2000)
+      setTimeout(() => setLoading(false), 500)
     }
 
     if (document.readyState === 'complete') {
       handleLoad()
     } else {
       window.addEventListener('load', handleLoad)
-      return () => window.removeEventListener('load', handleLoad)
+      return () => {
+        window.removeEventListener('load', handleLoad)
+        clearTimeout(forceTimer)
+      }
     }
   }, [])
 
