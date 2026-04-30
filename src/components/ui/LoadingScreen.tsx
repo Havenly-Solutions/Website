@@ -35,6 +35,7 @@ export default function LoadingScreen() {
 
   return (
     <div 
+      id="havenly-loading-screen"
       className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F9F9] transition-opacity duration-700 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
     >
       <div className="relative">

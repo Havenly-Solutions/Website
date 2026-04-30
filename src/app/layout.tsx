@@ -49,6 +49,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#F9F9F9] system-font-stack">
         <LoadingScreen />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                setTimeout(function() {
+                  var screen = document.getElementById('havenly-loading-screen');
+                  if (screen) {
+                    screen.style.transition = 'opacity 0.8s ease-in-out';
+                    screen.style.opacity = '0';
+                    setTimeout(function() { 
+                      if (screen.parentNode) screen.parentNode.removeChild(screen);
+                    }, 800);
+                  }
+                }, 3000); // Absolute fail-safe: 3 seconds
+              })();
+            `,
+          }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />
