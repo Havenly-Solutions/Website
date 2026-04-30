@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Shield, Menu, X } from 'lucide-react'
+import { Shield, Menu, X, Megaphone } from 'lucide-react'
 import Image from "next/image";
+import TourModal from './TourModal';
 
 const NAV_LINKS = [
   { href: '/features', label: 'Features' },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [tourOpen, setTourOpen] = useState(false)
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20)
@@ -26,17 +28,18 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#F9F9F9] border-b border-black/5 shadow-sm mt-4 mx-4 md:mt-8 md:mx-10 lg:mt-10 lg:mx-20 rounded-xl">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-12 h-12 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
             <Image
-                src="/logo.png"
-                alt="logo"
+                src="/favicon.ico"
+                alt="Havenly Shield"
                 width={48}
                 height={48}
-                className="rounded-lg object-cover"
+                className="relative z-10 transition-transform group-hover:scale-110 duration-500"
             />
+            <div className="absolute inset-0 bg-red-500/5 rounded-full blur-lg group-hover:bg-red-500/10 transition-colors" />
           </div>
-          <span className="font-display font-bold text-[#1A1A2E] text-lg tracking-tight">
+          <span className="font-display font-bold text-[#1A1A2E] text-base md:text-lg tracking-tight hidden sm:block">
             HAVENLY SOLUTIONS
           </span>
         </Link>
@@ -49,6 +52,14 @@ export default function Navbar() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-3">
+          <button 
+            onClick={() => setTourOpen(true)}
+            className="p-2 text-[#C0392B] hover:bg-red-50 rounded-lg transition-colors group relative"
+            title="July 2025 Tour"
+          >
+            <Megaphone size={20} className="group-hover:scale-110 transition-transform" />
+            <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-ping" />
+          </button>
           <Link href="/#register" className="px-4 py-2 bg-[#C0392B] text-white text-sm font-semibold rounded-lg hover:bg-[#a93226] transition-colors">
             Get Help Now
           </Link>
@@ -66,6 +77,12 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2 flex flex-col gap-2 border-t border-gray-100 mt-2">
+            <button
+              onClick={() => { setTourOpen(true); setOpen(false); }}
+              className="flex items-center justify-center gap-2 px-3 py-2.5 text-sm font-semibold text-[#C0392B] bg-red-50 rounded-lg"
+            >
+              <Megaphone size={16} /> July 2025 Tour
+            </button>
             <Link href="/#register" onClick={() => setOpen(false)}
               className="px-3 py-2.5 text-sm font-semibold text-center bg-[#C0392B] text-white rounded-lg">
               Get Help Now
@@ -73,6 +90,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      <TourModal forceOpen={tourOpen} onClose={() => setTourOpen(false)} />
     </header>
   )
 }

@@ -2,12 +2,17 @@
 import { useState, useEffect } from 'react';
 import { X, MapPin, Users, ArrowRight, GraduationCap, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import * as Sentry from '@sentry/nextjs';
 
-export default function TourModal() {
+export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean; onClose?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [stats, setStats] = useState({ count: 1240, goal: 10000 });
 
   useEffect(() => {
+    if (forceOpen) {
+      setIsOpen(true);
+      return;
+    }
     // Show modal after 3 seconds or based on session storage
     const hasSeen = sessionStorage.getItem('havenly_tour_modal_seen');
     if (!hasSeen) {
@@ -16,10 +21,10 @@ export default function TourModal() {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [forceOpen]);
 
   useEffect(() => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions';
     fetch(`${apiUrl}/api/pre-registrations/count`)
       .then(r => r.json())
       .then(data => {
@@ -27,11 +32,12 @@ export default function TourModal() {
           setStats({ count: data.count, goal: data.goal });
         }
       })
-      .catch(err => console.error('Failed to fetch tour stats', err));
+      .catch(err => Sentry.captureException(err));
   }, []);
 
   const closeModal = () => {
     setIsOpen(false);
+    if (onClose) onClose();
     sessionStorage.setItem('havenly_tour_modal_seen', 'true');
   };
 
@@ -99,7 +105,7 @@ export default function TourModal() {
             <div className="px-8 py-6 bg-white">
               <div className="space-y-6">
                 <p className="text-gray-700 text-[15px] leading-relaxed text-center font-medium">
-                  We are traveling across South Africa—visiting schools, colleges, communities, and businesses—to show you our app. Join the movement and see how we are building a safer future together.
+                  We are traveling across South Africa for our <strong>July 2025 Tour</strong>—visiting schools, colleges, communities, and businesses—to show you our app. Join the movement and see how we are building a safer future together.
                 </p>
 
                 {/* Progress Section */}

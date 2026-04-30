@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { content as staticContent } from './content';
 
 /**
  * TermsOfServicePage
@@ -17,14 +18,7 @@ export default function TermsOfServicePage() {
 
   useEffect(() => {
     setMounted(true);
-    // In a real Next.js app, we'd fetch this or it would be bundled. 
-    // To solve the hydration error for the user's specific Turbopack setup, 
-    // we fetch it on mount to ensure the server and client are perfectly in sync 
-    // for the static layout, and dynamic content is injected safely.
-    fetch('/api/legal/terms')
-      .then(res => res.text())
-      .then(html => setContent(html))
-      .catch(() => setContent('<p>Our terms are currently being refined for the November launch.</p>'));
+    setContent(staticContent);
   }, []);
 
   return (
@@ -33,7 +27,7 @@ export default function TermsOfServicePage() {
         
         {/* Navigation Breadcrumb */}
         <div className="mb-8 flex items-center gap-2 text-sm text-gray-400 font-medium uppercase tracking-wider">
-          <Link href="/" className="hover:text-[#4C2A85] transition-colors">Home</Link>
+          <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
           <span>/</span>
           <span className="text-[#1A1A2E]">Legal</span>
         </div>
@@ -42,7 +36,7 @@ export default function TermsOfServicePage() {
         <div className="relative mb-20">
           <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1.5 h-24 bg-[#C0392B] rounded-full hidden md:block" />
           <h1 className="font-display font-black text-[#1A1A2E] text-5xl md:text-7xl mb-6 tracking-tight">
-            Terms of <span className="text-[#4C2A85]">Service</span>
+            Terms of <span className="text-red-600">Service</span>
           </h1>
           <div className="flex flex-wrap items-center gap-4 text-gray-500">
             <div className="bg-gray-100 px-3 py-1 rounded-full text-xs font-bold text-gray-600 uppercase tracking-tighter">

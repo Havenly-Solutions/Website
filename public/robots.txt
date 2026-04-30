@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /sentry-example-page
+
+# Host
+Host: https://havenly.solutions

@@ -1,6 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Loader2, CheckCircle, ArrowRight } from 'lucide-react'
+import DOMPurify from 'dompurify'
+import * as Sentry from '@sentry/nextjs'
 
 const REGIONS = [
   'Johannesburg / Gauteng', 'Cape Town / Western Cape', 'Durban / KZN',
@@ -10,32 +12,67 @@ const REGIONS = [
 ]
 
 export default function PreRegForm() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', region: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', region: '', _honeypot: '' })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [consent, setConsent] = useState(false)
+  const [cooldown, setCooldown] = useState(0)
+
+  // Rate Limiting Cooldown Timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    if (cooldown > 0) {
+      timer = setTimeout(() => setCooldown(prev => prev - 1), 1000)
+    }
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [cooldown])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (form._honeypot) return // Bot detected
+    if (cooldown > 0) { setError(`Please wait ${cooldown}s before submitting again`); return }
     if (!consent) { setError('You must agree to the Privacy Policy'); return }
     if (!form.region) { setError('Please select your region'); return }
+    
+    // Validation
+    const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/
+    if (!phoneRegex.test(form.phone.replace(/\s+/g, ''))) {
+      setError('Please enter a valid South African phone number')
+      return
+    }
+
     setLoading(true); setError('')
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'
+      const sanitizedForm = {
+        name: DOMPurify.sanitize(form.name),
+        email: DOMPurify.sanitize(form.email),
+        phone: DOMPurify.sanitize(form.phone),
+        region: DOMPurify.sanitize(form.region),
+      }
+
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
       const res = await fetch(`${apiUrl}/api/pre-registrations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'website' }),
+        body: JSON.stringify({ ...sanitizedForm, source: 'website' }),
       })
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
+      
       if (res.status === 409) { setError('This email is already registered. You\'re on the list!'); setLoading(false); return }
-      if (!res.ok) { setError(data.error || 'Something went wrong. Please try again.'); setLoading(false); return }
+      if (res.status === 422) { setError(data.error || 'Invalid form data provided.'); setLoading(false); return }
+      if (!res.ok) { setError('Something went wrong securely processing your request. Please try again.'); setLoading(false); return }
+      
       setSuccess(true)
-    } catch {
-      setError('Network error. Please try again.')
+      setCooldown(30)
+    } catch (err) {
+      Sentry.captureException(err)
+      setError('Network error securely processing your request. Please try again.')
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
    //Confirmation//
@@ -59,6 +96,7 @@ export default function PreRegForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-black shadow-lg p-6 space-y-2">
+      <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={e => setForm(f => ({ ...f, _honeypot: e.target.value }))} />
       <div>
         <label htmlFor="full-name" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">FULL NAME</label>
         <input id="full-name" type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required
@@ -90,13 +128,13 @@ export default function PreRegForm() {
       <div className="flex items-start gap-2 mt-2">
         <input type="checkbox" id="consent" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" />
         <label htmlFor="consent" className="text-xs text-gray-600">
-          I agree to Havenly Solutions&apos;s <a href="/privacy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
+          I agree to Havenly Solutions&apos;s <a href="/Privacypolicy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
         </label>
       </div>
-      <button type="submit" disabled={loading}
+      <button type="submit" disabled={loading || cooldown > 0}
         className="w-full btn-shimmer text-white font-display font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-2">
         {loading ? <><Loader2 size={16} className="animate-spin" />Securing your spot...</>
-          : <>Secure My Free Account<ArrowRight size={16} /></>}
+          : cooldown > 0 ? `Wait ${cooldown}s` : <>Secure My Free Account<ArrowRight size={16} /></>}
       </button>
       <p className="text-[10px] text-black text-center">End-to-end encrypted enrollment · No third-party sharing</p>
     </form>

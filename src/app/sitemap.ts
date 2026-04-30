@@ -11,8 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/resources',
     '/emergency-protocol',
     '/contact',
-    '/privacy-policy',
-    '/terms-of-service',
+    '/Privacypolicy',
+    '/Terms',
   ]
 
   return routes.map((route) => ({

@@ -13,11 +13,12 @@ export default function LoadingScreen() {
       setTimeout(() => setIsVisible(false), 800) // Match transition duration
     }
 
-    // FORCE DISMISSAL: Ensure the screen disappears after 2.5 seconds 
-    const forceTimer = setTimeout(dismiss, 2500)
+    // Short fail-safe for slow internet
+    const forceTimer = setTimeout(dismiss, 1500)
 
     const handleLoad = () => {
-      setTimeout(dismiss, 400)
+      // Dismiss immediately when ready
+      dismiss()
     }
 
     if (document.readyState === 'complete') {
@@ -36,26 +37,24 @@ export default function LoadingScreen() {
   return (
     <div 
       id="havenly-loading-screen"
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F9F9] transition-opacity duration-700 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#F9F9F9] transition-opacity duration-700 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
     >
-      <div className="relative">
-        {/* Heartbeat pulse circles */}
-        <div className="absolute inset-0 scale-150 opacity-20 bg-[#C0392B] rounded-full animate-heartbeat-outer" />
-        <div className="absolute inset-0 scale-125 opacity-40 bg-[#C0392B] rounded-full animate-heartbeat-inner" />
-        
-        {/* Main Logo */}
-        <div className="relative animate-heartbeat">
+        <div className="relative group">
+          <div className="absolute -inset-4 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-all duration-1000 animate-pulse" />
           <Image
-            src="/Havenly_Solutions.png"
-            alt="Havenly Solutions"
-            width={180}
-            height={60}
+            src="/favicon.ico"
+            alt="Havenly Shield"
+            width={120}
+            height={120}
+            className="relative z-10 drop-shadow-[0_0_15px_rgba(192,57,43,0.3)]"
             priority
-            className="drop-shadow-2xl"
-            style={{ height: 'auto' }}
           />
         </div>
-      </div>
+        
+        {/* Minimal Progress Line */}
+        <div className="mt-8 w-32 h-[1px] bg-black/5 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[#C0392B] animate-shimmer" />
+        </div>
 
       <style jsx global>{`
         @keyframes heartbeat {

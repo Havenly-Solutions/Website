@@ -100,7 +100,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="font-semibold text-[#1A1A2E] mb-2">Is my data safe?</h3>
-              <p className="text-gray-600 text-sm">Absolutely. We use AES-256 encryption, comply with POPIA, and conduct regular security audits. See our <a href="/privacy-policy" className="text-[#C0392B] hover:underline">Privacy Policy</a> for details.</p>
+              <p className="text-gray-600 text-sm">Absolutely. We use AES-256 encryption, comply with POPIA, and conduct regular security audits. See our <a href="/Privacypolicy" className="text-[#C0392B] hover:underline">Privacy Policy</a> for details.</p>
             </div>
           </div>
         </div>

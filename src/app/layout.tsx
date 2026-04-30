@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
 import LoadingScreen from '@/components/ui/LoadingScreen'
+import TourBroadcast from '@/components/ui/TourBroadcast'
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://havenly.solutions'),
@@ -47,29 +55,36 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[#F9F9F9] system-font-stack">
-        <LoadingScreen />
+      <body className={`${inter.variable} font-sans antialiased bg-[#F9F9F9] system-font-stack`}>
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                setTimeout(function() {
-                  var screen = document.getElementById('havenly-loading-screen');
-                  if (screen) {
-                    screen.style.transition = 'opacity 0.8s ease-in-out';
-                    screen.style.opacity = '0';
-                    setTimeout(function() { 
-                      if (screen.parentNode) screen.parentNode.removeChild(screen);
-                    }, 800);
-                  }
-                }, 3000); // Absolute fail-safe: 3 seconds
-              })();
-            `,
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Havenly Solutions',
+              url: 'https://havenly.solutions',
+              logo: 'https://havenly.solutions/favicon.ico',
+              description: 'South Africa\'s first GBV response platform and community safety mesh network.',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Sandton',
+                addressRegion: 'Johannesburg',
+                addressCountry: 'ZA'
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+27703687327',
+                contactType: 'customer service',
+                email: 'info@havenly.solutions'
+              }
+            })
           }}
         />
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <TourBroadcast />
       </body>
     </html>
   )

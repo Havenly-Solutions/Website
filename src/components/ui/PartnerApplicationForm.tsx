@@ -1,6 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Loader2, CheckCircle } from 'lucide-react'
+import DOMPurify from 'dompurify'
+import * as Sentry from '@sentry/nextjs'
 
 export default function PartnerApplicationForm() {
   const [form, setForm] = useState({
@@ -11,45 +13,84 @@ export default function PartnerApplicationForm() {
     email: '',
     regNumber: '',
     operatingRegion: '',
-    missionStatement: ''
+    missionStatement: '',
+    _honeypot: ''
   })
   const [agreed, setAgreed] = useState(false)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
+  const [cooldown, setCooldown] = useState(0)
+
+  // Rate Limiting Cooldown Timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout
+    if (cooldown > 0) {
+      timer = setTimeout(() => setCooldown(prev => prev - 1), 1000)
+    }
+    return () => {
+      if (timer) clearTimeout(timer)
+    }
+  }, [cooldown])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (form._honeypot) return // Bot detected
+    if (cooldown > 0) { setError(`Please wait ${cooldown}s before submitting again`); return }
     if (!agreed) {
       setError('Please acknowledge the terms to proceed.')
       return
     }
+
+    // Validation
+    const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/
+    if (!phoneRegex.test(form.liaisonPhone.replace(/\s+/g, ''))) {
+      setError('Please enter a valid South African phone number')
+      return
+    }
+
     setLoading(true)
     setError('')
     
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.havenly.solutions'
+      const sanitizedForm = {
+        orgName: DOMPurify.sanitize(form.orgName),
+        liaisonName: DOMPurify.sanitize(form.liaisonName),
+        liaisonPhone: DOMPurify.sanitize(form.liaisonPhone),
+        orgType: DOMPurify.sanitize(form.orgType),
+        email: DOMPurify.sanitize(form.email),
+        regNumber: DOMPurify.sanitize(form.regNumber),
+        operatingRegion: DOMPurify.sanitize(form.operatingRegion),
+        missionStatement: DOMPurify.sanitize(form.missionStatement)
+      }
+
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
       const res = await fetch(`${apiUrl}/api/ngo-partners/apply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify(sanitizedForm)
       })
       
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
       
+      if (res.status === 409) { setError('This organisation is already registered.'); setLoading(false); return }
+      if (res.status === 422) { setError(data.error || 'Invalid form data provided.'); setLoading(false); return }
       if (!res.ok) {
-        setError(data.error || 'Something went wrong. Please try again.')
+        setError('Something went wrong securely processing your request. Please try again.')
         setLoading(false)
         return
       }
       
       setSuccess(true)
+      setCooldown(30)
     } catch (err) {
-      setError('Network error. Please try again.')
+      Sentry.captureException(err)
+      setError('Network error securely processing your request. Please try again.')
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   if (success) {
@@ -68,6 +109,7 @@ export default function PartnerApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-lg p-8">
+      <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={e => setForm(f => ({ ...f, _honeypot: e.target.value }))} />
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Organisation Name</label>
@@ -105,6 +147,7 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Type of Organisation</label>
           <select 
+            title="Organisation Type"
             value={form.orgType}
             onChange={e => setForm(f => ({...f, orgType: e.target.value}))}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#C0392B] transition-colors"
@@ -161,21 +204,22 @@ export default function PartnerApplicationForm() {
 
       <div className="flex items-start gap-3 mb-4">
         <input 
+          id="partner-agreement"
           type="checkbox" 
           checked={agreed}
           onChange={e => setAgreed(e.target.checked)}
           className="mt-0.5 accent-[#C0392B]" 
         />
-        <p className="text-xs text-gray-400 leading-relaxed cursor-pointer" onClick={() => setAgreed(!agreed)}>
+        <label htmlFor="partner-agreement" className="text-xs text-gray-400 leading-relaxed cursor-pointer">
           We acknowledge that partnership status is subject to rigorous background verification
           and adherence to the Stoic Guardian Protocol standards.
-        </p>
+        </label>
       </div>
 
       {error && <p className="text-[#C0392B] text-xs mb-4">{error}</p>}
 
-      <button disabled={loading} className="w-full btn-shimmer text-white font-display font-bold py-4 rounded-xl flex items-center justify-center gap-2">
-        {loading ? <><Loader2 size={16} className="animate-spin" /> Submitting...</> : <>Submit Early Access Application <ArrowRight size={16} /></>}
+      <button disabled={loading || cooldown > 0} className="w-full btn-shimmer text-white font-display font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+        {loading ? <><Loader2 size={16} className="animate-spin" /> Submitting...</> : cooldown > 0 ? `Wait ${cooldown}s` : <>Submit Early Access Application <ArrowRight size={16} /></>}
       </button>
     </form>
   )

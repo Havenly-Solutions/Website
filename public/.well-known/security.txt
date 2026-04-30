@@ -1,0 +1,7 @@
+Contact: mailto:security@havenly.solutions
+Expires: 2027-12-31T23:59:59.000Z
+Acknowledgements: https://havenly.solutions/acknowledgements
+Preferred-Languages: en
+Canonical: https://havenly.solutions/.well-known/security.txt
+Policy: https://havenly.solutions/security-policy
+Hiring: https://havenly.solutions/careers

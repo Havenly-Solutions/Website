@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { content as staticContent } from './content';
 
 export default function PrivacyPolicyPage() {
   const [content, setContent] = useState<string>('');
@@ -9,10 +10,7 @@ export default function PrivacyPolicyPage() {
 
   useEffect(() => {
     setMounted(true);
-    fetch('/api/legal/privacy')
-      .then(res => res.text())
-      .then(html => setContent(html))
-      .catch(() => setContent('<p>Our privacy policy is currently being updated.</p>'));
+    setContent(staticContent);
   }, []);
 
   return (
@@ -20,7 +18,7 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         
         <div className="mb-8 flex items-center gap-2 text-sm text-gray-400 font-medium uppercase tracking-wider">
-          <Link href="/" className="hover:text-[#4C2A85] transition-colors">Home</Link>
+          <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
           <span>/</span>
           <span className="text-[#1A1A2E]">Legal</span>
         </div>

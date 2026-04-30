@@ -116,9 +116,9 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
         
         <motion.div variants={itemVariants} className="mx-2.5 mb-2 grid grid-cols-3 gap-1.5">
           {[
-            { v: '0', l: 'Active Threats' },
-            { v: '<3m', l: 'Avg Response' },
-            { v: '42', l: 'Neighbors Online' },
+            { v: '-', l: 'Active Threats' },
+            { v: '-', l: 'Avg Response' },
+            { v: '-', l: 'Neighbors Online' },
           ].map(s => (
             <div key={s.l} className="bg-white rounded-xl p-2 text-center border border-gray-100">
               <p className="text-[12px] font-black text-[#1A1A2E]">{s.v}</p>
@@ -181,13 +181,13 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
 
         <motion.div variants={listVariants} className="space-y-1.5">
           {[
-            { bg: '#E8F5E9', ic: '', title: 'Scheduled Check-in', time: '12m ago', desc: 'Status verified in Central District.' },
-            { bg: '#E8F0FE', ic: '', title: 'Community Safety Alert', time: '1h ago', desc: 'Path safety rating up by 12%.' },
-            { bg: '#FFF3E0', ic: '', title: 'Contact Updated', time: '4h ago', desc: 'Sarah M. added to Emergency Contacts.' },
+            { bg: 'bg-[#E8F5E9]', ic: '', title: 'System Provisioned', time: 'Just now', desc: 'Awaiting launch date for live telemetry.' },
+            { bg: 'bg-[#E8F0FE]', ic: '', title: 'Network Ready', time: 'Just now', desc: 'Secure connection established.' },
+            { bg: 'bg-[#FFF3E0]', ic: '', title: 'Telemetry Standby', time: 'Just now', desc: 'Live data available after launch.' },
           ].map((i, idx) => (
             <motion.div key={idx} variants={itemVariants} className="mx-2.5 bg-white rounded-xl p-2.5 border border-gray-100">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px]" style={{ backgroundColor: i.bg }}>{i.ic}</div>
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px] ${i.bg}`}>{i.ic}</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start gap-1">
                     <span className="text-[8px] font-bold text-[#1A1A2E] leading-tight">{i.title}</span>

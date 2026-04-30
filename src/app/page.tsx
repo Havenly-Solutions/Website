@@ -5,43 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Radio, Database, Wifi, MapPin, Users, ChevronRight, ArrowRight, Lock, Zap, Globe } from 'lucide-react'
 import PreRegForm from '@/components/ui/PreRegForm'
-import TourModal from '@/components/ui/TourModal'
 
-/*  Optimized Countdown Hook  */
-function useCountdown(targetDate: string | Date) {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
-
-  useEffect(() => {
-    const target = new Date(targetDate).getTime()
-
-    const tick = () => {
-      const diff = target - Date.now()
-
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        return
-      }
-
-      setTimeLeft({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      })
-    }
-
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [targetDate])
-
-  return timeLeft
-}
+import { useCountdown } from '@/hooks/useCountdown'
 
 /*  Countdown Tile — glass style with tabular nums  */
 function Tile({ value, label }: { value: number; label: string }) {
@@ -99,7 +64,7 @@ const IC = {
     </svg>
   ),
   shield: (size = 13) => (
-    <Image src="/logo.png" alt="Havenly Logo" width={size} height={size} className="rounded-sm object-cover" priority />
+    <Image src="/favicon.ico" alt="Havenly Logo" width={size} height={size} className="rounded-sm object-contain" priority />
   ),
   pin: () => (
     <svg width="9" height="9" viewBox="0 0 24 24" fill="#9B9B9B">
@@ -113,7 +78,36 @@ const IC = {
   ),
 }
 
-function PageTop({ countdown }: { countdown: any }) {
+function useUserCount() {
+  const [count, setCount] = useState<number | null>(null)
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
+        const res = await fetch(`${apiUrl}/api/pre-registrations/count`)
+        if (res.ok) {
+          const data = await res.json()
+          setCount(data.count)
+        }
+      } catch (err) {
+        console.error('Failed to fetch user count', err)
+      }
+    }
+
+    fetchCount()
+    const interval = setInterval(fetchCount, 30000) // Update every 30s
+    return () => clearInterval(interval)
+  }, [])
+
+  return count
+}
+
+function PageTop() {
+  const launchDate = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00Z'
+  const countdown = useCountdown(launchDate)
+  const userCount = useUserCount()
+
   return (
     <>
       {/*  HERO  */}
@@ -131,7 +125,9 @@ function PageTop({ countdown }: { countdown: any }) {
             {/* Protocol badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-black/40 backdrop-blur-sm mb-8">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              <span className="text-sm text-white/80 tracking-wide">Protocol Status: Initializing</span>
+              <span className="text-sm text-white/80 tracking-wide">
+                {userCount ? `${userCount.toLocaleString()} PRE-REGISTERED` : 'PROTOCOL STATUS: INITIALIZING'}
+              </span>
             </div>
 
             {/* H1 */}
@@ -331,9 +327,9 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
         </div>
         <div className="mx-2.5 mb-2 grid grid-cols-3 gap-1.5">
           {[
-            { v: '0', l: 'Active Threats' },
-            { v: '<3m', l: 'Avg Response' },
-            { v: '42', l: 'Neighbors Online' },
+            { v: '-', l: 'Active Threats' },
+            { v: '-', l: 'Avg Response' },
+            { v: '-', l: 'Neighbors Online' },
           ].map(s => (
             <div key={s.l} className="bg-white rounded-xl p-2 text-center border border-gray-100">
               <p className="text-[12px] font-black text-[#1A1A2E]">{s.v}</p>
@@ -380,13 +376,13 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           <span className="text-[6.5px] text-[#C0392B] font-semibold cursor-pointer">View All</span>
         </div>
         {[
-          { bg: '#E8F5E9', ic: '', title: 'Scheduled Check-in', time: '12m ago', desc: 'Status verified in Central District.' },
-          { bg: '#E8F0FE', ic: '', title: 'Community Safety Alert', time: '1h ago', desc: 'Path safety rating up by 12%.' },
-          { bg: '#FFF3E0', ic: '', title: 'Contact Updated', time: '4h ago', desc: 'Sarah M. added to Emergency Contacts.' },
+          { bg: 'bg-[#E8F5E9]', ic: '', title: 'System Provisioned', time: 'Just now', desc: 'Awaiting launch date for live telemetry.' },
+          { bg: 'bg-[#E8F0FE]', ic: '', title: 'Network Ready', time: 'Just now', desc: 'Secure connection established.' },
+          { bg: 'bg-[#FFF3E0]', ic: '', title: 'Telemetry Standby', time: 'Just now', desc: 'Live data available after launch.' },
         ].map((i, idx) => (
           <div key={idx} className="mx-2.5 mb-1.5 bg-white rounded-xl p-2.5 border border-gray-100">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px]" style={{ backgroundColor: i.bg }}>{i.ic}</div>
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-[10px] ${i.bg}`}>{i.ic}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-start gap-1">
                   <span className="text-[8px] font-bold text-[#1A1A2E] leading-tight">{i.title}</span>
@@ -669,11 +665,9 @@ function HavenlySolutionsDemoSection() {
 }
 
 export default function HomePage() {
-  const countdown = useCountdown('2026-11-24T00:00:00+02:00')
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-red-100 selection:text-red-900">
-      <PageTop countdown={countdown} />
-      <TourModal />
+      <PageTop />
       <HavenlySolutionsDemoSection />
 
       {/*  DESIGNED FOR  */}
