@@ -3,7 +3,6 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["jnb1"],
   "headers": [
     {
       "source": "/(.*)",

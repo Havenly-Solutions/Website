@@ -118,3 +118,7 @@ body { background: var(--havenly-cream); overflow-x: hidden; }
 .animate-fade-in {
   animation: fade-in 0.5s ease-out forwards;
 }
+
+.system-font-stack {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
