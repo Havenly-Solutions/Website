@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
 import LoadingScreen from '@/components/ui/LoadingScreen'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://havenly.co.za'),
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
