@@ -53,7 +53,7 @@ export default function Footer() {
         setEmail('');
         setFirstName('');
         setCooldown(30);
-        toast.success('Subscription successful! Welcome to Havenly.');
+        toast.success('Subscription successful! Welcome to Havenly Solutions.');
         return;
       }
 
