@@ -4,17 +4,20 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 export default function LoadingScreen() {
-  const [loading, setLoading] = useState(true)
+  const [isVisible, setIsVisible] = useState(true)
+  const [isFading, setIsFading] = useState(false)
 
   useEffect(() => {
-    // FORCE DISMISSAL: Ensure the screen disappears after 3.5 seconds 
-    // even if the 'load' event fails to fire due to network/asset issues.
-    const forceTimer = setTimeout(() => {
-      setLoading(false)
-    }, 3500)
+    const dismiss = () => {
+      setIsFading(true)
+      setTimeout(() => setIsVisible(false), 800) // Match transition duration
+    }
+
+    // FORCE DISMISSAL: Ensure the screen disappears after 2.5 seconds 
+    const forceTimer = setTimeout(dismiss, 2500)
 
     const handleLoad = () => {
-      setTimeout(() => setLoading(false), 500)
+      setTimeout(dismiss, 400)
     }
 
     if (document.readyState === 'complete') {
@@ -28,10 +31,12 @@ export default function LoadingScreen() {
     }
   }, [])
 
-  if (!loading) return null
+  if (!isVisible) return null
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F9F9] transition-opacity duration-1000">
+    <div 
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F9F9F9] transition-opacity duration-700 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
+    >
       <div className="relative">
         {/* Heartbeat pulse circles */}
         <div className="absolute inset-0 scale-150 opacity-20 bg-[#C0392B] rounded-full animate-heartbeat-outer" />
@@ -90,3 +95,4 @@ export default function LoadingScreen() {
     </div>
   )
 }
+
