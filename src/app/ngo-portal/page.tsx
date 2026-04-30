@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import PartnerApplicationForm from '@/components/ui/PartnerApplicationForm'
 import { Shield, Users, Globe, Heart } from 'lucide-react'
 
@@ -32,7 +31,7 @@ export default function NGOPortalPage() {
           {[
             {
               icon: Shield,
-              title: 'Real-time Incident Access',
+              title: 'Real time Incident Access',
               desc: 'Get instant alerts for emergencies in your operating region.'
             },
             {
@@ -77,9 +76,9 @@ export default function NGOPortalPage() {
         <div className="text-center mt-12">
           <p className="text-gray-600">
             Already a partner?{' '}
-            <Link href="/dashboard" className="text-[#C0392B] hover:underline font-medium">
+            <a href="https://dashboard.havenly.solutions" className="text-[#C0392B] hover:underline font-medium">
               Log in to your portal →
-            </Link>
+            </a>
           </p>
         </div>
       </div>

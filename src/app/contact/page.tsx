@@ -85,7 +85,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="font-semibold text-[#1A1A2E] mb-2">When does Havenly Solutions launch?</h3>
-              <p className="text-gray-600 text-sm">Public launch is scheduled for November 24, 2026. Pre-registrations are open now.</p>
+              <p className="text-gray-600 text-sm">Public launch is scheduled for November 24, 2026. Pre registrations are open now.</p>
             </div>
 
             <div>
@@ -108,8 +108,8 @@ export default function ContactPage() {
         {/* CTA */}
         <div className="bg-gradient-to-br from-[#C0392B]/5 to-[#0B6E4F]/5 border border-[#C0392B]/20 rounded-2xl p-8 text-center">
           <h3 className="font-semibold text-[#1A1A2E] text-lg mb-3">Ready to Join?</h3>
-          <p className="text-gray-600 mb-6">Pre-register now to be the first to know when Havenly Solutions launches.</p>
-          <a href="/#pre-register" className="inline-block bg-[#C0392B] text-white font-semibold px-8 py-3 rounded-xl hover:bg-red-700 transition-colors">Pre-Register Today</a>
+          <p className="text-gray-600 mb-6">Pre register now to be the first to know when Havenly Solutions launches.</p>
+          <a href="/#register" className="inline-block bg-[#C0392B] text-white font-semibold px-8 py-3 rounded-xl hover:bg-red-700 transition-colors">Pre Register Today</a>
         </div>
       </div>
     </div>

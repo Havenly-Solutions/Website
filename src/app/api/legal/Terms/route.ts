@@ -1,11 +1,11 @@
-import { readFileSync } from 'fs'
+import { readFile } from 'fs/promises'
 import path from 'path'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   const filePath = path.join(process.cwd(), 'src/app/Terms/content.html')
   try {
-    const content = readFileSync(filePath, 'utf8')
+    const content = await readFile(filePath, 'utf8')
     return new NextResponse(content, {
       status: 200,
       headers: { 'Content-Type': 'text/html' },

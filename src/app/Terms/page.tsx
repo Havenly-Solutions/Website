@@ -13,12 +13,11 @@ import { content as staticContent } from './content';
  * Optimized for Havenly Solutions's Premium Design Language.
  */
 export default function TermsOfServicePage() {
-  const [content, setContent] = useState<string>('');
   const [mounted, setMounted] = useState(false);
+  const content = staticContent;
 
   useEffect(() => {
     setMounted(true);
-    setContent(staticContent);
   }, []);
 
   return (

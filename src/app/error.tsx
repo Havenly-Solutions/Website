@@ -20,7 +20,7 @@ export default function Error({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24">
       <h2 className="text-2xl font-bold mb-4">Something went wrong!</h2>
-      <p className="text-gray-500 mb-8">{error.message || "An unexpected error occurred."}</p>
+      <p className="text-gray-500 mb-8">An unexpected error occurred. Our team has been notified.</p>
       <button
         className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         onClick={() => reset()}

@@ -54,11 +54,15 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button 
             onClick={() => setTourOpen(true)}
-            className="p-2 text-[#C0392B] hover:bg-red-50 rounded-lg transition-colors group relative"
-            title="July 2025 Tour"
+            className="p-2 text-[#C0392B] hover:bg-red-50 rounded-lg transition-colors group relative z-20 cursor-pointer"
+            title="July 2026 Tour"
+            aria-label="July 2026 Tour Notification"
           >
             <Megaphone size={20} className="group-hover:scale-110 transition-transform" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-ping" />
+            <span className="absolute top-1.5 right-1.5 flex h-2 w-2 pointer-events-none">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
+            </span>
           </button>
           <Link href="/#register" className="px-4 py-2 bg-[#C0392B] text-white text-sm font-semibold rounded-lg hover:bg-[#a93226] transition-colors">
             Get Help Now
@@ -81,7 +85,7 @@ export default function Navbar() {
               onClick={() => { setTourOpen(true); setOpen(false); }}
               className="flex items-center justify-center gap-2 px-3 py-2.5 text-sm font-semibold text-[#C0392B] bg-red-50 rounded-lg"
             >
-              <Megaphone size={16} /> July 2025 Tour
+              <Megaphone size={16} /> July 2026 Tour
             </button>
             <Link href="/#register" onClick={() => setOpen(false)}
               className="px-3 py-2.5 text-sm font-semibold text-center bg-[#C0392B] text-white rounded-lg">

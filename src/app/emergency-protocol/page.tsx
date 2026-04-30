@@ -148,7 +148,7 @@ export default function EmergencyProtocolPage() {
 
             <div className="bg-white rounded-xl border border-gray-100 p-6">
               <p className="text-gray-600 mb-4">
-                If you are a registered responder, emergency service, or NGO partner, you will receive alerts in real-time through:
+                If you are a registered responder, emergency service, or NGO partner, you will receive alerts in real time through:
               </p>
               <ul className="space-y-2 text-gray-600 text-sm">
                 <li> <strong>SMS</strong> — For immediate critical alerts</li>

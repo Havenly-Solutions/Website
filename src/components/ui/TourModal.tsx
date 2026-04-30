@@ -6,7 +6,8 @@ import * as Sentry from '@sentry/nextjs';
 
 export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean; onClose?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [stats, setStats] = useState({ count: 1240, goal: 10000 });
+  const [stats, setStats] = useState({ count: 0, goal: 10000 });
+  const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
     if (forceOpen) {
@@ -32,7 +33,8 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
           setStats({ count: data.count, goal: data.goal });
         }
       })
-      .catch(err => Sentry.captureException(err));
+      .catch(err => Sentry.captureException(err))
+      .finally(() => setStatsLoading(false));
   }, []);
 
   const closeModal = () => {
@@ -105,27 +107,32 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
             <div className="px-8 py-6 bg-white">
               <div className="space-y-6">
                 <p className="text-gray-700 text-[15px] leading-relaxed text-center font-medium">
-                  We are traveling across South Africa for our <strong>July 2025 Tour</strong>—visiting schools, colleges, communities, and businesses—to show you our app. Join the movement and see how we are building a safer future together.
+                  We are traveling across South Africa for our <strong>July 2026 Tour</strong>—visiting schools, colleges, communities, and businesses—to show you our app. Join the movement and see how we are building a safer future together.
                 </p>
 
                 {/* Progress Section */}
                 <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Sign Up Progress</span>
-                    <span className="text-[#C0392B] font-black text-xs tabular-nums">{stats.count.toLocaleString()} / {stats.goal.toLocaleString()}</span>
+                    <span className="text-[#C0392B] font-black text-xs tabular-nums">
+                      {statsLoading ? 'Loading...' : `${stats.count.toLocaleString()} / ${stats.goal.toLocaleString()}`}
+                    </span>
                   </div>
 
                   <div className="relative h-2.5 bg-gray-200 rounded-full overflow-hidden mb-3">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={{ width: `${percentage}%` }}
+                      animate={{ width: statsLoading ? '0%' : `${percentage}%` }}
                       transition={{ duration: 1.5, ease: "easeOut" }}
                       className="absolute top-0 left-0 h-full bg-[#C0392B]"
                     />
                   </div>
 
                   <p className="text-[11px] text-gray-500 font-medium text-center">
-                    Join <span className="text-gray-800 font-bold">{stats.count.toLocaleString()}</span> others who have already registered!
+                    {statsLoading
+                      ? 'Fetching registration data...'
+                      : <>Join <span className="text-gray-800 font-bold">{stats.count.toLocaleString()}</span> others who have already registered!</>
+                    }
                   </p>
                 </div>
 

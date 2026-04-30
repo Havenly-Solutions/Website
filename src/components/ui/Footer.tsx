@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { Mail, Phone, Loader2, CheckCircle, Send } from 'lucide-react'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/nextjs'
+import { toast } from 'sonner'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,32 +15,30 @@ export default function Footer() {
   const [honeypot, setHoneypot] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
   const [cooldown, setCooldown] = useState(0);
 
   // Rate Limiting Cooldown Timer
   useEffect(() => {
     let timer: NodeJS.Timeout
     if (cooldown > 0) {
-      timer = setTimeout(() => setCooldown(prev => prev - 1), 1000)
+      timer = setTimeout(() => setCooldown(cooldown - 1), 1000)
     }
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
+    return () => clearTimeout(timer)
   }, [cooldown])
 
+  // TODO: Verify backend checks the Origin header on this endpoint.
+  // If not, implement a CSRF token flow before go-live.
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
     if (honeypot) return; // Bot detected
-    if (cooldown > 0) { setError(`Please wait ${cooldown}s before submitting again`); return; }
+    if (cooldown > 0) { toast.error(`Please wait ${cooldown}s before submitting again`); return; }
     
     setLoading(true);
-    setError('');
     
     try {
       const sanitizedData = {
-        email: DOMPurify.sanitize(email),
-        firstName: DOMPurify.sanitize(firstName)
+        firstName: DOMPurify.sanitize(firstName.trim()),
+        email: DOMPurify.sanitize(email.trim()),
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions';
@@ -49,19 +48,28 @@ export default function Footer() {
         body: JSON.stringify(sanitizedData),
       });
       
+      if (res.status === 201) {
+        setSuccess(true);
+        setEmail('');
+        setFirstName('');
+        setCooldown(30);
+        toast.success('Subscription successful! Welcome to Havenly.');
+        return;
+      }
+
       const data = await res.json().catch(() => ({}));
       
-      if (res.status === 409) { setError('This email is already subscribed.'); setLoading(false); return; }
-      if (res.status === 422) { setError(data.error || 'Invalid form data provided.'); setLoading(false); return; }
-      if (!res.ok) { setError('Something went wrong securely processing your request. Please try again.'); setLoading(false); return; }
-      
-      setSuccess(true);
-      setEmail('');
-      setFirstName('');
-      setCooldown(30);
+      if (res.status === 409) {
+        toast.error('This email is already subscribed.');
+      } else if (res.status === 422) {
+        const firstError = data.errors?.[0]?.message || data.message || 'Validation failed';
+        toast.error(firstError);
+      } else {
+        throw new Error(data.message || `API error: ${res.status}`);
+      }
     } catch (err: any) {
       Sentry.captureException(err);
-      setError('Network error securely processing your request. Please try again.');
+      toast.error('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -125,6 +133,7 @@ export default function Footer() {
             <div className="space-y-3">
               {[
                 ['Privacy Policy', '/Privacypolicy'],
+                ['Cookie Policy', '/cookie-policy'],
                 ['Terms of Service', '/Terms'],
                 ['Contact Support', '/contact'],
                 ['Emergency Protocol', '/emergency-protocol']
@@ -184,7 +193,6 @@ export default function Footer() {
                     {loading ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
                   </button>
                 </div>
-                {error && <p className="text-red-600 text-[10px]">{error}</p>}
                 <p className="text-[9px] text-black/30">
                   By subscribing, you agree to our <Link href="/Privacypolicy" className="underline">Privacy Policy</Link>.
                 </p>

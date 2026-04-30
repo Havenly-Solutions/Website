@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: 'Can I add family members to my plan?',
-    a: 'Yes. The Pro tier includes up to 5 emergency contacts with real-time location sharing and automatic SOS notification. Family plans with group pricing are launching in Phase 2 (mid-2027).',
+    a: 'Yes. The Pro tier includes up to 5 emergency contacts with real time location sharing and automatic SOS notification. Family plans with group pricing are launching in Phase 2 (mid-2027).',
   },
 ]
 
@@ -97,7 +97,7 @@ export default function ResourcesPage() {
                     Full knowledge base launches <span className="text-[#D4A017]">24 November 2026</span>
                   </p>
                   <p className="text-white/40 text-xs mt-1 leading-relaxed">
-                    Protocols and guides are being finalised. Pre-register below to receive
+                    Protocols and guides are being finalised. Pre register below to receive
                     early access to all documentation before the public launch.
                   </p>
                 </div>
@@ -323,7 +323,7 @@ export default function ResourcesPage() {
                 Secure your<br />perimeter today.
               </h2>
               <p className="text-white/40 text-sm mb-10">
-                Pre-register now — be first in line when the app goes live.
+                Pre register now — be first in line when the app goes live.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">

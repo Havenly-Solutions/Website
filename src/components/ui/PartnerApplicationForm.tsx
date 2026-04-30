@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { ArrowRight, Loader2, CheckCircle } from 'lucide-react'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/nextjs'
+import { toast } from 'sonner'
 
 export default function PartnerApplicationForm() {
   const [form, setForm] = useState({
@@ -19,38 +20,36 @@ export default function PartnerApplicationForm() {
   const [agreed, setAgreed] = useState(false)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const [error, setError] = useState('')
   const [cooldown, setCooldown] = useState(0)
 
   // Rate Limiting Cooldown Timer
   useEffect(() => {
     let timer: NodeJS.Timeout
     if (cooldown > 0) {
-      timer = setTimeout(() => setCooldown(prev => prev - 1), 1000)
+      timer = setTimeout(() => setCooldown(cooldown - 1), 1000)
     }
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
+    return () => clearTimeout(timer)
   }, [cooldown])
 
+  // TODO: Verify backend checks the Origin header on this endpoint.
+  // If not, implement a CSRF token flow before go-live.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (form._honeypot) return // Bot detected
-    if (cooldown > 0) { setError(`Please wait ${cooldown}s before submitting again`); return }
+    if (cooldown > 0) { toast.error(`Please wait ${cooldown}s before submitting again`); return }
     if (!agreed) {
-      setError('Please acknowledge the terms to proceed.')
+      toast.error('Please acknowledge the terms to proceed.')
       return
     }
 
     // Validation
-    const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/
+    const phoneRegex = /^(\+27|0)[0-9]{9}$/
     if (!phoneRegex.test(form.liaisonPhone.replace(/\s+/g, ''))) {
-      setError('Please enter a valid South African phone number')
+      toast.error('Please enter a valid South African phone number (+27 or 0 followed by 9 digits)')
       return
     }
 
     setLoading(true)
-    setError('')
     
     try {
       const sanitizedForm = {
@@ -67,27 +66,30 @@ export default function PartnerApplicationForm() {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
       const res = await fetch(`${apiUrl}/api/ngo-partners/apply`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedForm)
       })
       
-      const data = await res.json().catch(() => ({}))
-      
-      if (res.status === 409) { setError('This organisation is already registered.'); setLoading(false); return }
-      if (res.status === 422) { setError(data.error || 'Invalid form data provided.'); setLoading(false); return }
-      if (!res.ok) {
-        setError('Something went wrong securely processing your request. Please try again.')
-        setLoading(false)
+      if (res.status === 201) {
+        setSuccess(true)
+        setCooldown(30)
+        toast.success('Application submitted successfully!')
         return
       }
-      
-      setSuccess(true)
-      setCooldown(30)
-    } catch (err) {
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.status === 409) {
+        toast.error('This organisation is already registered.')
+      } else if (res.status === 422) {
+        const firstError = data.errors?.[0]?.message || data.message || 'Validation failed';
+        toast.error(firstError);
+      } else {
+        throw new Error(data.message || `API error: ${res.status}`);
+      }
+    } catch (err: any) {
       Sentry.captureException(err)
-      setError('Network error securely processing your request. Please try again.')
+      toast.error('Something went wrong. Please try again later.')
     } finally {
       setLoading(false)
     }
@@ -215,8 +217,6 @@ export default function PartnerApplicationForm() {
           and adherence to the Stoic Guardian Protocol standards.
         </label>
       </div>
-
-      {error && <p className="text-[#C0392B] text-xs mb-4">{error}</p>}
 
       <button disabled={loading || cooldown > 0} className="w-full btn-shimmer text-white font-display font-bold py-4 rounded-xl flex items-center justify-center gap-2">
         {loading ? <><Loader2 size={16} className="animate-spin" /> Submitting...</> : cooldown > 0 ? `Wait ${cooldown}s` : <>Submit Early Access Application <ArrowRight size={16} /></>}

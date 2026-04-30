@@ -198,7 +198,7 @@ export default function SafetyHubPage() {
 
           <div className="mt-12 bg-[#4c2a85] rounded-xl p-10 grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { label: 'Download Havenly Solutions', desc: 'Works offline. SOS sends via SMS when there\'s no data. Your safety protocol before the next outage.', cta: 'Pre-Register Free', href: '/#register' },
+              { label: 'Download Havenly Solutions', desc: 'Works offline. SOS sends via SMS when there\'s no data. Your safety protocol before the next outage.', cta: 'Pre Register Free', href: '/#register' },
               { label: 'Stage 6 Guide', desc: 'Full technical guide on securing your property through extended multi-day outage windows.', cta: 'Read Guide', href: '/resources' },
               { label: 'NGO / Watch Group?', desc: 'Get the Gold Tier Protocol — community-wide coverage for your entire watch area.', cta: 'Apply for Partnership', href: '/partners' },
             ].map(({ label, desc, cta, href }) => (

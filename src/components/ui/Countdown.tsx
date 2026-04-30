@@ -3,18 +3,44 @@ import { useState, useEffect } from 'react'
 
 interface CountdownProps { dark?: boolean }
 
-import { useCountdown } from '@/hooks/useCountdown'
-
-const TARGET_DATE = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00+02:00'
+const TARGET_DATE = new Date(process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00+02:00')
 
 export default function Countdown({ dark = false }: CountdownProps) {
-  const time = useCountdown(TARGET_DATE)
+  const [time, setTime] = useState({
+    days: 0,
+    hours: 0,
+    mins: 0,
+    secs: 0
+  })
+
+  useEffect(() => {
+    const tick = () => {
+      const diff = TARGET_DATE.getTime() - Date.now()
+
+      if (diff <= 0) {
+        setTime({ days: 0, hours: 0, mins: 0, secs: 0 })
+        return
+      }
+
+      setTime({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        mins: Math.floor((diff % 3600000) / 60000),
+        secs: Math.floor((diff % 60000) / 1000),
+      })
+    }
+
+    tick()
+    const id = setInterval(tick, 1000)
+
+    return () => clearInterval(id)
+  }, [])
 
   const units = [
     { value: time.days, label: 'Days' },
     { value: time.hours, label: 'Hours' },
-    { value: time.minutes, label: 'Mins' },
-    { value: time.seconds, label: 'Secs' },
+    { value: time.mins, label: 'Mins' },
+    { value: time.secs, label: 'Secs' },
   ]
 
   return (

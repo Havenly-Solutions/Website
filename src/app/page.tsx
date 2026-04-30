@@ -1,12 +1,52 @@
 "use client"
 
 import { useEffect, useState, type ReactNode } from 'react'
+import * as Sentry from '@sentry/nextjs'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Radio, Database, Wifi, MapPin, Users, ChevronRight, ArrowRight, Lock, Zap, Globe } from 'lucide-react'
 import PreRegForm from '@/components/ui/PreRegForm'
 
-import { useCountdown } from '@/hooks/useCountdown'
+/*  Optimized Countdown Hook  */
+function useCountdown(targetDate: string) {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0, hours: 0, minutes: 0, seconds: 0, total: 0
+  })
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = Date.now()
+      const target = new Date(targetDate).getTime()
+      const difference = target - now
+
+      if (difference <= 0 || isNaN(target)) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 }
+      }
+
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+        total: difference
+      }
+    }
+
+    // Initial calculation
+    const initial = calculateTimeLeft()
+    setTimeLeft(initial)
+
+    const timer = setInterval(() => {
+      const updated = calculateTimeLeft()
+      setTimeLeft(updated)
+      if (updated.total <= 0) clearInterval(timer)
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [targetDate])
+
+  return timeLeft
+}
 
 /*  Countdown Tile — glass style with tabular nums  */
 function Tile({ value, label }: { value: number; label: string }) {
@@ -21,9 +61,9 @@ function Tile({ value, label }: { value: number; label: string }) {
 }
 
 const TICKER_ITEMS = [
-  'SOS Protocol Active', 'POPIA Compliant', 'Offline-First Architecture',
+  'SOS Protocol Active', 'POPIA Compliant', 'Offline First Architecture',
   'Legal Evidence Chain', '99.9% Uptime', 'End-to-End Encrypted',
-  'SA-Built for SA Reality', 'Guardian Mesh Network', 'Zero Third-Party Sharing',
+  'SA Built for SA Reality', 'Guardian Mesh Network', 'Zero Third Party Sharing',
 ]
 
 //  App Types & Shared Styles 
@@ -91,7 +131,7 @@ function useUserCount() {
           setCount(data.count)
         }
       } catch (err) {
-        console.error('Failed to fetch user count', err)
+        Sentry.captureException(err)
       }
     }
 
@@ -104,12 +144,25 @@ function useUserCount() {
 }
 
 function PageTop() {
-  const launchDate = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00Z'
+  const launchDate = process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00+02:00'
   const countdown = useCountdown(launchDate)
   const userCount = useUserCount()
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Havenly Solutions — Community Safety Platform",
+    "url": "https://havenly.solutions",
+    "description": "South Africa's first real emergency response platform built for our realities.",
+    "datePublished": "2026-11-24"
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/*  HERO  */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background — photo + overlays */}
@@ -126,7 +179,7 @@ function PageTop() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-black/40 backdrop-blur-sm mb-8">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
               <span className="text-sm text-white/80 tracking-wide">
-                {userCount ? `${userCount.toLocaleString()} PRE-REGISTERED` : 'PROTOCOL STATUS: INITIALIZING'}
+                {userCount ? `${userCount.toLocaleString()} PRE REGISTERED` : 'PROTOCOL STATUS: INITIALIZING'}
               </span>
             </div>
 
@@ -149,7 +202,7 @@ function PageTop() {
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <Link href="/#register"
                 className="btn-shimmer text-white font-display font-bold px-8 py-4 rounded-xl text-base flex items-center gap-2 hover:shadow-lg transition-shadow">
-                Pre-Register Free <ArrowRight size={18} />
+                Pre Register Free <ArrowRight size={18} />
               </Link>
               <Link href="/features"
                 className="flex items-center gap-2 text-white/60 hover:text-white text-sm font-medium transition-colors">
@@ -210,7 +263,7 @@ function PageTop() {
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5">
                   <Zap size={20} className="text-white" />
                 </div>
-                <h3 className="font-display font-bold text-white text-2xl mb-2">One-Press SOS.</h3>
+                <h3 className="font-display font-bold text-white text-2xl mb-2">One Press SOS.</h3>
                 <p className="text-white/40 text-sm leading-relaxed">
                   Hold for 2 seconds to trigger an encrypted SOS emergency signal.
                   Instantly alerts nearby family members, community responders, and law enforcement.
@@ -232,7 +285,7 @@ function PageTop() {
               <div className="w-10 h-10 bg-[#1A1A2E]/5 group-hover:bg-red-50 rounded-xl flex items-center justify-center mb-4 transition-colors">
                 <Wifi size={18} className="text-[#1A1A2E] group-hover:text-red-600 transition-colors" />
               </div>
-              <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-1">Offline-First Logic</h3>
+              <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-1">Offline First Logic</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Critical data is buffered locally and transmitted via SMS/Mesh protocols when cellular fails.
                 Never disconnected.
@@ -701,7 +754,7 @@ export default function HomePage() {
               <p className="text-red-600 text-xs uppercase tracking-widest font-bold mb-3">PARTNER PROGRAM</p>
               <h2 className="font-display font-black text-[#1A1A2E] text-4xl md:text-5xl leading-tight mb-6">Empowering NGOs &<br />Community Watch.</h2>
               <p className="text-[#1A1A2E]/60 text-base leading-relaxed mb-8">
-                The Havenly Solutions Gold Tier provides NGOs with a specialized case dashboard, real-time escalation to SAPS/DSD, and encrypted victim evidence management.
+                The Havenly Solutions Gold Tier provides NGOs with a specialized case dashboard, real time escalation to SAPS/DSD, and encrypted victim evidence management.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                 <div className="bg-gray-200 border border-gray-200 rounded-2xl p-4 text-left">
@@ -743,7 +796,7 @@ export default function HomePage() {
             help us build a safer South Africa together.
           </p>
           <Link href="/#register" className="inline-flex items-center gap-2 bg-red-600 text-white font-display font-bold px-10 py-4 rounded-xl text-base hover:bg-red-700 transition-all">
-            Pre-Register Free <ArrowRight size={18} />
+            Pre Register Free <ArrowRight size={18} />
           </Link>
           <p className="text-gray-500 font-medium text-sm mt-6">LIMITED SPACES AVAILABLE FOR PHASE 1 ROLLOUT</p>
         </div>

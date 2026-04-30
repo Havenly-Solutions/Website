@@ -77,7 +77,7 @@ export default function PartnersPage() {
                   Gold Tier goes live on <span className="text-[#D4A017]">24 November 2026</span>
                 </p>
                 <p className="text-white/40 text-xs mt-1 leading-relaxed">
-                  These features are not yet active. Pre-register your organisation below to secure
+                  These features are not yet active. Pre register your organisation below to secure
                   priority access and skip the queue on launch day — before the public gets in.
                 </p>
               </div>
@@ -99,7 +99,7 @@ export default function PartnersPage() {
                 <h3 className="font-display font-bold text-[#1A1A2E] text-xl mb-2">Multi-User Case Dashboards</h3>
                 <p className="text-gray-400 text-sm leading-relaxed max-w-[55%]">
                   Centralised command for your entire team. Assign cases, track response times,
-                  and manage dispatcher workloads in real-time.
+                  and manage dispatcher workloads in real time.
                 </p>
               </div>
               <div className="absolute bottom-0 right-0 w-[45%] h-[60%] rounded-tl-2xl overflow-hidden opacity-60">
@@ -183,7 +183,7 @@ export default function PartnersPage() {
                     </div>
                   ))}
                 </div>
-                <span className="text-gray-400 text-xs font-semibold">+24 pre-registered partners</span>
+                <span className="text-gray-400 text-xs font-semibold">+24 pre registered partners</span>
               </div>
             </div>
 
@@ -202,7 +202,7 @@ export default function PartnersPage() {
             </div>
             <div className="flex flex-col items-end gap-2">
               <a href="#apply" className="btn-shimmer text-white font-display font-bold px-8 py-3.5 rounded-xl flex items-center gap-2">
-                Pre-Register as Partner <ArrowRight size={16} />
+                Pre Register as Partner <ArrowRight size={16} />
               </a>
               <span className="text-[#1A1A2E]/30 text-[10px] uppercase tracking-widest">Billing starts at launch · No card required now</span>
             </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Loader2, CheckCircle, ArrowRight } from 'lucide-react'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/nextjs'
+import { toast } from 'sonner'
 
 const REGIONS = [
   'Johannesburg / Gauteng', 'Cape Town / Western Cape', 'Durban / KZN',
@@ -15,7 +16,6 @@ export default function PreRegForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', region: '', _honeypot: '' })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const [error, setError] = useState('')
   const [consent, setConsent] = useState(false)
   const [cooldown, setCooldown] = useState(0)
 
@@ -23,53 +23,71 @@ export default function PreRegForm() {
   useEffect(() => {
     let timer: NodeJS.Timeout
     if (cooldown > 0) {
-      timer = setTimeout(() => setCooldown(prev => prev - 1), 1000)
+      timer = setTimeout(() => setCooldown(cooldown - 1), 1000)
     }
-    return () => {
-      if (timer) clearTimeout(timer)
-    }
+    return () => clearTimeout(timer)
   }, [cooldown])
 
+  // TODO: Verify backend checks the Origin header on this endpoint.
+  // If not, implement a CSRF token flow before go-live.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (form._honeypot) return // Bot detected
-    if (cooldown > 0) { setError(`Please wait ${cooldown}s before submitting again`); return }
-    if (!consent) { setError('You must agree to the Privacy Policy'); return }
-    if (!form.region) { setError('Please select your region'); return }
+    if (cooldown > 0) { toast.error(`Please wait ${cooldown}s before submitting again`); return }
+    if (!consent) { toast.error('You must agree to the Privacy Policy'); return }
+    if (!form.region) { toast.error('Please select your region'); return }
     
     // Validation
-    const phoneRegex = /^(\+27|0)[6-8][0-9]{8}$/
-    if (!phoneRegex.test(form.phone.replace(/\s+/g, ''))) {
-      setError('Please enter a valid South African phone number')
+    const phoneRegex = /^(\+27|0)[0-9]{9}$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    
+    if (!emailRegex.test(form.email)) {
+      toast.error('Please enter a valid email address')
       return
     }
 
-    setLoading(true); setError('')
+    if (!phoneRegex.test(form.phone.replace(/\s+/g, ''))) {
+      toast.error('Please enter a valid South African phone number')
+      return
+    }
+
+    setLoading(true)
     try {
       const sanitizedForm = {
         name: DOMPurify.sanitize(form.name),
         email: DOMPurify.sanitize(form.email),
         phone: DOMPurify.sanitize(form.phone),
         region: DOMPurify.sanitize(form.region),
+        agreedToTerms: true
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
       const res = await fetch(`${apiUrl}/api/pre-registrations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...sanitizedForm, source: 'website' }),
+        body: JSON.stringify(sanitizedForm),
       })
-      const data = await res.json().catch(() => ({}))
-      
-      if (res.status === 409) { setError('This email is already registered. You\'re on the list!'); setLoading(false); return }
-      if (res.status === 422) { setError(data.error || 'Invalid form data provided.'); setLoading(false); return }
-      if (!res.ok) { setError('Something went wrong securely processing your request. Please try again.'); setLoading(false); return }
-      
-      setSuccess(true)
-      setCooldown(30)
+
+      if (res.status === 201) {
+        setSuccess(true)
+        setCooldown(30)
+        toast.success('You have been successfully pre-registered!')
+        return
+      }
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.status === 409) {
+        toast.error('This email is already registered.')
+      } else if (res.status === 422) {
+        const firstError = data.errors?.[0]?.message || data.message || 'Validation failed';
+        toast.error(firstError);
+      } else {
+        throw new Error(`API error: ${res.status}`)
+      }
     } catch (err) {
       Sentry.captureException(err)
-      setError('Network error securely processing your request. Please try again.')
+      toast.error('Something went wrong. Please try again later.')
     } finally {
       setLoading(false)
     }
@@ -120,11 +138,10 @@ export default function PreRegForm() {
         <label htmlFor="region-select" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">Primary Region</label>
         <select id="region-select" value={form.region} onChange={e => setForm(f => ({ ...f, region: e.target.value }))}
           className={`w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C0392B] transition-colors ${form.region ? 'text-[#1A1A2E]' : 'text-gray-300'}`}>
-          <option value="" disabled>Johannesburg / Gauteng</option>
+          <option value="" disabled>Select your region</option>
           {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
         </select>
       </div>
-      {error && <p className="text-[#C0392B] text-xs">{error}</p>}
       <div className="flex items-start gap-2 mt-2">
         <input type="checkbox" id="consent" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" />
         <label htmlFor="consent" className="text-xs text-gray-600">

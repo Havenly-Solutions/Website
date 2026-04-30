@@ -3,8 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
-import LoadingScreen from '@/components/ui/LoadingScreen'
 import TourBroadcast from '@/components/ui/TourBroadcast'
+import CookieBanner from '@/components/ui/CookieBanner'
+import { Toaster } from 'sonner'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Havenly Solutions — Your Haven. Your Community. Always On.',
-    description: 'South Africa\'s first GBV response platform. Join the pre-registration for the elite safety tier.',
+    description: 'South Africa\'s first GBV response platform. Join the pre registration for the elite safety tier.',
     url: 'https://havenly.solutions',
     siteName: 'Havenly Solutions',
     type: 'website',
@@ -82,9 +83,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <Navbar />
+        <TourBroadcast />
+        <CookieBanner />
+        <Toaster position="top-center" richColors />
         <main>{children}</main>
         <Footer />
-        <TourBroadcast />
       </body>
     </html>
   )

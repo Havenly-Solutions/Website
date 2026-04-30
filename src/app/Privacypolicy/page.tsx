@@ -5,12 +5,11 @@ import Link from 'next/link';
 import { content as staticContent } from './content';
 
 export default function PrivacyPolicyPage() {
-  const [content, setContent] = useState<string>('');
   const [mounted, setMounted] = useState(false);
+  const content = staticContent;
 
   useEffect(() => {
     setMounted(true);
-    setContent(staticContent);
   }, []);
 
   return (
