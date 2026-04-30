@@ -5,12 +5,12 @@ import Footer from '@/components/ui/Footer'
 import LoadingScreen from '@/components/ui/LoadingScreen'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://havenly.co.za'),
-  title: { 
-    default: 'Havenly Solutions — Your Haven. Your Community. Always On.', 
-    template: '%s | Havenly Solutions' 
+  metadataBase: new URL('https://havenly.solutions'),
+  title: {
+    default: 'Havenly Solutions — Your Haven. Your Community. Always On.',
+    template: '%s | Havenly Solutions'
   },
-  description: 'South Africa\'s first Stoic Guardian protocol. Professional personal safety, community protection, and legal evidence chain — built for the South African reality.',
+  description: 'South Africa\'s first GBV response platform. Professional personal safety, community protection, and legal evidence chain — built for the South African reality.',
   keywords: ['safety app', 'South Africa', 'community safety', 'SOS', 'emergency', 'NGO', 'POPIA', 'Havenly Solutions', 'Sandton Security', 'Guardian Node'],
   authors: [{ name: 'The Black Sheep Tech Corp' }],
   creator: 'The Black Sheep Tech Corp',
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Havenly Solutions — Your Haven. Your Community. Always On.',
-    description: 'South Africa\'s first Stoic Guardian protocol. Join the pre-registration for the elite safety tier.',
-    url: 'https://havenly.co.za',
+    description: 'South Africa\'s first GBV response platform. Join the pre-registration for the elite safety tier.',
+    url: 'https://havenly.solutions',
     siteName: 'Havenly Solutions',
     type: 'website',
     locale: 'en_ZA',
