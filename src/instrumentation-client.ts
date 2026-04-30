@@ -9,7 +9,7 @@ Sentry.init({
   tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
   replaysSessionSampleRate: process.env.NODE_ENV === 'production' ? 0.05 : 1.0,
   replaysOnErrorSampleRate: 1.0,
-  tracePropagationTargets: ["localhost", /^http:\/\/localhost:3005\/api/],
+  tracePropagationTargets: ["localhost", /^https:\/\/api\.havenly\.solutions\/api/, /^http:\/\/localhost:3005\/api/],
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

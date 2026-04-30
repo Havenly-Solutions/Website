@@ -19,8 +19,8 @@ export default function TourModal() {
   }, []);
 
   useEffect(() => {
-    // Fetch live count from backend
-    fetch('http://localhost:3005/api/pre-registrations/count')
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005';
+    fetch(`${apiUrl}/api/pre-registrations/count`)
       .then(r => r.json())
       .then(data => {
         if (data.success) {
