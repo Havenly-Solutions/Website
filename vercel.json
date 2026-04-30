@@ -23,15 +23,15 @@
   "rewrites": [
     {
       "source": "/api/pre-registrations",
-      "destination": "https://api.havenly.co.za/api/pre-registrations"
+      "destination": "https://api.havenly.solutions/api/pre-registrations"
     },
     {
       "source": "/api/ngo-partners/apply",
-      "destination": "https://api.havenly.co.za/api/ngo-partners/apply"
+      "destination": "https://api.havenly.solutions/api/ngo-partners/apply"
     },
     {
       "source": "/api/:path*",
-      "destination": "https://api.havenly.co.za/api/:path*"
+      "destination": "https://api.havenly.solutions/api/:path*"
     }
   ]
 }
