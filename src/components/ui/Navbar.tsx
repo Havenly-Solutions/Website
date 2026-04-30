@@ -32,7 +32,7 @@ export default function Navbar() {
           <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
             <Image
                 src="/favicon.ico"
-                alt="Havenly Shield"
+                alt="Havenly Solutions Shield"
                 width={48}
                 height={48}
                 className="relative z-10 transition-transform group-hover:scale-110 duration-500"

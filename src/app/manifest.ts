@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Havenly Solutions',
-    short_name: 'Havenly',
+    short_name: 'Havenly Solutions',
     description: 'South Africa\'s first Stoic Guardian protocol for personal and community safety.',
     start_url: '/',
     display: 'standalone',

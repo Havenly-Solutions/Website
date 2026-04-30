@@ -104,7 +104,7 @@ const IC = {
     </svg>
   ),
   shield: (size = 13) => (
-    <Image src="/favicon.ico" alt="Havenly Logo" width={size} height={size} className="rounded-sm object-contain" priority />
+    <Image src="/favicon.ico" alt="Havenly Solutions Logo" width={size} height={size} className="rounded-sm object-contain" priority />
   ),
   pin: () => (
     <svg width="9" height="9" viewBox="0 0 24 24" fill="#9B9B9B">
