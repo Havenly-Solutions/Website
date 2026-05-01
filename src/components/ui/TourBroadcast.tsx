@@ -89,6 +89,9 @@ export default function TourBroadcast() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tour-broadcast-title"
             className="absolute bottom-20 right-0 w-[340px] bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden"
           >
             {success ? (
@@ -110,7 +113,7 @@ export default function TourBroadcast() {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <label htmlFor="tour-name" className="sr-only">Your Name</label>
-                    <h3 className="font-display font-black text-[#1A1A2E] text-lg tracking-tight leading-tight">
+                    <h3 id="tour-broadcast-title" className="font-display font-black text-[#1A1A2E] text-lg tracking-tight leading-tight">
                       JULY NATIONAL TOUR 🇿🇦
                     </h3>
                     <p className="text-gray-600 text-[11px] font-bold uppercase tracking-widest mt-1">

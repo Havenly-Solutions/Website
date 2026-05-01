@@ -48,7 +48,12 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div 
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="tour-modal-title"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -69,7 +74,7 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
               <button
                 onClick={closeModal}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-300 transition-all z-20"
-                title="Close Modal"
+                aria-label="Close Tour Modal"
               >
                 <X size={16} />
               </button>
@@ -86,6 +91,7 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
               </motion.div>
               
               <motion.h2
+                id="tour-modal-title"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}

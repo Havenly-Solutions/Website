@@ -64,7 +64,12 @@ export default function CookieBanner() {
   // Main Banner - Left Corner
   if (!showPreferences) {
     return (
-      <div className="fixed bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-[380px] bg-white border border-black/10 rounded-2xl shadow-2xl z-[100] animate-in slide-in-from-bottom-10 duration-500">
+      <div 
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cookie-banner-title"
+        className="fixed bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-[380px] bg-white border border-black/10 rounded-2xl shadow-2xl z-[100] animate-in slide-in-from-bottom-10 duration-500"
+      >
         <div className="p-5">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2 text-[#C0392B]">
@@ -80,7 +85,7 @@ export default function CookieBanner() {
             </button>
           </div>
           
-          <h3 className="font-display font-bold text-[#1A1A2E] text-base mb-2">We respect your haven.</h3>
+          <h3 id="cookie-banner-title" className="font-display font-bold text-[#1A1A2E] text-base mb-2">We respect your haven.</h3>
           <p className="text-xs text-black leading-relaxed mb-4">
             Havenly Solutions uses essential cookies to ensure system stability and secure authentication. 
             By continuing to use our platform, you agree to our{' '}
@@ -116,13 +121,18 @@ export default function CookieBanner() {
 
   // Preferences Modal
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[200] p-4">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cookie-preferences-title"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-[200] p-4"
+    >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
         <div className="p-5 border-b border-black/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-[#C0392B]">
               <Cookie size={18} />
-              <span className="font-display font-bold text-sm uppercase tracking-wider">Cookie Preferences</span>
+              <span id="cookie-preferences-title" className="font-display font-bold text-sm uppercase tracking-wider">Cookie Preferences</span>
             </div>
             <button 
               onClick={() => setShowPreferences(false)} 
