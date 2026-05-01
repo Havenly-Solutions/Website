@@ -54,10 +54,10 @@ export default function PreRegForm() {
     setLoading(true)
     try {
       const sanitizedForm = {
-        name: DOMPurify.sanitize(form.name),
+        fullName: DOMPurify.sanitize(form.name),
         email: DOMPurify.sanitize(form.email),
         phone: DOMPurify.sanitize(form.phone),
-        region: DOMPurify.sanitize(form.region),
+        location: DOMPurify.sanitize(form.region),
         agreedToTerms: true
       }
 
