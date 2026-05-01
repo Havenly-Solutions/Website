@@ -68,7 +68,7 @@ export default function PreRegForm() {
         body: JSON.stringify(sanitizedForm),
       })
 
-      if (res.status === 201) {
+      if (res.status === 201 || res.status === 200) {
         setSuccess(true)
         setCooldown(30)
         toast.success('You have been successfully pre-registered!')
