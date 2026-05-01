@@ -47,10 +47,10 @@ const NETWORK_NODES = [
 
 export default function FeaturesPage() {
   return (
-    <div className="pt-16 bg-[#dee2e6]">
+    <div className="pt-16 bg-[#F8F9FA]">
 
       {/*  Hero  */}
-      <section className="relative min-h-[80vh] flex items-center bg-[#dee2e6]">
+      <section className="relative min-h-[80vh] flex items-center bg-[#F8F9FA]">
         <div className="absolute inset-0 map-grid" />
         <div className="relative max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
 
@@ -64,7 +64,7 @@ export default function FeaturesPage() {
               <span className="block text-[clamp(3rem,9vw,7rem)]">STOIC</span>
               <span className="block text-[clamp(3rem,9vw,7rem)]">GUARDIAN.</span>
             </h1>
-            <p className="text-[#1A1A2E]/50 text-lg leading-relaxed mb-6 max-w-lg">
+            <p className="text-[#1A1A2E]/80 text-lg leading-relaxed mb-6 max-w-lg">
               Designed for the South African context. High-trust security architecture that works even when the network fails.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -114,7 +114,7 @@ export default function FeaturesPage() {
         </section >
 
     {/*  One-Press SOS  */ }
-    < section className = "py-24 bg-[#dee2e6]" >
+    < section className = "py-24 bg-[#F8F9FA]" >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
           <div className="w-12 h-12 bg-[#C0392B]/10 rounded-2xl flex items-center justify-center mb-5">
@@ -139,7 +139,7 @@ export default function FeaturesPage() {
           <h2 className="font-display font-black text-[#1A1A2E] text-5xl leading-tight mb-4">
             ONE-PRESS SOS.<br />ZERO LATENCY.
           </h2>
-          <p className="text-[#1A1A2E]/50 text-base leading-relaxed mb-6">
+          <p className="text-[#1A1A2E]/80 text-base leading-relaxed mb-6">
             When seconds matter, navigation is a liability. HAVENLY SOLUTIONS bypasses menus, delivering your precise location and environmental audio to the Guardian Grid instantly.
           </p>
           <Link
@@ -153,7 +153,7 @@ export default function FeaturesPage() {
         </section >
 
     {/*  Legal Evidence Chain  */ }
-    < section className = "py-24 bg-[#dee2e6] relative overflow-hidden" >
+    < section className = "py-24 bg-[#F8F9FA] relative overflow-hidden" >
           <div className="absolute inset-0 dot-grid-light opacity-30" />
 
           <div className="relative max-w-7xl mx-auto px-6 text-center mb-16">
@@ -187,7 +187,7 @@ export default function FeaturesPage() {
             </div>
 
             {/*  Right: two cards stacked  */}
-            <div className="flex flex-col gap-4 bg-[#dee2e6]">
+            <div className="flex flex-col gap-4 bg-transparent">
               {[
                 {
                   icon: Database,
@@ -279,14 +279,14 @@ export default function FeaturesPage() {
         </section >
 
     {/*  POPIA  */ }
-    < section className = "py-24 bg-[#adb5bd] border-t border-gray-500" >
+    < section className = "py-24 bg-[#F2F4F7] border-t border-gray-500" >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-[#C0392B] text-xs uppercase tracking-widest font-bold mb-3">Ethics & Law</p>
           <h2 className="font-display font-black text-[#1A1A2E] text-5xl leading-tight mb-4">
             POPIA<br />COMPLIANCE<br />BY DESIGN.
           </h2>
-          <p className="text-black/50 text-base leading-relaxed mb-6">
+          <p className="text-black/80 text-base leading-relaxed mb-6">
             Security shouldn&apos;t come at the cost of privacy. We&apos;ve built the world&apos;s most transparent personal safety data policy, adhering strictly to South African POPIA regulations.
           </p>
           <div className="space-y-3">
@@ -317,7 +317,7 @@ export default function FeaturesPage() {
         </section >
 
     {/*  CTA  */ }
-    < section className = "py-20 bg-[#dee2e6] text-center relative overflow-hidden" >
+    < section className = "py-20 bg-[#F8F9FA] text-center relative overflow-hidden" >
           <div className="absolute inset-0 map-grid-dark" />
           <div className="relative max-w-2xl mx-auto px-6">
             <h2 className="font-display font-black text-black text-5xl mb-4">

@@ -109,6 +109,7 @@ export default function TourBroadcast() {
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
+                    <label htmlFor="tour-name" className="sr-only">Your Name</label>
                     <h3 className="font-display font-black text-[#1A1A2E] text-lg tracking-tight leading-tight">
                       JULY NATIONAL TOUR 🇿🇦
                     </h3>
@@ -133,6 +134,8 @@ export default function TourBroadcast() {
                   <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={e => setForm(f => ({ ...f, _honeypot: e.target.value }))} />
                   
                   <input 
+                    id="tour-name"
+                    name="name"
                     type="text" 
                     required
                     value={form.name}
@@ -141,7 +144,10 @@ export default function TourBroadcast() {
                     className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-[#C0392B] transition-colors"
                   />
 
+                  <label htmlFor="tour-email" className="sr-only">Email Address</label>
                   <input 
+                    id="tour-email"
+                    name="email"
                     type="email" 
                     required
                     value={form.email}
@@ -151,8 +157,11 @@ export default function TourBroadcast() {
                   />
 
                   <div className="relative">
+                    <label htmlFor="tour-venue-type" className="sr-only">Venue Type</label>
                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
                     <select
+                      id="tour-venue-type"
+                      name="venueType"
                       value={form.venueType}
                       onChange={(e) => setForm(f => ({...f, venueType: e.target.value}))}
                       className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:border-[#C0392B] appearance-none"
@@ -165,8 +174,11 @@ export default function TourBroadcast() {
                   </div>
 
                   <div className="relative">
+                    <label htmlFor="tour-location" className="sr-only">Venue Location</label>
                     <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
                     <input 
+                      id="tour-location"
+                      name="location"
                       type="text" 
                       required
                       value={form.location}

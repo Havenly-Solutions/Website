@@ -73,7 +73,7 @@ export default function CookieBanner() {
             </div>
             <button 
               onClick={() => setShow(false)} 
-              className="text-black/60 hover:text-black transition-colors"
+              className="text-black/85 hover:text-black transition-colors"
               aria-label="Close cookie banner"
             >
               <X size={16} />
@@ -81,7 +81,7 @@ export default function CookieBanner() {
           </div>
           
           <h3 className="font-display font-bold text-[#1A1A2E] text-base mb-2">We respect your haven.</h3>
-          <p className="text-xs text-black/80 leading-relaxed mb-4">
+          <p className="text-xs text-black leading-relaxed mb-4">
             Havenly Solutions uses essential cookies to ensure system stability and secure authentication. 
             By continuing to use our platform, you agree to our{' '}
             <Link href="/cookie-policy" className="text-[#C0392B] font-semibold hover:underline">Cookie Policy</Link> and{' '}
@@ -97,13 +97,14 @@ export default function CookieBanner() {
             </button>
             <button 
               onClick={reject}
-              className="flex-1 bg-gray-100 text-black/80 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
+              className="flex-1 bg-gray-100 text-black font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
             >
               Reject
             </button>
             <button 
               onClick={() => setShowPreferences(true)}
-              className="px-3 bg-transparent text-black/70 text-xs font-medium hover:text-black transition-colors underline"
+              className="px-3 bg-transparent text-black font-bold text-xs hover:text-[#C0392B] transition-colors underline decoration-[#C0392B]/30"
+              aria-label="Manage cookie preferences"
             >
               Preferences
             </button>
@@ -125,7 +126,7 @@ export default function CookieBanner() {
             </div>
             <button 
               onClick={() => setShowPreferences(false)} 
-              className="text-black/60 hover:text-black transition-colors"
+              className="text-black/85 hover:text-black transition-colors"
               aria-label="Close cookie preferences"
             >
               <X size={18} />
@@ -143,7 +144,7 @@ export default function CookieBanner() {
               </div>
               <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Required</span>
             </div>
-            <p className="text-xs text-black/60">
+            <p className="text-xs text-black/85">
               Essential for the website to function properly. Cannot be disabled.
             </p>
             <label className="relative inline-flex items-center cursor-not-allowed">
@@ -160,7 +161,7 @@ export default function CookieBanner() {
                 <span className="font-semibold text-sm text-[#1A1A2E]">Analytics Cookies</span>
               </div>
             </div>
-            <p className="text-xs text-black/60">
+            <p className="text-xs text-black/85">
               Help us understand how visitors interact with our website by collecting anonymous information.
             </p>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -182,7 +183,7 @@ export default function CookieBanner() {
                 <span className="font-semibold text-sm text-[#1A1A2E]">Marketing Cookies</span>
               </div>
             </div>
-            <p className="text-xs text-black/60">
+            <p className="text-xs text-black/85">
               Used to track visitors across websites to display relevant advertisements.
             </p>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -200,7 +201,7 @@ export default function CookieBanner() {
         <div className="p-5 border-t border-black/10 flex gap-2">
             <button 
               onClick={() => setShowPreferences(false)}
-              className="flex-1 bg-gray-100 text-black/80 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
+              className="flex-1 bg-gray-100 text-black font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
             >
             Cancel
           </button>

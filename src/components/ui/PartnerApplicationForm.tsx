@@ -116,6 +116,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Organisation Name</label>
           <input 
+            id="org-name"
+            name="orgName"
             required
             value={form.orgName}
             onChange={e => setForm(f => ({...f, orgName: e.target.value}))}
@@ -126,6 +128,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Primary Liaison Name</label>
           <input 
+            id="liaison-name"
+            name="liaisonName"
             required
             value={form.liaisonName}
             onChange={e => setForm(f => ({...f, liaisonName: e.target.value}))}
@@ -137,6 +141,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Contact Phone (SMS Confirmation)</label>
           <input 
+            id="liaison-phone"
+            name="liaisonPhone"
             required
             type="tel"
             value={form.liaisonPhone}
@@ -149,6 +155,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Type of Organisation</label>
           <select 
+            id="org-type"
+            name="orgType"
             title="Organisation Type"
             value={form.orgType}
             onChange={e => setForm(f => ({...f, orgType: e.target.value}))}
@@ -162,6 +170,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Official Email</label>
           <input 
+            id="org-email"
+            name="email"
             type="email"
             required
             value={form.email}
@@ -174,6 +184,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Registration Number (NPO/Company)</label>
           <input 
+            id="org-reg-number"
+            name="regNumber"
             value={form.regNumber}
             onChange={e => setForm(f => ({...f, regNumber: e.target.value}))}
             placeholder="e.g. 2023/123456/08" 
@@ -183,6 +195,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Operating Region</label>
           <input 
+            id="operating-region"
+            name="operatingRegion"
             required
             value={form.operatingRegion}
             onChange={e => setForm(f => ({...f, operatingRegion: e.target.value}))}
@@ -194,6 +208,8 @@ export default function PartnerApplicationForm() {
         <div className="col-span-2">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Brief Mission Statement & Capabilities</label>
           <textarea
+            id="mission-statement"
+            name="missionStatement"
             rows={4}
             value={form.missionStatement}
             onChange={e => setForm(f => ({...f, missionStatement: e.target.value}))}
@@ -205,13 +221,14 @@ export default function PartnerApplicationForm() {
       </div>
 
       <div className="flex items-start gap-3 mb-4">
-        <input 
-          id="partner-agreement"
-          type="checkbox" 
-          checked={agreed}
-          onChange={e => setAgreed(e.target.checked)}
-          className="mt-0.5 accent-[#C0392B]" 
-        />
+          <input 
+            id="partner-agreement"
+            name="agreed"
+            type="checkbox" 
+            checked={agreed}
+            onChange={e => setAgreed(e.target.checked)}
+            className="mt-0.5 accent-[#C0392B]" 
+          />
         <label htmlFor="partner-agreement" className="text-xs text-gray-400 leading-relaxed cursor-pointer">
           We acknowledge that partnership status is subject to rigorous background verification
           and adherence to the Stoic Guardian Protocol standards.

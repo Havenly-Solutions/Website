@@ -251,12 +251,12 @@ function PageTop() {
       </div>
 
       {/*  BUILT FOR SA  */}
-      <section className="py-24 bg-[#dee2e6]">
+      <section className="py-24 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-red-600 text-xs uppercase tracking-widest font-bold mb-3">Built for the South African Reality</p>
             <h2 className="font-display font-black text-[#1A1A2E] text-4xl md:text-5xl">Core Safety Architecture</h2>
-            <p className="text-[#1A1A2E]/70 mt-3 text-base max-w-xl mx-auto">
+            <p className="text-[#1A1A2E]/85 mt-3 text-base max-w-xl mx-auto">
               The foundation of high-trust security — engineered for environments where failure is not an option.
             </p>
           </div>
@@ -705,7 +705,7 @@ function PixelFrame({ children }: { children: ReactNode }) {
 //  Main Demo Section 
 function HavenlySolutionsDemoSection() {
   return (
-    <section className="py-24 bg-[#dee2e6] overflow-hidden">
+    <section className="py-24 bg-[#F8F9FA] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-center mb-14">
           <div className="inline-flex items-center gap-3 bg-[#1A1A2E] text-white px-6 py-3 rounded-full shadow-xl">
@@ -777,7 +777,7 @@ export default function HomePage() {
       </section>
 
       {/*  NGO / COMMUNITY WATCH  */}
-      <section className="py-24 bg-[#dee2e6] relative overflow-hidden">
+      <section className="py-24 bg-[#F8F9FA] relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="bg-white/70 backdrop-blur-xl rounded-3xl border border-white/60 shadow-xl p-6 md:p-10 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
@@ -819,10 +819,10 @@ export default function HomePage() {
       </section>
 
       {/*  LAUNCH CTA  */}
-      <section className="py-24 bg-[#dee2e6] text-center">
+      <section className="py-24 bg-[#F8F9FA] text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="font-display font-bold text-black/70 text-4xl md:text-5xl mb-5 leading-tight">Join Havenly Solutions<br />before launch day.</h2>
-          <p className="text-black/80 font-medium text-base mb-10 leading-relaxed">
+          <h2 className="font-display font-bold text-[#1A1A2E] text-4xl md:text-5xl mb-5 leading-tight">Join Havenly Solutions<br />before launch day.</h2>
+          <p className="text-black font-medium text-base mb-10 leading-relaxed">
             Be part of the founding community. Secure your lifetime free access and
             help us build a safer South Africa together.
           </p>

@@ -117,33 +117,61 @@ export default function PreRegForm() {
       <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={e => setForm(f => ({ ...f, _honeypot: e.target.value }))} />
       <div>
         <label htmlFor="full-name" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">FULL NAME</label>
-        <input id="full-name" type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required
+        <input 
+          id="full-name" 
+          name="name"
+          type="text" 
+          value={form.name} 
+          onChange={e => setForm(f => ({ ...f, name: e.target.value }))} 
+          required
           placeholder="Full Name"
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
       </div>
       <div>
         <label htmlFor="phone-number" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">SA PHONE NUMBER</label>
-        <input id="phone-number" type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone : e.target.value }))} required
+        <input 
+          id="phone-number" 
+          name="phone"
+          type="tel" 
+          value={form.phone} 
+          onChange={e => setForm(f => ({ ...f, phone : e.target.value }))} 
+          required
           placeholder="+27 XX XXX XXXX"
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
         <p className="text-[10px] text-gray-700 mt-1">South African mobile number format</p>
       </div>
       <div>
         <label htmlFor="email-address" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">EMAIL ADDRESS</label>
-        <input id="email-address" type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required
+        <input 
+               id="email-address" 
+               name="email"
+               type="email" 
+               value={form.email} 
+               onChange={e => setForm(f => ({ ...f, email: e.target.value }))} 
+               required
                placeholder="thabo@email.co.za"
                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
       </div>
       <div>
         <label htmlFor="region-select" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">Primary Region</label>
-        <select id="region-select" value={form.region} onChange={e => setForm(f => ({ ...f, region: e.target.value }))}
+        <select 
+          id="region-select" 
+          name="region"
+          value={form.region} 
+          onChange={e => setForm(f => ({ ...f, region: e.target.value }))}
           className={`w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C0392B] transition-colors ${form.region ? 'text-[#1A1A2E]' : 'text-gray-600'}`}>
           <option value="" disabled>Select your region</option>
           {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
         </select>
       </div>
       <div className="flex items-start gap-2 mt-2">
-        <input type="checkbox" id="consent" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-1" />
+        <input 
+          type="checkbox" 
+          id="consent" 
+          name="consent"
+          checked={consent} 
+          onChange={e => setConsent(e.target.checked)} 
+          className="mt-1" />
         <label htmlFor="consent" className="text-xs text-gray-600">
           I agree to Havenly Solutions&apos;s <a href="/Privacypolicy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
         </label>

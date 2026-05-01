@@ -169,6 +169,8 @@ export default function Footer() {
               <form onSubmit={handleSubscribe} className="space-y-3">
                 <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={(e) => setHoneypot(e.target.value)} />
                 <input 
+                  id="newsletter-first-name"
+                  name="firstName"
                   type="text" 
                   placeholder="First Name" 
                   value={firstName}
@@ -178,6 +180,8 @@ export default function Footer() {
                 />
                 <div className="relative">
                   <input 
+                    id="newsletter-email"
+                    name="email"
                     type="email" 
                     placeholder="Email Address" 
                     value={email}

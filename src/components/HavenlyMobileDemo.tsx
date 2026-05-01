@@ -493,7 +493,7 @@ function PixelFrame({ children }: { children: ReactNode }) {
 //  Main Demo Section 
 export function HavenlySolutionsDemoSection() {
   return (
-    <section className="py-24 bg-[#dee2e6] overflow-hidden" id="demo">
+    <section className="py-24 bg-[#F8F9FA] overflow-hidden" id="demo">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
