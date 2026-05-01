@@ -31,7 +31,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
             <Image
-                src="/favicon.ico"
+                src="/logo.png"
                 alt="Havenly Solutions Shield"
                 width={48}
                 height={48}
@@ -46,7 +46,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(({ href, label }) => (
             <Link key={href} href={href}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${pathname.startsWith(href) ? 'text-[#C0392B]' : 'text-[#1A1A2E]/60 hover:text-[#1A1A2E]'}`}>
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${pathname.startsWith(href) ? 'text-[#C0392B]' : 'text-[#1A1A2E]/85 hover:text-[#1A1A2E]'}`}>
               {label}
             </Link>
           ))}
@@ -68,7 +68,11 @@ export default function Navbar() {
             Get Help Now
           </Link>
         </div>
-        <button onClick={() => setOpen(!open)} className="md:hidden p-2 text-[#1A1A2E]">
+        <button 
+          onClick={() => setOpen(!open)} 
+          className="md:hidden p-2 text-[#1A1A2E]"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+        >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
@@ -76,7 +80,7 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1 shadow-lg">
           {NAV_LINKS.map(({ href, label }) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}
-              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-[#1A1A2E]/70 hover:bg-gray-50 transition-colors">
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-[#1A1A2E]/85 hover:bg-gray-50 transition-colors">
               {label}
             </Link>
           ))}
@@ -84,6 +88,7 @@ export default function Navbar() {
             <button
               onClick={() => { setTourOpen(true); setOpen(false); }}
               className="flex items-center justify-center gap-2 px-3 py-2.5 text-sm font-semibold text-[#C0392B] bg-red-50 rounded-lg"
+              aria-label="Open July 2026 Tour"
             >
               <Megaphone size={16} /> July 2026 Tour
             </button>

@@ -82,28 +82,28 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <Link href="/">
+              <Link href="/" aria-label="Havenly Solutions Home">
                 <Image
-                  src="/favicon.ico"
-                  alt="Havenly Solutions Logo"
-                  width={40}
-                  height={40}
-                  className="rounded-lg object-contain"
-                />
+                src="/logo.png"
+                alt="Havenly Solutions Shield"
+                width={48}
+                height={48}
+                className="relative z-10 transition-transform group-hover:scale-110 duration-500"
+            />
               </Link>
               <span className="font-display font-bold text-lg tracking-tight">HAVENLY SOLUTIONS</span>
             </div>
 
-            <p className="text-black/60 text-sm leading-relaxed max-w-sm mb-4">
+            <p className="text-black/80 text-sm leading-relaxed max-w-sm mb-4">
               <strong>Havenly Solutions technology that never sleeps.</strong> Pioneering safety tech for South African communities.
             </p>
 
             <div className="space-y-2 text-sm mb-5">
-              <div className="flex items-center gap-3 text-black/50 hover:text-black transition-colors">
+              <div className="flex items-center gap-3 text-black/75 hover:text-black transition-colors">
                 <Phone size={16} />
                 <a href="tel:+27703687327">+27 (0)70 368 7327</a>
               </div>
-              <div className="flex items-center gap-3 text-black/50 hover:text-black transition-colors">
+              <div className="flex items-center gap-3 text-black/75 hover:text-black transition-colors">
                 <Mail size={16} />
                 <a href="mailto:info@havenly.solutions">info@havenly.solutions</a>
               </div>
@@ -112,7 +112,7 @@ export default function Footer() {
 
           {/* Platform Links */}
           <div>
-            <div className="text-black/50 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Platform</div>
+            <div className="text-black/85 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Platform</div>
             <div className="space-y-3">
               {[
                 ['Features', '/features'],
@@ -120,7 +120,7 @@ export default function Footer() {
                 ['Resources', '/resources'],
                 ['Safety Hub', '/safety-hub']
               ].map(([label, href]) => (
-                <Link key={href} href={href} className="block text-black/50 hover:text-black text-sm transition-colors">
+                <Link key={href} href={href} className="block text-black/75 hover:text-black text-sm transition-colors">
                   {label}
                 </Link>
               ))}
@@ -129,7 +129,7 @@ export default function Footer() {
 
           {/* Legal & Support Links */}
           <div>
-            <div className="text-black/50 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Legal & Support</div>
+            <div className="text-black/85 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Legal & Support</div>
             <div className="space-y-3">
               {[
                 ['Privacy Policy', '/Privacypolicy'],
@@ -143,7 +143,7 @@ export default function Footer() {
                   href={href}
                   className={`block text-sm transition-colors ${label === 'Emergency Protocol'
                     ? 'text-red-600 hover:text-red-700 font-bold'
-                    : 'text-black/50 hover:text-black'
+                    : 'text-black/75 hover:text-black'
                     }`}
                 >
                   {label}
@@ -154,8 +154,8 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-black/5">
-            <div className="text-black/50 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Stay Protected</div>
-            <p className="text-[11px] text-black/60 mb-4 leading-relaxed">
+            <div className="text-black/80 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Stay Protected</div>
+            <p className="text-[11px] text-black/80 mb-4 leading-relaxed">
               Get protocol updates and safety briefings directly from our command centre.
             </p>
             
@@ -189,11 +189,12 @@ export default function Footer() {
                     type="submit" 
                     disabled={loading || cooldown > 0}
                     className="absolute right-1 top-1 bottom-1 px-2 bg-[#1A1A2E] text-white rounded-md hover:bg-black transition-colors disabled:opacity-50"
+                    aria-label="Subscribe to newsletter"
                   >
                     {loading ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
                   </button>
                 </div>
-                <p className="text-[9px] text-black/30">
+                <p className="text-[9px] text-black/75">
                   By subscribing, you agree to our <Link href="/Privacypolicy" className="underline">Privacy Policy</Link>.
                 </p>
               </form>
@@ -204,15 +205,15 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-black/10 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-black/40 text-xs">
+            <p className="text-black/75 text-xs">
               © {currentYear} Havenly Solutions · <span className="text-black font-semibold">Your Haven. Your Community.</span> <span className="text-red-600 font-bold">Always On.</span>
             </p>
-            <p className="text-black/40 text-xs text-center sm:text-right">
+            <p className="text-black/75 text-xs text-center sm:text-right">
               A product of <a href="https://theblacksheeptechcorp.com" target="_blank" rel="noopener noreferrer" className="hover:text-black underline decoration-red-500/30">The Black Sheep Tech Corp</a>
             </p>
           </div>
 
-          <p className="text-black/30 text-xs mt-4 text-center">
+          <p className="text-black/75 text-xs mt-4 text-center">
             Havenly Solutions (Pty) Ltd is a registered security technology provider. For emergencies, contact <strong>10111</strong> (SAPS) or <strong>10177</strong> (Emergency Services).
           </p>
         </div>

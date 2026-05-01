@@ -101,13 +101,13 @@ export default function PreRegForm() {
         <CheckCircle size={28} className="text-[#0B6E4F]" />
       </div>
       <h3 className="font-display font-bold text-[#1A1A2E] text-xl mb-2">You&apos;re on the list.</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">
+      <p className="text-gray-700 text-sm leading-relaxed">
         We&apos;ll notify you the moment Havenly Solutions launches on <strong>24 November 2026</strong>.<br />
         Tell someone who needs to know.
           WE ARE BRINGING CHANGE TO THE ECONOMY!!!
       </p>
       <div className="mt-4 px-4 py-2 bg-gray-50 rounded-lg inline-block">
-        <p className="text-xs text-gray-400 font-mono">{form.email}</p>
+        <p className="text-xs text-gray-600 font-mono">{form.email}</p>
       </div>
     </div>
   )
@@ -119,25 +119,25 @@ export default function PreRegForm() {
         <label htmlFor="full-name" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">FULL NAME</label>
         <input id="full-name" type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required
           placeholder="Full Name"
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
       </div>
       <div>
         <label htmlFor="phone-number" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">SA PHONE NUMBER</label>
         <input id="phone-number" type="tel" value={form.phone} onChange={e => setForm(f => ({ ...f, phone : e.target.value }))} required
           placeholder="+27 XX XXX XXXX"
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
-        <p className="text-[10px] text-gray-500 mt-1">South African mobile number format</p>
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
+        <p className="text-[10px] text-gray-700 mt-1">South African mobile number format</p>
       </div>
       <div>
         <label htmlFor="email-address" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">EMAIL ADDRESS</label>
         <input id="email-address" type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required
                placeholder="thabo@email.co.za"
-               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
+               className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
       </div>
       <div>
         <label htmlFor="region-select" className="block text-[10px] text-black font-bold uppercase tracking-widest mb-1.5">Primary Region</label>
         <select id="region-select" value={form.region} onChange={e => setForm(f => ({ ...f, region: e.target.value }))}
-          className={`w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C0392B] transition-colors ${form.region ? 'text-[#1A1A2E]' : 'text-gray-300'}`}>
+          className={`w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#C0392B] transition-colors ${form.region ? 'text-[#1A1A2E]' : 'text-gray-600'}`}>
           <option value="" disabled>Select your region</option>
           {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
         </select>

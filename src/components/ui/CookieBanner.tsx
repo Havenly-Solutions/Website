@@ -71,13 +71,17 @@ export default function CookieBanner() {
               <ShieldCheck size={18} />
               <span className="font-display font-bold text-xs uppercase tracking-wider">Privacy & Trust</span>
             </div>
-            <button onClick={() => setShow(false)} className="text-black/30 hover:text-black transition-colors">
+            <button 
+              onClick={() => setShow(false)} 
+              className="text-black/60 hover:text-black transition-colors"
+              aria-label="Close cookie banner"
+            >
               <X size={16} />
             </button>
           </div>
           
           <h3 className="font-display font-bold text-[#1A1A2E] text-base mb-2">We respect your haven.</h3>
-          <p className="text-xs text-black/60 leading-relaxed mb-4">
+          <p className="text-xs text-black/80 leading-relaxed mb-4">
             Havenly Solutions uses essential cookies to ensure system stability and secure authentication. 
             By continuing to use our platform, you agree to our{' '}
             <Link href="/cookie-policy" className="text-[#C0392B] font-semibold hover:underline">Cookie Policy</Link> and{' '}
@@ -93,13 +97,13 @@ export default function CookieBanner() {
             </button>
             <button 
               onClick={reject}
-              className="flex-1 bg-gray-100 text-black/60 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
+              className="flex-1 bg-gray-100 text-black/80 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
             >
               Reject
             </button>
             <button 
               onClick={() => setShowPreferences(true)}
-              className="px-3 bg-transparent text-black/40 text-xs font-medium hover:text-black transition-colors underline"
+              className="px-3 bg-transparent text-black/70 text-xs font-medium hover:text-black transition-colors underline"
             >
               Preferences
             </button>
@@ -119,7 +123,11 @@ export default function CookieBanner() {
               <Cookie size={18} />
               <span className="font-display font-bold text-sm uppercase tracking-wider">Cookie Preferences</span>
             </div>
-            <button onClick={() => setShowPreferences(false)} className="text-black/30 hover:text-black transition-colors">
+            <button 
+              onClick={() => setShowPreferences(false)} 
+              className="text-black/60 hover:text-black transition-colors"
+              aria-label="Close cookie preferences"
+            >
               <X size={18} />
             </button>
           </div>
@@ -133,7 +141,7 @@ export default function CookieBanner() {
                 <ShieldCheck size={16} className="text-[#C0392B]" />
                 <span className="font-semibold text-sm text-[#1A1A2E]">Necessary Cookies</span>
               </div>
-              <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded">Required</span>
+              <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Required</span>
             </div>
             <p className="text-xs text-black/60">
               Essential for the website to function properly. Cannot be disabled.
@@ -190,10 +198,10 @@ export default function CookieBanner() {
         </div>
 
         <div className="p-5 border-t border-black/10 flex gap-2">
-          <button 
-            onClick={() => setShowPreferences(false)}
-            className="flex-1 bg-gray-100 text-black/60 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
-          >
+            <button 
+              onClick={() => setShowPreferences(false)}
+              className="flex-1 bg-gray-100 text-black/80 text-xs font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
+            >
             Cancel
           </button>
           <button 

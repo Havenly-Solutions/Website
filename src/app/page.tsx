@@ -55,7 +55,7 @@ function Tile({ value, label }: { value: number; label: string }) {
       <div className="text-3xl font-extrabold text-white tracking-tight tabular-nums">
         {String(value).padStart(2, '0')}
       </div>
-      <div className="text-[10px] text-white/50 uppercase tracking-widest mt-1 font-bold">{label}</div>
+      <div className="text-[10px] text-white/80 uppercase tracking-widest mt-1 font-bold">{label}</div>
     </div>
   )
 }
@@ -104,7 +104,7 @@ const IC = {
     </svg>
   ),
   shield: (size = 13) => (
-    <Image src="/favicon.ico" alt="Havenly Solutions Logo" width={size} height={size} className="rounded-sm object-contain" priority />
+    <Image src="/logo.png" alt="Havenly Solutions Logo" width={size} height={size} className="rounded-sm object-contain" priority />
   ),
   pin: () => (
     <svg width="9" height="9" viewBox="0 0 24 24" fill="#9B9B9B">
@@ -167,7 +167,14 @@ function PageTop() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background — photo + overlays */}
         <div className="absolute inset-0">
-          <Image src="/pexel.jpg" alt="bg" fill className="object-cover" priority />
+          <Image 
+            src="/pexel.jpg" 
+            alt="South African community at sunset" 
+            fill 
+            className="object-cover" 
+            priority 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
         </div>
@@ -205,7 +212,7 @@ function PageTop() {
                 Pre Register Free <ArrowRight size={18} />
               </Link>
               <Link href="/features"
-                className="flex items-center gap-2 text-white/60 hover:text-white text-sm font-medium transition-colors">
+                className="flex items-center gap-2 text-white/90 hover:text-white text-sm font-medium transition-colors">
                 <div className="w-8 h-8 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                   <ChevronRight size={14} />
                 </div>
@@ -249,7 +256,7 @@ function PageTop() {
           <div className="text-center mb-16">
             <p className="text-red-600 text-xs uppercase tracking-widest font-bold mb-3">Built for the South African Reality</p>
             <h2 className="font-display font-black text-[#1A1A2E] text-4xl md:text-5xl">Core Safety Architecture</h2>
-            <p className="text-[#1A1A2E]/40 mt-3 text-base max-w-xl mx-auto">
+            <p className="text-[#1A1A2E]/70 mt-3 text-base max-w-xl mx-auto">
               The foundation of high-trust security — engineered for environments where failure is not an option.
             </p>
           </div>
@@ -264,7 +271,7 @@ function PageTop() {
                   <Zap size={20} className="text-white" />
                 </div>
                 <h3 className="font-display font-bold text-white text-2xl mb-2">One Press SOS.</h3>
-                <p className="text-white/40 text-sm leading-relaxed">
+                <p className="text-white/80 text-sm leading-relaxed">
                   Hold for 2 seconds to trigger an encrypted SOS emergency signal.
                   Instantly alerts nearby family members, community responders, and law enforcement.
                   <br /><br />
@@ -273,7 +280,7 @@ function PageTop() {
                   </span>
                 </p>
                 <div className="flex gap-2 mt-6">
-                  <span className="text-[10px] bg-white/5 text-white/40 border border-white/10 px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest">
+                  <span className="text-[10px] bg-white/10 text-white/80 border border-white/20 px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest">
                     ACTIVE PROTECTION ENABLED
                   </span>
                 </div>
@@ -286,7 +293,7 @@ function PageTop() {
                 <Wifi size={18} className="text-[#1A1A2E] group-hover:text-red-600 transition-colors" />
               </div>
               <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-1">Offline First Logic</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 Critical data is buffered locally and transmitted via SMS/Mesh protocols when cellular fails.
                 Never disconnected.
               </p>
@@ -317,10 +324,16 @@ function PageTop() {
                         <Icon size={18} className="text-[#1A1A2E] group-hover:text-red-600 transition-colors" />
                       </div>
                       <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-2">{title}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
                     </div>
                     <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
-                      <Image src={image!} alt={title} fill className="object-cover" />
+                      <Image
+                        src={image!}
+                        alt="Havenly Solutions Shield"
+                        width={96}
+                        height={96}
+                        className="relative z-10 transition-transform group-hover:scale-110 duration-500 object-cover"
+                      />
                     </div>
                   </div>
                 )
@@ -331,9 +344,9 @@ function PageTop() {
                     <Icon size={18} className="text-[#1A1A2E] group-hover:text-red-600 transition-colors" />
                   </div>
                   <h3 className="font-display font-bold text-[#1A1A2E] text-lg mb-2">{title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4">{desc}</p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{desc}</p>
                   {badge && (
-                    <span className="inline-flex text-[10px] bg-gray-50 text-gray-400 border border-gray-100 px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest">
+                    <span className="inline-flex text-[10px] bg-gray-50 text-gray-600 border border-gray-100 px-3 py-1.5 rounded-lg font-bold uppercase tracking-widest">
                       {badge}
                     </span>
                   )}
@@ -367,7 +380,7 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           <div className="flex items-center gap-1.5 mb-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-[#0B6E4F] animate-pulse" />
             <span className="text-[6.5px] text-[#4ade80] font-semibold uppercase tracking-widest">Sentinel Live Update</span>
-            <span className="text-[6px] text-gray-500 ml-auto">Last checked 2M ago</span>
+            <span className="text-white/80 ml-auto">Last checked 2M ago</span>
           </div>
           <p className="text-[17px] font-black text-white leading-[1.15] mb-2">
             Your area is<br />
@@ -386,12 +399,12 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
           ].map(s => (
             <div key={s.l} className="bg-white rounded-xl p-2 text-center border border-gray-100">
               <p className="text-[12px] font-black text-[#1A1A2E]">{s.v}</p>
-              <p className="text-[5.5px] text-gray-400 leading-tight mt-0.5">{s.l}</p>
+              <p className="text-[5.5px] text-gray-600 leading-tight mt-0.5">{s.l}</p>
             </div>
           ))}
         </div>
         <div className="flex flex-col items-center py-3">
-          <p className="text-[6px] text-gray-400 uppercase tracking-[0.2em] mb-2.5">Emergency Response</p>
+          <p className="text-[6px] text-gray-600 uppercase tracking-[0.2em] mb-2.5">Emergency Response</p>
           <div
             className="w-36 rounded-2xl p-4 flex flex-col items-center bg-[linear-gradient(145deg,#7a1717_0%,#96281B_40%,#C0392B_100%)] shadow-[0_8px_28px_rgba(192,57,43,0.45)]"
           >
@@ -406,13 +419,14 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
               <div className="absolute w-12 h-12 rounded-full bg-white/15" />
               <button
                 onClick={onSOS}
+                aria-label="Trigger emergency SOS"
                 className="relative w-10 h-10 rounded-full flex items-center justify-center z-10 active:scale-95 transition-transform duration-100 cursor-pointer bg-[radial-gradient(circle_at_35%_35%,rgba(255,255,255,0.2),rgba(255,255,255,0.04))] border-2 border-white/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
               >
-                <span className="text-white text-[10px] font-black tracking-wider">SOS</span>
+                <span className="text-white text-[10px] font-black tracking-wider" aria-hidden="true">SOS</span>
               </button>
             </div>
             <p className="text-white text-[9px] font-bold mb-0.5">Immediate Help</p>
-            <p className="text-white/50 text-[6px] tracking-wide">Long press for emergency protocol</p>
+            <p className="text-white/80 text-[6px] tracking-wide">Long press for emergency protocol</p>
           </div>
         </div>
         <div className="mx-2.5 mb-2 bg-white rounded-xl p-2.5 border border-gray-100 flex items-center gap-2">
@@ -422,11 +436,16 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
         </div>
         <div className="mx-2.5 mb-3 flex items-center gap-1.5 px-0.5">
           {IC.pin()}
-          <span className="text-[7px] text-gray-400">Sandton, Johannesburg · Zone 3</span>
+          <span className="text-[7px] text-gray-600">Sandton, Johannesburg · Zone 3</span>
         </div>
         <div className="mx-2.5 flex items-center justify-between mb-1.5">
           <span className="text-[8px] font-bold text-[#1A1A2E] uppercase tracking-widest">Recent Activity</span>
-          <span className="text-[6.5px] text-[#C0392B] font-semibold cursor-pointer">View All</span>
+          <button 
+            className="text-[6.5px] text-[#C0392B] font-semibold cursor-pointer hover:underline"
+            aria-label="View all recent activity"
+          >
+            View All
+          </button>
         </div>
         {[
           { bg: 'bg-[#E8F5E9]', ic: '', title: 'System Provisioned', time: 'Just now', desc: 'Awaiting launch date for live telemetry.' },
@@ -441,7 +460,7 @@ function HomeScreen({ onSOS }: { onSOS: () => void }) {
                   <span className="text-[8px] font-bold text-[#1A1A2E] leading-tight">{i.title}</span>
                   <span className="text-[6px] text-gray-400 whitespace-nowrap shrink-0">{i.time}</span>
                 </div>
-                <p className="text-[6.5px] text-gray-400 mt-0.5 leading-tight">{i.desc}</p>
+                <p className="text-[6.5px] text-gray-600 mt-0.5 leading-tight">{i.desc}</p>
               </div>
             </div>
           </div>
@@ -485,12 +504,12 @@ function CommunityScreen() {
                 <div className={`w-1.5 h-1.5 rounded-full ${
                   post.color === '#C0392B' ? 'bg-[#C0392B]' : post.color === '#1A1A2E' ? 'bg-[#1A1A2E]' : 'bg-[#0B6E4F]'
                 }`} />
-                <span className="text-[8.5px] font-black text-gray-400 uppercase tracking-widest">{post.type}</span>
+                <span className="text-[8.5px] font-black text-gray-600 uppercase tracking-widest">{post.type}</span>
               </div>
-              <span className="text-[7.5px] font-bold text-gray-400 uppercase tracking-tighter">{post.time}</span>
+              <span className="text-[7.5px] font-bold text-gray-600 uppercase tracking-tighter">{post.time}</span>
             </div>
             <h2 className="text-[15px] font-black text-[#1A1A2E] leading-tight mb-2">{post.title}</h2>
-            <p className="text-[11px] text-gray-500 leading-relaxed">{post.desc}</p>
+            <p className="text-[11px] text-gray-600 leading-relaxed">{post.desc}</p>
           </div>
         ))}
       </div>
@@ -503,7 +522,7 @@ function ChatScreen() {
     <div className="absolute inset-0 flex flex-col overflow-hidden bg-[#F8F9FB]">
       <div className="bg-white/80 backdrop-blur-md px-4 py-4 border-b border-gray-100 shrink-0">
         <h1 className="text-[20px] font-black text-[#1A1A2E] tracking-tight">Community Chat</h1>
-        <p className="text-[9px] text-gray-500 font-medium">Sandton Central District · Zone 3</p>
+        <p className="text-[9px] text-gray-600 font-medium">Sandton Central District · Zone 3</p>
       </div>
       <div className="flex-1 overflow-y-auto no-scrollbar p-4 space-y-6">
         <div className="flex items-start gap-3">
@@ -531,7 +550,7 @@ function CasesScreen() {
       </div>
       <div className="flex-1 overflow-y-auto p-6 no-scrollbar">
         <h2 className="text-[24px] font-black text-[#1A1A2E] leading-tight mb-4">Report an Incident</h2>
-        <p className="text-[12px] text-gray-500 mb-8">All reports are encrypted and strictly anonymous by default.</p>
+        <p className="text-[12px] text-gray-600 mb-8">All reports are encrypted and strictly anonymous by default.</p>
         <div className="space-y-4">
           <div className="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm">
             <span className="text-[10px] font-black text-gray-300 uppercase block mb-1">Category</span>
@@ -553,7 +572,7 @@ function ProfileScreen() {
       <div className="flex-1 overflow-y-auto p-6 flex flex-col items-center no-scrollbar">
         <div className="w-20 h-20 rounded-full bg-[#1A1A2E] flex items-center justify-center text-white text-2xl font-black mb-4 border-2 border-white shadow-xl">DS</div>
         <h2 className="text-[18px] font-black text-[#1A1A2E]">Demo Sentinel</h2>
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1 mb-10">Johannesburg · Zone 3</p>
+        <p className="text-[10px] font-bold text-gray-700 uppercase tracking-widest mt-1 mb-10">Johannesburg · Zone 3</p>
         <div className="w-full space-y-2">
           {['Emergency Contacts', 'Privacy Settings', 'Help & Security Guide'].map(opt => (
             <div key={opt} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-center justify-between">
@@ -588,7 +607,13 @@ function SOSOverlay({ onClose }: { onClose: () => void }) {
         <p className="text-[#C0392B] text-[10px] font-black tracking-widest uppercase mb-10">
           {countdown > 0 ? `Broadcasting in 0${countdown}s` : 'Dispatched to Mesh'}
         </p>
-        <button onClick={onClose} className="bg-white/10 text-white/40 text-[10px] font-black px-8 py-3 rounded-full uppercase tracking-widest border border-white/5">Hold to Cancel</button>
+        <button 
+          onClick={onClose} 
+          aria-label="Cancel emergency signal"
+          className="bg-white/10 text-white/40 text-[10px] font-black px-8 py-3 rounded-full uppercase tracking-widest border border-white/5"
+        >
+          Hold to Cancel
+        </button>
       </div>
     </div>
   )
@@ -607,9 +632,14 @@ function BottomNav({ active, onChange }: { active: AppScreen; onChange: (s: AppS
       {tabs.map(t => {
         const isActive = active === t.key
         return (
-          <button key={t.key} onClick={() => onChange(t.key)} className="flex-1 flex flex-col items-center justify-center gap-1">
+          <button 
+            key={t.key} 
+            onClick={() => onChange(t.key)} 
+            aria-label={`Switch to ${t.label} screen`}
+            className="flex-1 flex flex-col items-center justify-center gap-1"
+          >
             {t.icon(isActive)}
-            <span className={`text-[7px] font-black uppercase tracking-tighter ${isActive ? 'text-[#1A1A2E]' : 'text-gray-300'}`}>{t.label}</span>
+            <span className={`text-[7px] font-black uppercase tracking-tighter ${isActive ? 'text-[#1A1A2E]' : 'text-gray-700'}`}>{t.label}</span>
           </button>
         )
       })}
@@ -651,7 +681,7 @@ function IPhoneFrame({ children }: { children: ReactNode }) {
           <div className="w-full h-full pt-8">{children}</div>
         </div>
       </div>
-      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-400 uppercase tracking-widest">iPhone 15 Pro</p>
+      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-700 uppercase tracking-widest">iPhone 15 Pro</p>
     </div>
   )
 }
@@ -667,7 +697,7 @@ function PixelFrame({ children }: { children: ReactNode }) {
           <div className="w-full h-full pt-6">{children}</div>
         </div>
       </div>
-      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-400 uppercase tracking-widest">Pixel 8 Pro</p>
+      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-700 uppercase tracking-widest">Pixel 8 Pro</p>
     </div>
   )
 }
@@ -688,7 +718,7 @@ function HavenlySolutionsDemoSection() {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1 max-w-xl">
             <h2 className="font-display font-black text-gray-900 text-4xl md:text-5xl mb-5 leading-tight">Designed for Focus.<br />Engineered for Action.</h2>
-            <p className="text-gray-700 text-base mb-10 leading-relaxed">The Havenly Solutions platform is more than an app. it&apos;s an intelligent shield that adapts to your environment.</p>
+            <p className="text-black text-base mb-10 leading-relaxed">The Havenly Solutions platform is more than an app. it&apos;s an intelligent shield that adapts to your environment.</p>
             <div className="space-y-6">
               {[
                 {
@@ -729,7 +759,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6 text-center">
           <h2 className="font-display font-black text-white text-4xl md:text-5xl mb-4">Designed for our reality.</h2>
-          <p className="text-white/40 text-base mb-14 max-w-lg mx-auto">We didn&apos;t just build another app. We built a platform that works when everything else fails.</p>
+          <p className="text-white/80 text-base mb-14 max-w-lg mx-auto">We didn&apos;t just build another app. We built a platform that works when everything else fails.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { label: 'Simple Safety', desc: 'Zero complex menus. One gesture activation because in a crisis, muscle memory is everything.' },
@@ -738,7 +768,7 @@ export default function HomePage() {
             ].map(({ label, desc }) => (
               <div key={label} className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-red-500/40 hover:bg-black/60 transition-all group">
                 <h3 className="font-display font-bold text-red-600 text-lg mb-2">{label}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{desc}</p>
+                <p className="text-white/80 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -753,24 +783,24 @@ export default function HomePage() {
             <div>
               <p className="text-red-600 text-xs uppercase tracking-widest font-bold mb-3">PARTNER PROGRAM</p>
               <h2 className="font-display font-black text-[#1A1A2E] text-4xl md:text-5xl leading-tight mb-6">Empowering NGOs &<br />Community Watch.</h2>
-              <p className="text-[#1A1A2E]/60 text-base leading-relaxed mb-8">
+              <p className="text-[#1A1A2E] text-base leading-relaxed mb-8">
                 The Havenly Solutions Gold Tier provides NGOs with a specialized case dashboard, real time escalation to SAPS/DSD, and encrypted victim evidence management.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                 <div className="bg-gray-200 border border-gray-200 rounded-2xl p-4 text-left">
                   <h3 className="font-display font-bold text-black text-lg mb-2">01.</h3>
-                  <p className="text-black/70 text-sm leading-relaxed ">LIVE DASHBOARD</p>
+                  <p className="text-black text-sm leading-relaxed ">LIVE DASHBOARD</p>
                 </div>
                 <div className="bg-gray-200 border border-gray-200 rounded-2xl p-4 text-left">
                   <h3 className="font-display font-bold text-black text-lg mb-2">02.</h3>
-                  <p className="text-black/70 text-sm leading-relaxed">SAPS ESCALATION</p>
+                  <p className="text-black text-sm leading-relaxed">SAPS ESCALATION</p>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link href="/partners" className="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl text-sm hover:bg-red-700 mt-27 transition">
                   Apply for Partnership →
                 </Link>
-                <Link href="/partners#gold" className="px-6 py-3 border border-[#1A1A2E]/10 rounded-xl text-sm text-[#1A1A2E]/60 hover:text-[#1A1A2E] transition-colors">
+                <Link href="/partners#gold" className="px-6 py-3 border border-[#1A1A2E]/30 rounded-xl text-sm text-[#1A1A2E]/90 hover:text-[#1A1A2E] transition-colors">
                   Explore Gold Tier
                 </Link>
               </div>
@@ -778,9 +808,10 @@ export default function HomePage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[300px]">
               <Image 
                 src="/pexels-lee-campbell-18167-115655.jpg" 
-                alt="Security Command" 
+                alt="Security Command Centre visualization" 
                 fill 
                 className="object-cover" 
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>
@@ -791,11 +822,11 @@ export default function HomePage() {
       <section className="py-24 bg-[#dee2e6] text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="font-display font-bold text-black/70 text-4xl md:text-5xl mb-5 leading-tight">Join Havenly Solutions<br />before launch day.</h2>
-          <p className="text-gray-500 font-medium text-base mb-10 leading-relaxed">
+          <p className="text-black/80 font-medium text-base mb-10 leading-relaxed">
             Be part of the founding community. Secure your lifetime free access and
             help us build a safer South Africa together.
           </p>
-          <Link href="/#register" className="inline-flex items-center gap-2 bg-red-600 text-white font-display font-bold px-10 py-4 rounded-xl text-base hover:bg-red-700 transition-all">
+          <Link href="/#register" className="inline-flex items-center gap-2 bg-red-700 text-white font-display font-bold px-10 py-4 rounded-xl text-base hover:bg-red-800 transition-all">
             Pre Register Free <ArrowRight size={18} />
           </Link>
           <p className="text-gray-500 font-medium text-sm mt-6">LIMITED SPACES AVAILABLE FOR PHASE 1 ROLLOUT</p>

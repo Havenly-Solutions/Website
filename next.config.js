@@ -21,9 +21,10 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.sentry-cdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.havenly.solutions https://*.sentry.io https://sentry.io;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.sentry-cdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.havenly.solutions https://*.sentry.io https://sentry.io; require-trusted-types-for 'script';"
           },
         ],
       },
@@ -37,6 +38,18 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: false,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitempas',
+        destination: '/sitemap.xml',
+      },
+      {
+        source: '/sitemaps',
+        destination: '/sitemap.xml',
+      }
+    ]
   }
 }
 const { withSentryConfig } = require('@sentry/nextjs');

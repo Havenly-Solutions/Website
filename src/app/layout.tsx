@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: '/',
+    canonical: './',
   },
   openGraph: {
     title: 'Havenly Solutions — Your Haven. Your Community. Always On.',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-ZA" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased bg-[#F9F9F9] system-font-stack`}>
         <script
           type="application/ld+json"

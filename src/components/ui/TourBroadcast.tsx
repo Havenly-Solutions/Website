@@ -97,7 +97,7 @@ export default function TourBroadcast() {
                   <CheckCircle className="text-green-600" size={24} />
                 </div>
                 <h3 className="font-display font-bold text-gray-900 text-lg mb-2">Spot Secured!</h3>
-                <p className="text-gray-500 text-sm">Thank you! We&apos;ve noted your request for the July National Tour. We&apos;ll be in touch soon.</p>
+                <p className="text-gray-700 text-sm">Thank you! We&apos;ve noted your request for the July National Tour. We&apos;ll be in touch soon.</p>
                 <button 
                   onClick={() => setIsOpen(false)}
                   className="mt-6 text-sm font-bold text-[#C0392B] uppercase tracking-widest"
@@ -112,11 +112,15 @@ export default function TourBroadcast() {
                     <h3 className="font-display font-black text-[#1A1A2E] text-lg tracking-tight leading-tight">
                       JULY NATIONAL TOUR 🇿🇦
                     </h3>
-                    <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest mt-1">
+                    <p className="text-gray-600 text-[11px] font-bold uppercase tracking-widest mt-1">
                       Request a Visit
                     </p>
                   </div>
-                  <button onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-gray-600 transition-colors">
+                  <button 
+                    onClick={() => setIsOpen(false)} 
+                    className="text-gray-500 hover:text-gray-600 transition-colors"
+                    aria-label="Close tour request"
+                  >
                     <X size={18} />
                   </button>
                 </div>
@@ -179,7 +183,7 @@ export default function TourBroadcast() {
                     {loading ? <Loader2 size={16} className="animate-spin" /> : cooldown > 0 ? `Wait ${cooldown}s` : <>Request Visit <ArrowRight size={16} /></>}
                   </button>
                 </form>
-                <p className="text-[9px] text-gray-400 text-center mt-4 uppercase tracking-[0.1em]">
+                <p className="text-[9px] text-gray-600 text-center mt-4 uppercase tracking-[0.1em]">
                   July 2026 Nationwide Tour
                 </p>
               </div>
@@ -192,6 +196,7 @@ export default function TourBroadcast() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close tour request" : "Open tour request"}
         className={`w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 ${
           isOpen ? 'bg-[#1A1A2E] rotate-90' : 'bg-white'
         }`}

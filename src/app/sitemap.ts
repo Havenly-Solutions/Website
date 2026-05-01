@@ -9,8 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/safety-hub',
     '/partners',
     '/resources',
+    '/ngo-portal',
     '/emergency-protocol',
     '/contact',
+    '/cookie-policy',
     '/Privacypolicy',
     '/Terms',
   ]
