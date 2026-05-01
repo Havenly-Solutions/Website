@@ -27,13 +27,23 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions';
     fetch(`${apiUrl}/api/pre-registrations/count`)
-      .then(r => r.json())
+      .then(async r => {
+        const text = await r.text();
+        try {
+          return JSON.parse(text);
+        } catch {
+          throw new Error(`Invalid JSON response: ${text.substring(0, 100)}`);
+        }
+      })
       .then(data => {
         if (data.success) {
           setStats({ count: data.count, goal: data.goal });
         }
       })
-      .catch(err => Sentry.captureException(err))
+      .catch(err => {
+        console.error('Stats fetch error:', err);
+        Sentry.captureException(err);
+      })
       .finally(() => setStatsLoading(false));
   }, []);
 

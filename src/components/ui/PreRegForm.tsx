@@ -75,7 +75,13 @@ export default function PreRegForm() {
         return
       }
 
-      const data = await res.json().catch(() => ({}));
+      const text = await res.text();
+      let data: any = {};
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.error('Failed to parse API response as JSON:', text.substring(0, 100));
+      }
 
       if (res.status === 409) {
         toast.error('This email is already registered.')
@@ -83,7 +89,7 @@ export default function PreRegForm() {
         const firstError = data.errors?.[0]?.message || data.message || 'Validation failed';
         toast.error(firstError);
       } else {
-        throw new Error(`API error: ${res.status}`)
+        throw new Error(`API error ${res.status}: ${data.message || 'Unknown error'}`)
       }
     } catch (err) {
       Sentry.captureException(err)
