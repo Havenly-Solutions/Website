@@ -6,6 +6,7 @@ import Footer from '@/components/ui/Footer'
 import TourBroadcast from '@/components/ui/TourBroadcast'
 import CookieBanner from '@/components/ui/CookieBanner'
 import { Toaster } from 'sonner'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Toaster position="top-center" richColors />
         <main>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )
