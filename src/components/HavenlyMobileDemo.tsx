@@ -435,7 +435,7 @@ function BottomNav({ active, onChange }: { active: AppScreen; onChange: (s: AppS
   )
 }
 
-function HavenlySolutionsApp() {
+export function HavenlySolutionsApp() {
   const [screen, setScreen] = useState<AppScreen>('home')
   const [sos, setSos] = useState(false)
   
@@ -458,34 +458,41 @@ function HavenlySolutionsApp() {
 
 function IPhoneFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative w-[234px] h-[488px] shrink-0">
-      <div className="absolute inset-0 rounded-[44px] bg-[#1a1a1a] p-1 shadow-2xl border border-white/5">
-        <div className="w-full h-full rounded-[40px] bg-black overflow-hidden relative">
-          <div className="absolute top-0 left-0 right-0 h-8 bg-white flex items-center justify-between px-6 z-20">
-             <span className="text-[8px] font-bold">9:41</span>
-             <div className="w-16 h-5 rounded-full bg-black mx-auto mt-1" />
-             <span className="text-[8px] font-bold">5G</span>
+    <div className="relative w-[260px] h-[560px] shrink-0">
+      {/* Side buttons */}
+      <div className="absolute left-[-3px] top-[100px] w-[3px] height-[24px] bg-[#2c2c2e] rounded-sm z-0" />
+      <div className="absolute left-[-3px] top-[140px] w-[3px] height-[44px] bg-[#2c2c2e] rounded-sm z-0" />
+      <div className="absolute left-[-3px] top-[194px] w-[3px] height-[44px] bg-[#2c2c2e] rounded-sm z-0" />
+      <div className="absolute right-[-3px] top-[160px] w-[3px] height-[70px] bg-[#2c2c2e] rounded-sm z-0" />
+
+      <div className="absolute inset-0 rounded-[54px] bg-[#000] p-[8px] shadow-2xl overflow-hidden border border-white/10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#8e8e93] via-[#48484a] to-[#1c1c1e] pointer-events-none" />
+        <div className="relative w-full h-full rounded-[46px] bg-black overflow-hidden">
+          <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-[80px] h-[26px] bg-black rounded-[20px] z-[100] flex items-center justify-end px-[12px]">
+             <div className="w-[8px] h-[8px] rounded-full bg-[#1a1a1a] shadow-inner" />
           </div>
-          <div className="w-full h-full pt-8">{children}</div>
+          <div className="w-full h-full">{children}</div>
         </div>
       </div>
-      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">iPhone 15 Pro</p>
+      <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-black text-gray-500 uppercase tracking-widest whitespace-nowrap">iPhone 15 Pro</p>
     </div>
   )
 }
 
 function PixelFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative w-[234px] h-[488px] shrink-0">
-      <div className="absolute inset-0 rounded-[36px] bg-[#111111] p-1 shadow-2xl">
-        <div className="w-full h-full rounded-[33px] bg-black overflow-hidden relative">
-          <div className="absolute top-0 left-0 right-0 h-6 bg-white flex items-center justify-center z-20">
-             <div className="w-2 h-2 rounded-full bg-black/10" />
-          </div>
-          <div className="w-full h-full pt-6">{children}</div>
+    <div className="relative w-[250px] h-[540px] shrink-0">
+      {/* Side buttons */}
+      <div className="absolute right-[-3px] top-[160px] w-[3px] height-[60px] bg-[#2c2c2e] rounded-sm z-0" />
+      <div className="absolute right-[-3px] top-[230px] w-[3px] height-[40px] bg-[#2c2c2e] rounded-sm z-0" />
+
+      <div className="absolute inset-0 rounded-[40px] bg-[#111] p-[6px] shadow-2xl overflow-hidden border border-white/5">
+        <div className="relative w-full h-full rounded-[34px] bg-black overflow-hidden">
+          <div className="absolute top-[16px] left-1/2 -translate-x-1/2 w-[14px] h-[14px] bg-black rounded-full z-[100] border border-white/5 shadow-inner" />
+          <div className="w-full h-full">{children}</div>
         </div>
       </div>
-      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">Pixel 8 Pro</p>
+      <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-black text-gray-500 uppercase tracking-widest whitespace-nowrap">Pixel 8 Pro</p>
     </div>
   )
 }

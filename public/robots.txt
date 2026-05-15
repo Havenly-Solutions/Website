@@ -1,8 +1,13 @@
+# *
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
 
+# *
+User-agent: *
+Disallow: /api
+
+# Host
 Host: https://havenly.solutions
+
+# Sitemaps
 Sitemap: https://havenly.solutions/sitemap.xml

@@ -26,18 +26,18 @@ export default function TourModal({ forceOpen, onClose }: { forceOpen?: boolean;
 
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions';
-    fetch(`${apiUrl}/api/pre-registrations/count`)
+    fetch(`${apiUrl}/api/pre-registrations/count`, { cache: 'no-store' })
       .then(async r => {
-        const text = await r.text();
-        try {
-          return JSON.parse(text);
-        } catch {
-          throw new Error(`Invalid JSON response: ${text.substring(0, 100)}`);
-        }
+        if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+        return await r.json();
       })
       .then(data => {
-        if (data.success) {
-          setStats({ count: data.count, goal: data.goal });
+        // Robust handling for various API response structures
+        const count = typeof data.count === 'number' ? data.count : data.data?.count;
+        const goal = typeof data.goal === 'number' ? data.goal : data.data?.goal || 10000;
+
+        if (typeof count === 'number') {
+          setStats({ count, goal });
         }
       })
       .catch(err => {

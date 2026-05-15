@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Radio, Database, Wifi, MapPin, Users, ChevronRight, ArrowRight, Lock, Zap, Globe } from 'lucide-react'
 import PreRegForm from '@/components/ui/PreRegForm'
+import AppShowcase from '@/components/home/AppShowcase'
 
 /*  Optimized Countdown Hook  */
 function useCountdown(targetDate: string) {
@@ -125,10 +126,14 @@ function useUserCount() {
     const fetchCount = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-        const res = await fetch(`${apiUrl}/api/pre-registrations/count`)
+        const res = await fetch(`${apiUrl}/api/pre-registrations/count`, {
+          cache: 'no-store'
+        })
         if (res.ok) {
           const data = await res.json()
-          setCount(data.count)
+          // Handle both { count: 123 } and { success: true, data: { count: 123 } } formats
+          const count = typeof data.count === 'number' ? data.count : data.data?.count
+          if (typeof count === 'number') setCount(count)
         }
       } catch (err) {
         Sentry.captureException(err)
@@ -704,47 +709,7 @@ function PixelFrame({ children }: { children: ReactNode }) {
 
 //  Main Demo Section 
 function HavenlySolutionsDemoSection() {
-  return (
-    <section className="py-24 bg-[#F8F9FA] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-center mb-14">
-          <div className="inline-flex items-center gap-3 bg-[#1A1A2E] text-white px-6 py-3 rounded-full shadow-xl">
-            <span className="w-2 h-2 rounded-full bg-[#C0392B] animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-widest">Coming Soon</span>
-            <span className="w-px h-4 bg-white/20" />
-            <span className="text-[#D4A017] font-bold text-xs">24 November 2026</span>
-          </div>
-        </div>
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          <div className="flex-1 max-w-xl">
-            <h2 className="font-display font-black text-gray-900 text-4xl md:text-5xl mb-5 leading-tight">Designed for Focus.<br />Engineered for Action.</h2>
-            <p className="text-black text-base mb-10 leading-relaxed">The Havenly Solutions platform is more than an app. it&apos;s an intelligent shield that adapts to your environment.</p>
-            <div className="space-y-6">
-              {[
-                {
-                  title: 'Load Shedding Intelligence', desc: 'Automatically prioritizes critical low bandwidth alerts when local towers are congested.'
-                },
-                { title: 'AMBER Alerts Integration', desc: 'Immediate broadcasting for missing children within a 10km radius of your current location' },
-                { title: 'POPIA Compliant Logs', desc: 'Data is stored with military grade encryption and only shared with responders during active emergencies' }
-              ].map(f => (
-                <div key={f.title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center shrink-0">{IC.shield()}</div>
-                  <div>
-                    <p className="font-bold text-[#1A1A2E] text-base mb-1">{f.title}</p>
-                    <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="shrink-0 flex flex-col sm:flex-row items-center gap-8">
-            <IPhoneFrame><HavenlySolutionsApp /></IPhoneFrame>
-            <PixelFrame><HavenlySolutionsApp /></PixelFrame>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+  return <AppShowcase />
 }
 
 export default function HomePage() {
