@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 interface CountdownProps { dark?: boolean }
 
-const TARGET_DATE = new Date(process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-11-24T00:00:00+02:00')
+const TARGET_DATE = new Date(process.env.NEXT_PUBLIC_LAUNCH_DATE || '2026-10-13T00:00:00+02:00')
 
 export default function Countdown({ dark = false }: CountdownProps) {
   const [time, setTime] = useState({

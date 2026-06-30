@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Existing Havenly palette
         havenly: {
           red: '#C0392B',
           navy: '#1A1A2E',
@@ -11,6 +12,15 @@ module.exports = {
           gold: '#D4A017',
           cream: '#F9F9F9',
         },
+        // Nixtio-inspired palette
+        'nixtio-primary': '#ff6633',
+        'nixtio-dark': '#0a0a0a',
+        'nixtio-mid': '#1a1a1a',
+        'nixtio-light': '#f5f5f5',
+      },
+      backgroundImage: {
+        // Dark gradient background similar to Nixtio hero
+        'nixtio-gradient': 'radial-gradient(circle at 50% 0%, #1a1a1a, #0a0a0a)',
       },
       fontFamily: {
         sans: ['var(--font-dm-sans)', 'sans-serif'],

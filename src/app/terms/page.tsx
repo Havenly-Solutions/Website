@@ -96,7 +96,7 @@ export default function TermsOfServicePage() {
                 <ul className="space-y-6">
                   {[
                     { label: 'Platform Scope', val: 'South Africa' },
-                    { label: 'Launch Date', val: 'Nov 24, 2026' },
+                    { label: 'Launch Date', val: 'Oct 13, 2026' },
                     { label: 'Compliance', val: 'POPIA / GDPR' }
                   ].map(stat => (
                     <li key={stat.label} className="border-b border-white/10 pb-4 last:border-0 last:pb-0">

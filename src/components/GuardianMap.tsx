@@ -31,8 +31,8 @@ export default function GuardianMap() {
             })
 
             const map = L.map(containerRef.current!, {
-                center:             [-28.4792625, 24.6727135],
-                zoom:               5,
+                center:             [0, 20],
+                zoom:               2,
                 zoomControl:        false,
                 attributionControl: false,
                 scrollWheelZoom:    false,

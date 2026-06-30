@@ -149,8 +149,7 @@ export default function CookiePolicyPage() {
             </p>
             <div className="text-gray-600 space-y-2">
               <p><strong>Havenly Solutions (Pty) Ltd</strong></p>
-              <p>36A Benmore Road</p>
-              <p>Johannesburg, Gauteng, 2010</p>
+              <p>Sandton, Johannesburg, 2010</p>
               <p>South Africa</p>
               <p>Phone: 070 368 7327</p>
               <p>Email: info@havenly.solutions</p>

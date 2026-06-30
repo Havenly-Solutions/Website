@@ -24,7 +24,7 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
-      const timer = setTimeout(() => setShow(true), 2000)
+      const timer = setTimeout(() => setShow(true), 1500)
       return () => clearTimeout(timer)
     } else {
       try {
@@ -68,50 +68,51 @@ export default function CookieBanner() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="cookie-banner-title"
-        className="fixed bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-[380px] bg-white border border-black/10 rounded-2xl shadow-2xl z-[100] animate-in slide-in-from-bottom-10 duration-500"
+        className="fixed bottom-6 left-6 right-6 md:left-8 md:right-auto md:w-[450px] bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl z-[100] animate-in slide-in-from-bottom-10 duration-500 overflow-hidden"
       >
-        <div className="p-5">
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex items-center gap-2 text-[#C0392B]">
-              <ShieldCheck size={18} />
-              <span className="font-display font-bold text-xs uppercase tracking-wider">Privacy & Trust</span>
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-nixtio-primary to-transparent opacity-50" />
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-6">
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full">
+              <ShieldCheck size={16} className="text-nixtio-primary" />
+              <span className="font-bold text-white text-[10px] uppercase tracking-widest">Privacy & Trust</span>
             </div>
             <button 
               onClick={() => setShow(false)} 
-              className="text-black/85 hover:text-black transition-colors"
+              className="text-white/40 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-full"
               aria-label="Close cookie banner"
             >
               <X size={16} />
             </button>
           </div>
           
-          <h3 id="cookie-banner-title" className="font-display font-bold text-[#1A1A2E] text-base mb-2">We respect your haven.</h3>
-          <p className="text-xs text-black leading-relaxed mb-4">
+          <h3 id="cookie-banner-title" className="font-extrabold text-white text-2xl mb-3 tracking-tight">We respect your haven.</h3>
+          <p className="text-sm text-white/60 leading-relaxed mb-8 font-medium">
             Havenly Solutions uses essential cookies to ensure system stability and secure authentication. 
             By continuing to use our platform, you agree to our{' '}
-            <Link href="/cookie-policy" className="text-[#C0392B] font-semibold hover:underline">Cookie Policy</Link> and{' '}
-            <Link href="/Privacypolicy" className="text-[#C0392B] font-semibold hover:underline">Privacy Policy</Link> in accordance with POPIA.
+            <Link href="/cookie-policy" className="text-white hover:text-nixtio-primary font-bold underline transition-colors">Cookie Policy</Link> and{' '}
+            <Link href="/privacy-policy" className="text-white hover:text-nixtio-primary font-bold underline transition-colors">Privacy Policy</Link> in accordance with POPIA.
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-3">
             <button 
               onClick={accept}
-              className="flex-1 bg-[#1A1A2E] text-white text-xs font-bold py-2.5 rounded-lg hover:bg-black transition-all active:scale-[0.98]"
+              className="flex-1 bg-white text-black text-xs font-extrabold py-3.5 rounded-xl hover:bg-gray-200 transition-all active:scale-[0.98] uppercase tracking-widest"
             >
               Accept All
             </button>
             <button 
               onClick={reject}
-              className="flex-1 bg-gray-100 text-black font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
+              className="flex-1 bg-white/5 border border-white/10 text-white font-extrabold text-xs py-3.5 rounded-xl hover:bg-white/10 transition-all active:scale-[0.98] uppercase tracking-widest"
             >
               Reject
             </button>
             <button 
               onClick={() => setShowPreferences(true)}
-              className="px-3 bg-transparent text-black font-bold text-xs hover:text-[#C0392B] transition-colors underline decoration-[#C0392B]/30"
+              className="sm:px-4 text-white/40 font-bold text-xs hover:text-white transition-colors uppercase tracking-widest py-3 text-center"
               aria-label="Manage cookie preferences"
             >
-              Preferences
+              Customize
             </button>
           </div>
         </div>
@@ -125,101 +126,112 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="cookie-preferences-title"
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-[200] p-4"
+      className="fixed inset-0 bg-[#0a0a0a]/80 backdrop-blur-md flex items-center justify-center z-[200] p-4"
     >
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
-        <div className="p-5 border-b border-black/10">
+      <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto relative animate-in zoom-in-95 duration-300">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-nixtio-primary to-transparent opacity-50" />
+        <div className="p-8 border-b border-white/5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-[#C0392B]">
-              <Cookie size={18} />
-              <span id="cookie-preferences-title" className="font-display font-bold text-sm uppercase tracking-wider">Cookie Preferences</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                <Cookie size={20} className="text-white" />
+              </div>
+              <span id="cookie-preferences-title" className="font-extrabold text-white text-xl tracking-tight">Cookie Preferences</span>
             </div>
             <button 
               onClick={() => setShowPreferences(false)} 
-              className="text-black/85 hover:text-black transition-colors"
+              className="text-white/40 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2.5 rounded-full"
               aria-label="Close cookie preferences"
             >
-              <X size={18} />
+              <X size={20} />
             </button>
           </div>
         </div>
 
-        <div className="p-5 space-y-5">
+        <div className="p-8 space-y-6">
           {/* Necessary Cookies */}
-          <div className="space-y-2">
+          <div className="bg-white/5 p-6 rounded-3xl border border-white/10 space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={16} className="text-[#C0392B]" />
-                <span className="font-semibold text-sm text-[#1A1A2E]">Necessary Cookies</span>
+              <div className="flex items-center gap-3">
+                <ShieldCheck size={20} className="text-white/80" />
+                <span className="font-bold text-lg text-white tracking-tight">Necessary</span>
               </div>
-              <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Required</span>
+              <span className="text-[10px] bg-white/10 text-white px-3 py-1 rounded-full font-extrabold uppercase tracking-widest">Required</span>
             </div>
-            <p className="text-xs text-black/85">
-              Essential for the website to function properly. Cannot be disabled.
+            <p className="text-sm text-white/50 leading-relaxed font-medium">
+              Essential for the website to function properly. Cannot be disabled. Used for session management and basic security configurations.
             </p>
-            <label className="relative inline-flex items-center cursor-not-allowed">
-              <input type="checkbox" checked={preferences.necessary} disabled className="sr-only peer" />
-              <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#1A1A2E]"></div>
-            </label>
+            <div className="flex items-center">
+              <label className="relative inline-flex items-center cursor-not-allowed">
+                <input type="checkbox" checked={preferences.necessary} disabled className="sr-only peer" />
+                <div className="w-12 h-7 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white/50 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white/10"></div>
+              </label>
+            </div>
           </div>
 
           {/* Analytics Cookies */}
-          <div className="space-y-2">
+          <div className="bg-white/5 p-6 rounded-3xl border border-white/10 space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <BarChart3 size={16} className="text-[#C0392B]" />
-                <span className="font-semibold text-sm text-[#1A1A2E]">Analytics Cookies</span>
+              <div className="flex items-center gap-3">
+                <BarChart3 size={20} className="text-white/80" />
+                <span className="font-bold text-lg text-white tracking-tight">Analytics</span>
               </div>
+              <span className="text-[10px] bg-nixtio-primary/10 text-nixtio-primary border border-nixtio-primary/20 px-3 py-1 rounded-full font-extrabold uppercase tracking-widest">Performance</span>
             </div>
-            <p className="text-xs text-black/85">
-              Help us understand how visitors interact with our website by collecting anonymous information.
+            <p className="text-sm text-white/50 leading-relaxed font-medium">
+              Help us understand how visitors interact with our website by collecting anonymous statistics on page views, load times, and traffic sources.
             </p>
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={preferences.analytics} 
-                onChange={() => handlePreferenceChange('analytics')}
-                className="sr-only peer" 
-              />
-              <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#1A1A2E]"></div>
-            </label>
+            <div className="flex items-center">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  checked={preferences.analytics} 
+                  onChange={() => handlePreferenceChange('analytics')}
+                  className="sr-only peer" 
+                />
+                <div className="w-12 h-7 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white/40 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-black"></div>
+              </label>
+            </div>
           </div>
 
           {/* Marketing Cookies */}
-          <div className="space-y-2">
+          <div className="bg-white/5 p-6 rounded-3xl border border-white/10 space-y-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Megaphone size={16} className="text-[#C0392B]" />
-                <span className="font-semibold text-sm text-[#1A1A2E]">Marketing Cookies</span>
+              <div className="flex items-center gap-3">
+                <Megaphone size={20} className="text-white/80" />
+                <span className="font-bold text-lg text-white tracking-tight">Marketing</span>
               </div>
+              <span className="text-[10px] bg-white/5 text-white/40 border border-white/10 px-3 py-1 rounded-full font-extrabold uppercase tracking-widest">Optional</span>
             </div>
-            <p className="text-xs text-black/85">
-              Used to track visitors across websites to display relevant advertisements.
+            <p className="text-sm text-white/50 leading-relaxed font-medium">
+              Used to track visitors across websites to measure campaign performance and deliver personalized content or co-branded partnerships.
             </p>
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={preferences.marketing} 
-                onChange={() => handlePreferenceChange('marketing')}
-                className="sr-only peer" 
-              />
-              <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#1A1A2E]"></div>
-            </label>
+            <div className="flex items-center">
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  checked={preferences.marketing} 
+                  onChange={() => handlePreferenceChange('marketing')}
+                  className="sr-only peer" 
+                />
+                <div className="w-12 h-7 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white/40 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-black"></div>
+              </label>
+            </div>
           </div>
         </div>
 
-        <div className="p-5 border-t border-black/10 flex gap-2">
-            <button 
-              onClick={() => setShowPreferences(false)}
-              className="flex-1 bg-gray-100 text-black font-bold py-2.5 rounded-lg hover:bg-gray-200 transition-all"
-            >
+        <div className="p-8 border-t border-white/5 flex flex-col sm:flex-row gap-4">
+          <button 
+            onClick={() => setShowPreferences(false)}
+            className="flex-1 bg-white/5 border border-white/10 text-white font-extrabold py-4 rounded-xl hover:bg-white/10 transition-all text-xs uppercase tracking-widest"
+          >
             Cancel
           </button>
           <button 
             onClick={savePreferences}
-            className="flex-1 bg-[#1A1A2E] text-white text-xs font-bold py-2.5 rounded-lg hover:bg-black transition-all"
+            className="flex-1 bg-white text-black text-xs font-extrabold py-4 rounded-xl hover:bg-gray-200 transition-all active:scale-[0.98] shadow-lg uppercase tracking-widest"
           >
-            Save Preferences
+            Save Settings
           </button>
         </div>
       </div>

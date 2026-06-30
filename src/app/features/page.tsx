@@ -4,13 +4,12 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Shield, Database, ChevronRight, Lock, ArrowRight, Radio, Share2, Satellite } from 'lucide-react'
+import LoadingHS from '@/components/ui/LoadingHS'
 
 const GuardianMap = dynamic(() => import('@/components/GuardianMap'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex items-center justify-center text-white/30 text-xs uppercase tracking-widest">
-      Loading map...
-    </div>
+    <LoadingHS />
   ),
 })
 

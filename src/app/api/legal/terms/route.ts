@@ -3,7 +3,7 @@ import path from 'path'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const filePath = path.join(process.cwd(), 'src/app/Privacypolicy/content.html')
+  const filePath = path.join(process.cwd(), 'src/app/terms/content.html')
   try {
     const content = await readFile(filePath, 'utf8')
     return new NextResponse(content, {
