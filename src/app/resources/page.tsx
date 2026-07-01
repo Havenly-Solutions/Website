@@ -94,7 +94,7 @@ export default function ResourcesPage() {
                 </div>
                 <div>
                   <p className="text-white/90 text-sm font-semibold leading-snug">
-                    Full knowledge base launches <span className="text-[#D4A017]">24 November 2026</span>
+                    Full knowledge base launches <span className="text-[#D4A017]">13 October 2026</span>
                   </p>
                   <p className="text-white/40 text-xs mt-1 leading-relaxed">
                     Protocols and guides are being finalised. Pre register below to receive
@@ -105,7 +105,7 @@ export default function ResourcesPage() {
             </div>
 
             <div className="flex justify-center">
-              <Image src="/Havenly_Solutions.png" alt="Havenly Solutions logo" width={400} height={400} style={{ height: 'auto' }} />
+              <Image src="/logo.png" alt="Havenly Solutions logo" width={400} height={400} style={{ height: 'auto' }} />
             </div>
           </div>
         </section>
@@ -147,7 +147,7 @@ export default function ResourcesPage() {
                 <ComingSoonBadge />
               </span>
                 <div className="flex items-center gap-2 mb-4">
-                  <Image src="/Havenly_Solutions.png" alt="Havenly Solutions logo" width={100} height={100} style={{ height: 'auto' }} />
+                  <Image src="/logo.png" alt="Havenly Solutions logo" width={100} height={100} style={{ height: 'auto' }} />
                   <span className="font-display font-bold text-[#1A1A2E]">The Havenly Solutions App: User Guide</span>
                 </div>
                 <p className="text-black text-sm leading-relaxed mb-5">
@@ -283,7 +283,7 @@ export default function ResourcesPage() {
                     <p className="text-white/80 text-sm font-semibold leading-snug">Be first to access guides &amp; protocols.</p>
                     <p className="text-white/40 text-xs mt-1 leading-relaxed">
                       Drop your email and we&apos;ll notify you the moment the knowledge base goes live on{' '}
-                      <span className="text-white/60 font-medium">24 November 2026</span>.
+                      <span className="text-white/60 font-medium">13 October 2026</span>.
                     </p>
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export default function ResourcesPage() {
               {/* Launch pill */}
               <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 mb-8">
                 <div className="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse" />
-                <span className="text-white/50 text-[10px] uppercase tracking-widest font-bold">App Launches 24 Nov 2026</span>
+                <span className="text-white/50 text-[10px] uppercase tracking-widest font-bold">App Launches 13 Oct 2026</span>
               </div>
 
               <h2 className="font-display font-black text-white text-5xl lg:text-6xl leading-tight mb-4">

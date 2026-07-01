@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/ui/Navbar'
 import Footer from '@/components/ui/Footer'
-import TourBroadcast from '@/components/ui/TourBroadcast'
 import CookieBanner from '@/components/ui/CookieBanner'
 import { Toaster } from 'sonner'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-ZA" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased bg-[#F9F9F9] system-font-stack`}>
+      <body className={`${inter.variable} font-sans antialiased bg-nixtio-gradient text-white system-font-stack`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -69,8 +69,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description: 'South Africa\'s first GBV response platform and community safety mesh network.',
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'Sandton',
-                addressRegion: 'Johannesburg',
+                addressLocality: 'Johannesburg',
+                addressRegion: 'Sandton',
+                postalCode: '2196',
                 addressCountry: 'ZA'
               },
               contactPoint: {
@@ -83,10 +84,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <Navbar />
-        <TourBroadcast />
         <CookieBanner />
         <Toaster position="top-center" richColors />
-        <main>{children}</main>
+        <SmoothScroll>
+          <main>{children}</main>
+        </SmoothScroll>
         <Footer />
       </body>
     </html>

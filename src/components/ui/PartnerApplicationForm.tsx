@@ -162,7 +162,7 @@ export default function PartnerApplicationForm() {
             onChange={e => setForm(f => ({...f, orgType: e.target.value}))}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-[#C0392B] transition-colors"
           >
-            {['Registered NGO', 'Community Watch', 'First Responder', 'University Safety', 'Government Department'].map(t => (
+            {['Registered NGO', 'Community Watch', 'First Responder', 'University Safety', 'Government Department', 'NPOs'].map(t => (
               <option key={t}>{t}</option>
             ))}
           </select>

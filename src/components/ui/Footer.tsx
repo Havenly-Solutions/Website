@@ -26,8 +26,6 @@ export default function Footer() {
     return () => clearTimeout(timer)
   }, [cooldown])
 
-  // TODO: Verify backend checks the Origin header on this endpoint.
-  // If not, implement a CSRF token flow before go-live.
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
     if (honeypot) return; // Bot detected
@@ -76,51 +74,52 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#e0e1dd] text-black border-t border-black/50 rounded-t-3xl mt-20">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-white text-black border-t border-gray-200 mt-0 relative overflow-hidden">
+      <div className="max-w-[95rem] mx-auto px-6 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
+            <div className="flex items-center gap-3 mb-6">
               <Link href="/" aria-label="Havenly Solutions Home">
                 <Image
-                src="/logo.png"
-                alt="Havenly Solutions Shield"
-                width={48}
-                height={48}
-                className="relative z-10 transition-transform group-hover:scale-110 duration-500"
-            />
+                  src="/logo.png"
+                  alt="Havenly Solutions Shield"
+                  width={70}
+                  height={70}
+                  className="transition-transform hover:scale-105 duration-300"
+                />
               </Link>
-              <span className="font-display font-bold text-lg tracking-tight">HAVENLY SOLUTIONS</span>
+              <span className="font-extrabold text-2xl tracking-tight text-black uppercase">HAVENLY<br/>SOLUTIONS</span>
             </div>
 
-            <p className="text-black/80 text-sm leading-relaxed max-w-sm mb-4">
-              <strong>Havenly Solutions technology that never sleeps.</strong> Pioneering safety tech for South African communities.
+            <p className="text-black/60 text-base leading-relaxed max-w-sm mb-8 font-medium">
+              <strong className="text-black">Havenly Solutions technology that never sleeps.</strong> Pioneering safety tech for South African communities.
             </p>
 
-            <div className="space-y-2 text-sm mb-5">
-              <div className="flex items-center gap-3 text-black/75 hover:text-black transition-colors">
-                <Phone size={16} />
-                <a href="tel:+27703687327">+27 (0)70 368 7327</a>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-black/60 hover:text-nixtio-primary transition-colors">
+                <Phone size={18} className="text-black/40" />
+                <a href="tel:+27703687327" className="font-bold">+27 (70) 368 7327</a>
               </div>
-              <div className="flex items-center gap-3 text-black/75 hover:text-black transition-colors">
-                <Mail size={16} />
-                <a href="mailto:info@havenly.solutions">info@havenly.solutions</a>
+              <div className="flex items-center gap-3 text-black/60 hover:text-nixtio-primary transition-colors">
+                <Mail size={18} className="text-black/40" />
+                <a href="mailto:info@havenly.solutions" className="font-bold">info@havenly.solutions</a>
               </div>
             </div>
           </div>
 
           {/* Platform Links */}
           <div>
-            <div className="text-black/85 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Platform</div>
-            <div className="space-y-3">
+            <div className="text-black text-xs uppercase tracking-widest font-extrabold mb-6">Platform</div>
+            <div className="space-y-4">
               {[
                 ['Features', '/features'],
                 ['Partners', '/partners'],
                 ['Resources', '/resources'],
                 ['Safety Hub', '/safety-hub']
               ].map(([label, href]) => (
-                <Link key={href} href={href} className="block text-black/75 hover:text-black text-sm transition-colors">
+                <Link key={href} href={href} className="block text-black/60 hover:text-nixtio-primary text-base transition-colors font-bold">
                   {label}
                 </Link>
               ))}
@@ -129,22 +128,23 @@ export default function Footer() {
 
           {/* Legal & Support Links */}
           <div>
-            <div className="text-black/85 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Legal & Support</div>
-            <div className="space-y-3">
+            <div className="text-black text-xs uppercase tracking-widest font-extrabold mb-6">Legal & Support</div>
+            <div className="space-y-4">
               {[
-                ['Privacy Policy', '/Privacypolicy'],
+                ['Privacy Policy', '/privacy-policy'],
                 ['Cookie Policy', '/cookie-policy'],
-                ['Terms of Service', '/Terms'],
+                ['Terms of Service', '/terms'],
                 ['Contact Support', '/contact'],
                 ['Emergency Protocol', '/emergency-protocol']
               ].map(([label, href]) => (
                 <Link
                   key={label}
                   href={href}
-                  className={`block text-sm transition-colors ${label === 'Emergency Protocol'
-                    ? 'text-red-600 hover:text-red-700 font-bold'
-                    : 'text-black/75 hover:text-black'
-                    }`}
+                  className={`block text-base transition-colors font-bold ${
+                    label === 'Emergency Protocol'
+                      ? 'text-nixtio-primary hover:text-[#ff855c]'
+                      : 'text-black/60 hover:text-nixtio-primary'
+                  }`}
                 >
                   {label}
                 </Link>
@@ -153,20 +153,20 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 border border-black/5">
-            <div className="text-black/80 text-xs uppercase tracking-widest font-semibold mb-4 text-red-600">Stay Protected</div>
-            <p className="text-[11px] text-black/80 mb-4 leading-relaxed">
+          <div className="bg-gray-100 rounded-[2rem] p-8 border border-gray-200">
+            <div className="text-nixtio-primary text-xs uppercase tracking-widest font-extrabold mb-3">Stay Protected</div>
+            <p className="text-sm text-black/60 mb-6 leading-relaxed font-medium">
               Get protocol updates and safety briefings directly from our command centre.
             </p>
             
             {success ? (
-              <div className="flex flex-col items-center justify-center py-4 text-center">
-                <CheckCircle size={32} className="text-[#0B6E4F] mb-2" />
-                <p className="text-sm font-bold text-[#1A1A2E]">You&apos;re Subscribed!</p>
-                <p className="text-[10px] text-gray-500 mt-1">Check your inbox for a welcome message.</p>
+              <div className="flex flex-col items-center justify-center py-6 text-center">
+                <CheckCircle size={40} className="text-green-600 mb-3" />
+                <p className="text-lg font-bold text-black">You&apos;re Subscribed!</p>
+                <p className="text-sm text-black/50 mt-1">Check your inbox for a welcome message.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="space-y-3">
+              <form onSubmit={handleSubscribe} className="space-y-4">
                 <input type="text" name="_honeypot" className="hidden" title="Do not fill this field" tabIndex={-1} autoComplete="off" onChange={(e) => setHoneypot(e.target.value)} />
                 <input 
                   id="newsletter-first-name"
@@ -176,7 +176,7 @@ export default function Footer() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
-                  className="w-full bg-white border border-black/10 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-600 transition-colors"
+                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-nixtio-primary focus:ring-1 focus:ring-nixtio-primary text-black transition-colors placeholder-black/30 shadow-sm"
                 />
                 <div className="relative">
                   <input 
@@ -187,19 +187,19 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full bg-white border border-black/10 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-600 transition-colors pr-10"
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-nixtio-primary focus:ring-1 focus:ring-nixtio-primary text-black transition-colors pr-12 placeholder-black/30 shadow-sm"
                   />
                   <button 
                     type="submit" 
                     disabled={loading || cooldown > 0}
-                    className="absolute right-1 top-1 bottom-1 px-2 bg-[#1A1A2E] text-white rounded-md hover:bg-black transition-colors disabled:opacity-50"
+                    className="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-black text-white rounded-lg hover:bg-nixtio-primary transition-colors disabled:opacity-50 flex items-center justify-center"
                     aria-label="Subscribe to newsletter"
                   >
-                    {loading ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+                    {loading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                   </button>
                 </div>
-                <p className="text-[9px] text-black/75">
-                  By subscribing, you agree to our <Link href="/Privacypolicy" className="underline">Privacy Policy</Link>.
+                <p className="text-xs text-black/40 font-medium">
+                  By subscribing, you agree to our <Link href="/privacy-policy" className="underline hover:text-nixtio-primary">Privacy Policy</Link>.
                 </p>
               </form>
             )}
@@ -207,18 +207,18 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-black/10 pt-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-black/75 text-xs">
-              © {currentYear} Havenly Solutions · <span className="text-black font-semibold">Your Haven. Your Community.</span> <span className="text-red-600 font-bold">Always On.</span>
+        <div className="border-t border-gray-200 pt-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <p className="text-black/50 text-sm font-medium">
+              © {currentYear} Havenly Solutions · <span className="text-black font-bold">Your Haven. Your Community.</span> <span className="text-nixtio-primary font-bold">Always On.</span>
             </p>
-            <p className="text-black/75 text-xs text-center sm:text-right">
-              A product of <a href="https://theblacksheeptechcorp.com" target="_blank" rel="noopener noreferrer" className="hover:text-black underline decoration-red-500/30">The Black Sheep Tech Corp</a>
+            <p className="text-black/50 text-sm font-medium text-center sm:text-right">
+              A product of <a href="https://theblacksheeptechcorp.com" target="_blank" rel="noopener noreferrer" className="text-black hover:text-nixtio-primary underline transition-colors font-bold">The Black Sheep Tech Corp</a>
             </p>
           </div>
 
-          <p className="text-black/75 text-xs mt-4 text-center">
-            Havenly Solutions (Pty) Ltd is a registered security technology provider. For emergencies, contact <strong>10111</strong> (SAPS) or <strong>10177</strong> (Emergency Services).
+          <p className="text-black/40 text-xs mt-6 text-center leading-relaxed font-medium">
+            Havenly Solutions (Pty) Ltd is a registered security technology provider. For emergencies, contact <strong className="text-black">10111</strong> (SAPS) or <strong className="text-black">10177</strong> (Emergency Services).
           </p>
         </div>
       </div>

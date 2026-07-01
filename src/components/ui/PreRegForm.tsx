@@ -108,7 +108,7 @@ export default function PreRegForm() {
       </div>
       <h3 className="font-display font-bold text-[#1A1A2E] text-xl mb-2">You&apos;re on the list.</h3>
       <p className="text-gray-700 text-sm leading-relaxed">
-        We&apos;ll notify you the moment Havenly Solutions launches on <strong>24 November 2026</strong>.<br />
+        We&apos;ll notify you the moment Havenly Solutions launches on <strong>13 October 2026</strong>.<br />
         Tell someone who needs to know.
           WE ARE BRINGING CHANGE TO THE ECONOMY!!!
       </p>
@@ -179,7 +179,7 @@ export default function PreRegForm() {
           onChange={e => setConsent(e.target.checked)} 
           className="mt-1" />
         <label htmlFor="consent" className="text-xs text-gray-600">
-          I agree to Havenly Solutions&apos;s <a href="/Privacypolicy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
+          I agree to Havenly Solutions&apos;s <a href="/privacy-policy" className="underline hover:text-black">Privacy Policy</a> and consent to my data being processed for safety services.
         </label>
       </div>
       <button type="submit" disabled={loading || cooldown > 0}
