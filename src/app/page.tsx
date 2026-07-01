@@ -5,29 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronRight, ArrowRight, Zap, Wifi, Database, Radio, Phone } from 'lucide-react'
 import RevealOnScroll from '@/components/ui/RevealOnScroll'
+import PreRegForm from '@/components/ui/PreRegForm'
+import Countdown from '@/components/ui/Countdown'
 
 export default function HomePage() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-
-  useEffect(() => {
-    // Updated launch date to 13 October 2026
-    const targetDate = new Date('2026-10-13T00:00:00')
-    const timer = setInterval(() => {
-      const difference = +targetDate - +new Date()
-      if (difference <= 0) {
-        clearInterval(timer)
-      } else {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        })
-      }
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white/90 font-sans antialiased selection:bg-nixtio-primary/50 selection:text-white">
@@ -42,6 +23,8 @@ export default function HomePage() {
               alt="Havenly Solutions Protocol"
               fill
               priority
+              sizes="100vw"
+              quality={85}
               className="object-cover opacity-20 filter brightness-50"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30 z-10" />
@@ -58,9 +41,12 @@ export default function HomePage() {
                   <span className="text-[10px] text-nixtio-primary font-bold uppercase tracking-widest">PROTOCOL STATUS: INITIALIZING</span>
                 </div>
                 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+                <h1 className="text-5xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
                   Your Haven. <br />
-                  <span className="text-white/40">Your Community.</span>
+                  Your Community.<br />
+                  <span className="flicker text-[#D00000] hover:text-[#0B6E4F] hover:animate-none transition-colors duration-300 cursor-default">
+                     Always On.
+                  </span>
                 </h1>
               </div>
 
@@ -79,22 +65,7 @@ export default function HomePage() {
                       13 October 2026
                     </div>
                   </div>
-                  <div className="flex gap-4 tabular-nums text-xl md:text-2xl font-semibold tracking-tight">
-                    <div className="flex flex-col items-center">
-                      <span>{String(timeLeft.days).padStart(2, '0')}</span>
-                      <span className="text-[9px] text-white/40 uppercase tracking-widest mt-1">Days</span>
-                    </div>
-                    <span>:</span>
-                    <div className="flex flex-col items-center">
-                      <span>{String(timeLeft.hours).padStart(2, '0')}</span>
-                      <span className="text-[9px] text-white/40 uppercase tracking-widest mt-1">Hrs</span>
-                    </div>
-                    <span>:</span>
-                    <div className="flex flex-col items-center">
-                      <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
-                      <span className="text-[9px] text-white/40 uppercase tracking-widest mt-1">Min</span>
-                    </div>
-                  </div>
+                  <Countdown dark />
                 </div>
               </div>
             </div>
@@ -200,51 +171,8 @@ export default function HomePage() {
                 <p className="text-white/60 text-lg max-w-md mx-auto">Provide your details below to reserve access when the platform goes live.</p>
               </div>
 
-              <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label htmlFor="full-name" className="block text-[11px] text-white/50 font-bold uppercase tracking-wider mb-3">FULL NAME</label>
-                    <input id="full-name" type="text" required placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-base text-white placeholder-white/20 focus:outline-none focus:border-nixtio-primary transition-colors" />
-                  </div>
-                  <div>
-                    <label htmlFor="phone-number" className="block text-[11px] text-white/50 font-bold uppercase tracking-wider mb-3">SA PHONE NUMBER</label>
-                    <input id="phone-number" type="tel" required placeholder="+27 XX XXX XXXX" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-base text-white placeholder-white/20 focus:outline-none focus:border-nixtio-primary transition-colors" />
-                  </div>
-                </div>
+                <PreRegForm />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label htmlFor="email-address" className="block text-[11px] text-white/50 font-bold uppercase tracking-wider mb-3">EMAIL ADDRESS</label>
-                    <input id="email-address" type="email" required placeholder="name@domain.co.za" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-base text-white placeholder-white/20 focus:outline-none focus:border-nixtio-primary transition-colors" />
-                  </div>
-                  <div>
-                    <label htmlFor="region-select" className="block text-[11px] text-white/50 font-bold uppercase tracking-wider mb-3">PRIMARY PROVINCE</label>
-                    <select id="region-select" defaultValue="" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-base focus:outline-none focus:border-nixtio-primary transition-colors text-white/60">
-                      <option value="" disabled className="bg-[#111] text-white/50">Select your province</option>
-                      <option value="Gauteng">Johannesburg / Gauteng</option>
-                      <option value="Western Cape">Cape Town / Western Cape</option>
-                      <option value="KZN">Durban / KwaZulu-Natal</option>
-                      <option value="Eastern Cape">Gqeberha / Eastern Cape</option>
-                      <option value="Free State">Bloemfontein / Free State</option>
-                      <option value="Limpopo">Polokwane / Limpopo</option>
-                      <option value="Mpumalanga">Mbombela / Mpumalanga</option>
-                      <option value="North West">Mahikeng / North West</option>
-                      <option value="Northern Cape">Kimberley / Northern Cape</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <input type="checkbox" id="consent" className="mt-1.5 accent-nixtio-primary" required />
-                  <label htmlFor="consent" className="text-sm text-white/50 leading-relaxed">
-                    I agree to Havenly Solutions&apos;s <Link href="/privacy-policy" className="underline hover:text-white transition-colors">Privacy Policy</Link> and consent to my data being processed for safety services.
-                  </label>
-                </div>
-
-                <button type="submit" className="w-full bg-white text-black hover:bg-white/90 font-bold py-5 rounded-xl transition-all flex items-center justify-center gap-2 text-lg">
-                  Secure My Free Account <ArrowRight size={20} />
-                </button>
-              </form>
             </RevealOnScroll>
           </div>
         </div>

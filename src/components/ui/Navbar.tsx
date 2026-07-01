@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 w-full pointer-events-none">
       <div className={`pointer-events-auto flex items-center justify-between transition-all duration-500 rounded-full border ${
-        scrolled 
+        scrolled
           ? 'bg-[#0a0a0a]/70 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] py-2 px-4 w-[95%] max-w-6xl'
           : 'bg-[#0a0a0a]/30 backdrop-blur-md border-transparent py-4 px-6 w-full max-w-7xl'
       }`}>
@@ -51,12 +51,12 @@ export default function Navbar() {
           {NAV_LINKS.map(({ href, label }) => {
             const isActive = pathname.startsWith(href)
             return (
-              <Link 
-                key={href} 
+              <Link
+                key={href}
                 href={href}
                 className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                  isActive 
-                    ? 'bg-nixtio-primary text-white shadow-lg' 
+                  isActive
+                    ? 'bg-nixtio-primary text-white shadow-lg'
                     : 'text-white/60 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -68,17 +68,24 @@ export default function Navbar() {
 
         {/* Get Help CTA */}
         <div className="hidden md:flex items-center">
-          <Link 
-            href="/#register" 
-            className="px-6 py-2.5 bg-white text-black text-xs font-extrabold uppercase tracking-widest rounded-full hover:bg-gray-200 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          <Link href="/#register"
+          className="group flex items-center gap-2 px-5 py-2.5 bg-white text-black text-xs font-extrabold uppercase tracking-widest rounded-full hover:bg-[#C0392B] hover:text-white transition-all duration-300"
           >
             Get Help Now
+            <svg
+             className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+             viewBox="0 0 12 12"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </Link>
         </div>
 
         {/* Mobile menu trigger */}
-        <button 
-          onClick={() => setOpen(!open)} 
+        <button
+          onClick={() => setOpen(!open)}
           className="md:hidden p-2 text-white/80 hover:text-white transition-colors"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         >
@@ -93,13 +100,13 @@ export default function Navbar() {
             {NAV_LINKS.map(({ href, label }) => {
               const isActive = pathname.startsWith(href)
               return (
-                <Link 
-                  key={href} 
-                  href={href} 
-                  onClick={() => setOpen(false)} 
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setOpen(false)}
                   className={`px-5 py-4 rounded-2xl text-sm font-bold uppercase tracking-widest transition-colors ${
-                    isActive 
-                      ? 'bg-nixtio-primary text-white' 
+                    isActive
+                      ? 'bg-nixtio-primary text-white'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -109,8 +116,8 @@ export default function Navbar() {
             })}
           </div>
           <div className="pt-4 border-t border-white/10">
-            <Link 
-              href="/#register" 
+            <Link
+              href="/#register"
               onClick={() => setOpen(false)}
               className="block w-full py-4 text-center text-xs font-extrabold uppercase tracking-widest bg-white text-black rounded-2xl hover:bg-gray-200 transition-all"
             >
