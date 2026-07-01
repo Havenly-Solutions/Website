@@ -53,12 +53,17 @@ export default function PreRegForm() {
 
     setLoading(true)
     try {
+      const names = form.name.trim().split(/\s+/)
+      const firstName = names[0] || 'Unknown'
+      const surname = names.slice(1).join(' ') || 'User'
+
       const sanitizedForm = {
-        fullName: DOMPurify.sanitize(form.name),
+        firstName: DOMPurify.sanitize(firstName),
+        surname: DOMPurify.sanitize(surname),
         email: DOMPurify.sanitize(form.email),
         phone: DOMPurify.sanitize(form.phone),
-        location: DOMPurify.sanitize(form.region),
-        agreedToTerms: true
+        province: DOMPurify.sanitize(form.region),
+        tierInterest: 'FREE'
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'

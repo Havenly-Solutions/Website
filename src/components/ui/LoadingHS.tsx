@@ -1,37 +1,45 @@
-import React from 'react';
+'use client'
 
-// LoadingHS component – a custom loading animation inspired by the
-// user‑provided HS SVG design. This implementation uses a simple SVG
-// with a rotating ring and a subtle pulse effect. Feel free to replace
-// the SVG contents with the exact asset when it becomes available.
+import { motion } from 'framer-motion'
 
 export default function LoadingHS() {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <svg
-        className="animate-spin h-12 w-12 text-[#C0392B]"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="Loading"
+    <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
+      <motion.div
+        className="flex items-center gap-4 px-4"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: [0.8, 0.1, 0.9, 0.2, 1, 1, 0.4, 1, 1, 0, 0],
+          x: [0, -2, 2, -1, 0, 0, 1, -1, 0, 0, 0],
+          y: [0, 1, -1, 2, 0, 0, -1, 1, 0, 0, 0],
+          skewX: [0, 10, -10, 5, 0, 0, -5, 5, 0, 0, 0]
+        }}
+        transition={{
+          duration: 3.3,
+          repeat: Infinity,
+          times: [
+            0.04,  // 130ms
+            0.05,  // 160ms (130+30)
+            0.07,  // 220ms (160+60)
+            0.09,  // 280ms (220+60)
+            0.13,  // 410ms (280+130)
+            0.70,  // 2310ms (410+1900)
+            0.74,  // 2440ms (2310+130)
+            0.75,  // 2470ms (2440+30)
+            0.87,  // 2870ms (2470+400)
+            0.97,  // 3190ms (2870+320)
+            1      // 3290ms (3190+100)
+          ],
+          ease: "linear"
+        }}
       >
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-          strokeLinecap="round"
-          opacity="0.2"
-        />
-        <path
-          d="M12 2a10 10 0 0 1 10 10"
-          stroke="currentColor"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-      </svg>
-      <span className="sr-only">Loading...</span>
+        <span className="text-white text-4xl md:text-6xl font-black tracking-tight uppercase">
+          Havenly
+        </span>
+        <span className="text-white text-4xl md:text-6xl font-black tracking-tight uppercase">
+          Solutions
+        </span>
+      </motion.div>
     </div>
-  );
+  )
 }

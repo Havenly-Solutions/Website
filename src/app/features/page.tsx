@@ -168,6 +168,8 @@ export default function FeaturesPage() {
                   src="/court.jpg"
                   alt="Evidence Chain"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
                   className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />

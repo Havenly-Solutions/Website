@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import NotifyMeForm from '@/components/ui/NotifyMeForm'
 
 export const metadata: Metadata = { title: 'Resources — For the Stoic Guardian' }
 
@@ -127,7 +128,14 @@ export default function ResourcesPage() {
                 <ComingSoonBadge dark />
               </span>
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <Image src="/loadshedding.jpg" alt="Load-shedding preparedness" fill className="object-cover opacity-30" />
+                  <Image
+                src="/loadshedding.jpg"
+                alt="Load-shedding preparedness"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                quality={80}
+                className="object-cover opacity-30"
+              />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] via-[#1A1A2E]/80 to-transparent" />
                 </div>
                 <span className="relative z-10 text-[#C0392B] text-[10px] font-bold uppercase tracking-widest mb-2">Critical Protocol</span>
@@ -190,7 +198,14 @@ export default function ResourcesPage() {
               <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm overflow-hidden relative min-h-[180px] flex items-stretch">
                 <div className="absolute right-0 top-0 bottom-0 w-2/5">
                   <div className="relative w-full h-full">
-                    <Image src="/community ngo.jpg" alt="NGO Portal" fill className="object-cover" />
+                    <Image
+                    src="/community ngo.jpg"
+                    alt="NGO Portal"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={80}
+                    className="object-cover"
+                  />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent" />
                 </div>
@@ -289,16 +304,7 @@ export default function ResourcesPage() {
                 </div>
 
                 {/* Email input */}
-                <div className="flex gap-2 w-full sm:w-auto sm:min-w-[360px]">
-                  <input
-                      type="email"
-                      placeholder="your@email.co.za"
-                      className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#D4A017]/40 transition-colors"
-                  />
-                  <button className="btn-shimmer text-white font-display font-bold px-5 py-3 rounded-xl text-sm flex items-center gap-2 flex-shrink-0">
-                    Notify Me <ArrowRight size={14} />
-                  </button>
-                </div>
+                <NotifyMeForm />
               </div>
             </div>
           </div>

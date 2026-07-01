@@ -42,7 +42,14 @@ export default function PartnersPage() {
 
         {/* Right — image */}
         <RevealOnScroll delay={0.2} className="w-full md:w-1/2 relative h-[500px] lg:h-[650px] rounded-[1.5rem] overflow-hidden">
-          <Image src="/office.jpg" alt="Command Centre" fill className="object-cover opacity-60 filter brightness-75" />
+          <Image
+            src="/office.jpg"
+            alt="Command Centre"
+            fill
+            sizes="100vw"
+            quality={75}
+            className="object-cover opacity-60 filter brightness-75"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-transparent to-transparent" />
         </RevealOnScroll>

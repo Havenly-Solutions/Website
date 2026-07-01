@@ -6,6 +6,8 @@ import Footer from '@/components/ui/Footer'
 import CookieBanner from '@/components/ui/CookieBanner'
 import { Toaster } from 'sonner'
 import SmoothScroll from '@/components/SmoothScroll'
+import GlobalLoader from '@/components/GlobalLoader'
+import { Suspense } from 'react'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -83,13 +85,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             })
           }}
         />
-        <Navbar />
-        <CookieBanner />
-        <Toaster position="top-center" richColors />
-        <SmoothScroll>
-          <main>{children}</main>
-        </SmoothScroll>
-        <Footer />
+        <Suspense fallback={null}>
+          <GlobalLoader>
+            <Navbar />
+            <CookieBanner />
+            <Toaster position="top-center" richColors />
+            <SmoothScroll>
+              <main>{children}</main>
+            </SmoothScroll>
+            <Footer />
+          </GlobalLoader>
+        </Suspense>
       </body>
     </html>
   )
