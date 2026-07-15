@@ -8,6 +8,7 @@ import { Toaster } from 'sonner'
 import SmoothScroll from '@/components/SmoothScroll'
 import GlobalLoader from '@/components/GlobalLoader'
 import { Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </GlobalLoader>
         </Suspense>
+        <Analytics />
       </body>
     </html>
   )
