@@ -4,6 +4,7 @@ import { Loader2, CheckCircle, ArrowRight } from 'lucide-react'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/nextjs'
 import { toast } from 'sonner'
+import { usePostHog } from 'posthog-js/react'
 
 const REGIONS = [
   'Johannesburg / Gauteng', 'Cape Town / Western Cape', 'Durban / KZN',
@@ -18,6 +19,11 @@ export default function PreRegForm() {
   const [success, setSuccess] = useState(false)
   const [consent, setConsent] = useState(false)
   const [cooldown, setCooldown] = useState(0)
+  const posthog = usePostHog()
+
+  useEffect(() => {
+    posthog.capture('form_viewed', { form_name: 'pre_registration' })
+  }, [posthog])
 
   // Rate Limiting Cooldown Timer
   useEffect(() => {
@@ -67,7 +73,7 @@ export default function PreRegForm() {
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-      const res = await fetch(`${apiUrl}/api/pre-registrations`, {
+      const res = await fetch(`${apiUrl}/api/v1/marketing/pre-registrations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedForm),
@@ -76,6 +82,7 @@ export default function PreRegForm() {
       if (res.status === 201 || res.status === 200) {
         setSuccess(true)
         setCooldown(30)
+        posthog.capture('form_submitted', { form_name: 'pre_registration' })
         toast.success('You have been successfully pre-registered!')
         return
       }

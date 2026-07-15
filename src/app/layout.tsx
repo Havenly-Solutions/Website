@@ -8,6 +8,7 @@ import { Toaster } from 'sonner'
 import SmoothScroll from '@/components/SmoothScroll'
 import GlobalLoader from '@/components/GlobalLoader'
 import { Suspense } from 'react'
+import { PostHogProvider } from '@/providers/PostHogProvider'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -53,6 +54,11 @@ export const metadata: Metadata = {
     title: 'Havenly Solutions',
     description: 'Professional personal safety and community protection for South Africa.',
   },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -67,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'Organization',
               name: 'Havenly Solutions',
               url: 'https://havenly.solutions',
-              logo: 'https://havenly.solutions/favicon.ico',
+              logo: 'https://havenly.solutions/logo.png',
               description: 'South Africa\'s first GBV response platform and community safety mesh network.',
               address: {
                 '@type': 'PostalAddress',
@@ -78,24 +84,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
               contactPoint: {
                 '@type': 'ContactPoint',
-                telephone: '+27703687327',
+                telephone: '+27604449364',
                 contactType: 'customer service',
                 email: 'info@havenly.solutions'
               }
             })
           }}
         />
-        <Suspense fallback={null}>
-          <GlobalLoader>
-            <Navbar />
-            <CookieBanner />
-            <Toaster position="top-center" richColors />
-            <SmoothScroll>
-              <main>{children}</main>
-            </SmoothScroll>
-            <Footer />
-          </GlobalLoader>
-        </Suspense>
+        <PostHogProvider>
+          <Suspense fallback={null}>
+            <GlobalLoader>
+              <Navbar />
+              <CookieBanner />
+              <Toaster position="top-center" richColors />
+              <SmoothScroll>
+                <main>{children}</main>
+              </SmoothScroll>
+              <Footer />
+            </GlobalLoader>
+          </Suspense>
+        </PostHogProvider>
       </body>
     </html>
   )

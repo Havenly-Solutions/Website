@@ -32,7 +32,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C0392B] mb-1">Support Line</div>
-                  <a href="tel:+27703687327" className="text-xl font-medium text-white hover:text-[#C0392B] transition-colors">+27 (0)70 368 7327</a>
+                  <a href="tel:+27604449364" className="text-xl font-medium text-white hover:text-[#C0392B] transition-colors">+27 (0)60 444 9364</a>
                 </div>
               </div>
               <div className="flex items-start gap-6">

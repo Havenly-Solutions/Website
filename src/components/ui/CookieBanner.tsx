@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { X, ShieldCheck, Cookie, BarChart3, Megaphone } from 'lucide-react'
+import { usePostHog } from 'posthog-js/react'
 
 interface CookiePreferences {
   necessary: boolean
@@ -20,6 +21,7 @@ export default function CookieBanner() {
   const [show, setShow] = useState(false)
   const [showPreferences, setShowPreferences] = useState(false)
   const [preferences, setPreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES)
+  const posthog = usePostHog()
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
@@ -38,18 +40,34 @@ export default function CookieBanner() {
   const accept = () => {
     const allPrefs: CookiePreferences = { necessary: true, analytics: true, marketing: true }
     localStorage.setItem('cookie-consent', JSON.stringify(allPrefs))
+
+    // Opt-in to PostHog tracking
+    posthog.opt_in_capturing()
+
     setShow(false)
     setShowPreferences(false)
   }
 
   const reject = () => {
     localStorage.setItem('cookie-consent', JSON.stringify(DEFAULT_PREFERENCES))
+
+    // Opt-out of PostHog tracking
+    posthog.opt_out_capturing()
+
     setShow(false)
     setShowPreferences(false)
   }
 
   const savePreferences = () => {
     localStorage.setItem('cookie-consent', JSON.stringify(preferences))
+
+    // Update PostHog tracking based on analytics preference
+    if (preferences.analytics) {
+      posthog.opt_in_capturing()
+    } else {
+      posthog.opt_out_capturing()
+    }
+
     setShow(false)
     setShowPreferences(false)
   }

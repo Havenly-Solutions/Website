@@ -18,7 +18,8 @@ export default function ContactForm() {
     e.preventDefault()
     setLoading(true); setError('')
     try {
-      const res = await fetch('/api/contact', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
+      const res = await fetch(`${apiUrl}/api/v1/dashboard/helpdesk/tickets`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

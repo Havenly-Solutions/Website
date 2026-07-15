@@ -32,7 +32,7 @@ export default function NotifyMeForm() {
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-      const res = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
+      const res = await fetch(`${apiUrl}/api/v1/marketing/newsletter/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedData),

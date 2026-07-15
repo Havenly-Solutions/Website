@@ -40,7 +40,7 @@ export default function Footer() {
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions';
-      const res = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
+      const res = await fetch(`${apiUrl}/api/v1/marketing/newsletter/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedData),
@@ -100,7 +100,7 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-black/60 hover:text-nixtio-primary transition-colors">
                 <Phone size={18} className="text-black/40" />
-                <a href="tel:+27703687327" className="font-bold">+27 (70) 368 7327</a>
+                <a href="tel:+27604449364" className="font-bold">+27 (60) 444 9364</a>
               </div>
               <div className="flex items-center gap-3 text-black/60 hover:text-nixtio-primary transition-colors">
                 <Mail size={18} className="text-black/40" />

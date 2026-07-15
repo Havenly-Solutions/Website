@@ -63,7 +63,7 @@ export default function PartnerApplicationForm() {
       }
 
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-      const res = await fetch(`${apiUrl}/api/ngo-partners/apply`, {
+      const res = await fetch(`${apiUrl}/api/v1/dashboard/ngo-partners/apply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedForm)
