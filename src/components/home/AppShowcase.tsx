@@ -735,8 +735,8 @@ export default function AppShowcase() {
 
         .splash-button {
           padding: 16px 18px;
-          background: ${TEXT_WHITE};
-          color: ${APP_RED};
+          background: ${APP_RED};
+          color: ${TEXT_WHITE};
           font-weight: 700;
           font-size: 14px;
         }
