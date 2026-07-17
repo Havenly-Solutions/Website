@@ -107,6 +107,12 @@ export default function Footer() {
                 <a href="mailto:info@havenly.solutions" className="font-bold">info@havenly.solutions</a>
               </div>
             </div>
+            <div className="flex items-center gap-4 mt-6">
+              <a href="https://www.youtube.com/@Havenly.Solutions" target="_blank" rel="noopener noreferrer" aria-label="Havenly YouTube" className="text-black/60 hover:text-nixtio-primary font-bold">YouTube</a>
+              <a href="https://x.com/HavenlySolution" target="_blank" rel="noopener noreferrer" aria-label="Havenly on X" className="text-black/60 hover:text-nixtio-primary font-bold">X</a>
+              <a href="https://www.instagram.com/havenly.solutions?igsh=eGVhdTk3NzZ1NHgz" target="_blank" rel="noopener noreferrer" aria-label="Havenly Instagram" className="text-black/60 hover:text-nixtio-primary font-bold">Instagram</a>
+              <a href="https://whatsapp.com/channel/0029Vb8CCim2UPBINupXMD0z" target="_blank" rel="noopener noreferrer" aria-label="Havenly WhatsApp" className="text-black/60 hover:text-nixtio-primary font-bold">WhatsApp</a>
+            </div>
           </div>
 
           {/* Platform Links */}
