@@ -83,7 +83,7 @@ export default function PreRegForm() {
         setSuccess(true)
         setCooldown(30)
         posthog.capture('form_submitted', { form_name: 'pre_registration' })
-        toast.success('You have been successfully pre-registered!')
+        toast.success('You have been successfully pre registered!')
         return
       }
 
@@ -199,7 +199,7 @@ export default function PreRegForm() {
         {loading ? <><Loader2 size={16} className="animate-spin" />Securing your spot...</>
           : cooldown > 0 ? `Wait ${cooldown}s` : <>Secure My Free Account<ArrowRight size={16} /></>}
       </button>
-      <p className="text-[10px] text-black text-center">End-to-end encrypted enrollment · No third-party sharing</p>
+      <p className="text-[10px] text-black text-center">End to end encrypted enrollment · No third-party sharing</p>
     </form>
   )
 }

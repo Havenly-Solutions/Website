@@ -1,0 +1,25 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model posts {
+  id        String   @id
+  title     String
+  content   String?
+  authorId  String
+  createdAt DateTime @default(now())
+  users     users    @relation(fields: [authorId], references: [id])
+}
+
+model users {
+  id        String   @id
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  posts     posts[]
+}

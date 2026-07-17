@@ -82,7 +82,7 @@ export default function HomePage() {
             'Offline First Architecture',
             'Legal Evidence Chain',
             '99.9% Uptime',
-            'End-to-End Encrypted',
+            'End to End Encrypted',
             'SA Built for SA Reality',
             'Guardian Mesh Network',
             'Zero Third Party Sharing'

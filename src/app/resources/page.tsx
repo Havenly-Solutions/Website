@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: 'Resources — For the Stoic Guardian
 
 const FAQS = [
   {
-    q: 'Does Havenly Solutions SOLUTIONS work during Stage 6 load-shedding?',
+    q: 'Does Havenly Solutions SOLUTIONS work during Stage 6 load shedding?',
     a: 'Yes. Our backend infrastructure is hosted in Tier-4 data centres with multiple redundancies. The app uses low-bandwidth protocols to ensure reliability even during cellular tower congestion caused by power outages.',
   },
   {
@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: 'How is my location data protected?',
-    a: 'Your location is only captured and transmitted when you explicitly activate the SOS protocol or check in. All data is AES-256 encrypted at rest and in transit. We hold zero-knowledge of your logs outside emergency events.',
+    a: 'Your location is only captured and transmitted when you explicitly activate the SOS protocol or check in. All data is AES 256 encrypted at rest and in transit. We hold zero knowledge of your logs outside emergency events.',
   },
   {
     q: 'Can I add family members to my plan?',
@@ -29,11 +29,11 @@ const DEPLOYMENT_STEPS = [
   {
     num: '01',
     title: 'Rapid Onboarding',
-    desc: 'Download the application. Our system performs a 12-point security audit of your location and integrates with local SAPS and private security data feeds.',
+    desc: 'Download the application. Our system performs a 12 point security audit of your location and integrates with local SAPS and private security data feeds.',
   },
   {
     num: '02',
-    title: 'Always-On Watch',
+    title: 'Always On Watch',
     desc: 'Set your geofence. The Havenly Solutions core engine monitors your proximity to high-risk zones and alerts you before potential threats manifest.',
   },
   {
@@ -122,7 +122,7 @@ export default function ResourcesPage() {
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 opacity-80">
 
-              {/* Card 1 — Load-Shedding */}
+              {/* Card 1 — Load Shedding */}
               <div className="bg-[#1A1A2E] rounded-2xl p-8 relative overflow-hidden min-h-[240px] flex flex-col justify-end dot-grid-light">
               <span className="absolute top-4 right-4 z-10">
                 <ComingSoonBadge dark />
@@ -130,7 +130,7 @@ export default function ResourcesPage() {
                 <div className="absolute inset-0 rounded-2xl overflow-hidden">
                   <Image
                 src="/loadshedding.jpg"
-                alt="Load-shedding preparedness"
+                alt="Load shedding preparedness"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 quality={80}
@@ -139,7 +139,7 @@ export default function ResourcesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] via-[#1A1A2E]/80 to-transparent" />
                 </div>
                 <span className="relative z-10 text-[#C0392B] text-[10px] font-bold uppercase tracking-widest mb-2">Critical Protocol</span>
-                <h3 className="relative z-10 font-display font-black text-white text-2xl mb-2">Load-Shedding Preparedness</h3>
+                <h3 className="relative z-10 font-display font-black text-white text-2xl mb-2">Load Shedding Preparedness</h3>
                 <p className="relative z-10 text-white/40 text-sm leading-relaxed mb-4">
                   Maintaining perimeter integrity during grid failure. Learn how to secure gate
                   motors and alarm systems for extended outages.

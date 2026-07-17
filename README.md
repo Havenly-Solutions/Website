@@ -26,10 +26,10 @@
 
 The Havenly Solutions marketing website is the public face of the Havenly Solutions platform. It serves two audiences simultaneously:
 
-- **Citizens** — pre-register for the app before the 24 November 2026 launch
+- **Citizens** — pre register for the app before the 24 November 2026 launch
 - **Investors, NGOs, and institutional partners** — understand the product, the business strategy, and apply for partnership
 
-The site is designed to work as the primary acquisition channel for the July 2026 national tour across all 9 provinces. Every pre-registration collected here feeds directly into the Guardian Command Centre dashboard.
+The site is designed to work as the primary acquisition channel for the July 2026 national tour across all 9 provinces. Every pre registration collected here feeds directly into the Guardian Command Centre dashboard.
 
 ---
 
@@ -37,7 +37,7 @@ The site is designed to work as the primary acquisition channel for the July 202
 
 | Layer | Tool | Notes |
 |---|---|---|
-| Framework | Next.js 14 (App Router) | SSR + SSG, fast page loads, built-in API routes |
+| Framework | Next.js 14 (App Router) | SSR + SSG, fast page loads, built in API routes |
 | Styling | Tailwind CSS | Custom Havenly Solutions design tokens |
 | Fonts | DM Sans + Space Grotesk | Via Google Fonts (next/font) |
 | Icons | Lucide React | Consistent across all Havenly Solutions products |
@@ -50,17 +50,17 @@ The site is designed to work as the primary acquisition channel for the July 202
 ## 3. Pages & Routes
 
 ### `/` — Homepage
-The primary landing and pre-registration page.
+The primary landing and pre registration page.
 
 **Sections:**
-- **Hero** — Display heading "Your Haven. Your Community. Always On." with animated map grid background, live countdown timer to 24 November 2026, and the pre-registration form inline
+- **Hero** — Display heading "Your Haven. Your Community. Always On." with animated map grid background, live countdown timer to 24 November 2026, and the pre registration form inline
 - **Ticker** — Scrolling dark banner with protocol keywords
-- **Core Safety Architecture** — 6 feature cards: One-Press SOS, Offline-First Logic, Safety Network, Evidence Chain, POPIA Compliance, Unified Command
+- **Core Safety Architecture** — 6 feature cards: One Press SOS, Offline First Logic, Safety Network, Evidence Chain, POPIA Compliance, Unified Command
 - **Designed for our reality** — Dark section with 3 pillars: Simple Safety, SA Families, Community Mesh
 - **Empowering NGOs & Community Watch** — Left/right grid with live dashboard mockup
 - **Testimonials** — 3 cards with star ratings from security professionals
 - **The Collective Shield** — 4 social proof stats: 12,482+ guardians, 9 provinces, 142 partners, 24 Nov 2026
-- **Launch CTA** — Dark section with pre-register CTA
+- **Launch CTA** — Dark section with pre register CTA
 - **Footer**
 
 ---
@@ -70,7 +70,7 @@ Detailed product feature breakdown for technically-minded visitors and investors
 
 **Sections:**
 - **Hero** — "THE STOIC GUARDIAN." with protocol status badges and location widget mockup
-- **One-Press SOS / Zero Latency** — 2-second hold mechanic, haptic protocol explainer
+- **One Press SOS / Zero Latency** — 2-second hold mechanic, haptic protocol explainer
 - **Legal Evidence Chain** — Immutable hashing, officer access portal
 - **Community Mesh Network** — Offline SMS fallback, device-to-device mesh
 - **POPIA Compliance by Design** — 3 privacy commitments, certification badge
@@ -94,8 +94,8 @@ Educational content and technical documentation.
 
 **Sections:**
 - **Hero** — "Resources for the Stoic Guardian." with animated circular badge
-- **Emergency Intelligence** — Load-Shedding Preparedness featured article, Havenly Solutions App User Guide, Latest Updates feed, NGO Portal card
-- **The Havenly Solutions Deployment Cycle** — 3 steps: Rapid Onboarding, Always-On Watch, Instant Response
+- **Emergency Intelligence** — Load Shedding Preparedness featured article, Havenly Solutions App User Guide, Latest Updates feed, NGO Portal card
+- **The Havenly Solutions Deployment Cycle** — 3 steps: Rapid Onboarding, Always On Watch, Instant Response
 - **Frequently Asked Protocols** — 4 FAQ accordions using native `<details>` elements (no JS required)
 
 ---
@@ -106,7 +106,7 @@ Legal document covering POPIA compliance and data protection.
 **Sections:**
 - Information We Collect — Name, email, phone, organisation, location, device info
 - How We Use Your Data — Service delivery, notifications, compliance
-- Data Protection — AES-256 encryption, secure storage
+- Data Protection — AES 256 encryption, secure storage
 - Third-Party Services — Twilio, Resend, AWS partnerships
 - Your Rights (POPIA) — Data access, corrections, deletion, opt-outs
 - Contact for privacy concerns
@@ -134,7 +134,7 @@ Detailed operational emergency response procedures.
 
 **Sections:**
 - Protocol Tiers — CRITICAL (Tier 1), WARNING (Tier 2), ADVISORY (Tier 3)
-- Escalation Path — 5-step incident response process
+- Escalation Path — 5 step incident response process
 - Communication Standards — Tone, language, response times
 - Follow-Up & Accountability — Audit logging, performance tracking, feedback collection
 - For Responders & Partners — Alert delivery channels (SMS, push, email), registration link
@@ -157,7 +157,7 @@ South African-specific safety guide and emergency contacts reference.
 
 **Sections:**
 - **Hero** — Dark navy with emergency contact preview widget
-- **Emergency Contacts** — 8 SA emergency numbers in card grid (all tap-to-call):
+- **Emergency Contacts** — 8 SA emergency numbers in card grid (all tap to call):
   - SAPS 10111
   - ER24 — 084 124
   - Netcare 911 — 082 911
@@ -166,14 +166,14 @@ South African-specific safety guide and emergency contacts reference.
   - Suicide Crisis Line — 0800 567 567
   - Fire & Rescue — 10177
   - National Sea Rescue — 082 990 5911
-- **Load-Shedding Preparedness Checklist** — 4 categories, 16 actionable checklist items:
+- **Load Shedding Preparedness Checklist** — 4 categories, 16 actionable checklist items:
   - Perimeter Security
   - Alarm System
   - Communication
   - Family Plan
 - **Neighbourhood Watch Integration** — 4-step guide to connecting watch groups to Havenly Solutions Gold Tier
 - **South African Safety Guides** — 4 guide cards:
-  - Load-Shedding Stage 6 Protocol
+  - Load Shedding Stage 6 Protocol
   - Car Hijacking Prevention
   - Home Invasion Response
   - GBV Safety Planning
@@ -212,7 +212,7 @@ Live countdown timer to launch date.
 ### `src/components/ui/PreRegForm.tsx`
 Pre-registration form — the most important component on the site.
 - Fields: Full Name, Email Address, Region (dropdown, 11 SA regions)
-- Posts to `${NEXT_PUBLIC_DASHBOARD_API_URL}/api/pre-registrations`
+- Posts to `${NEXT_PUBLIC_DASHBOARD_API_URL}/api/pre registrations`
 - Handles `409 Conflict` (duplicate email) gracefully with friendly message
 - Shows loading state during submission
 - Shows success state with confirmation after signup
@@ -231,7 +231,7 @@ cp .env.example .env.local
 
 | Variable | Required | Description |
 |---|---|---|
-| `NEXT_PUBLIC_DASHBOARD_API_URL` | Yes | Where the pre-registration form POSTs to. In development: `http://localhost:3000`. In production: `https://api.havenly.co.za` |
+| `NEXT_PUBLIC_DASHBOARD_API_URL` | Yes | Where the pre registration form POSTs to. In development: `http://localhost:3000`. In production: `https://api.havenly.co.za` |
 | `NEXT_PUBLIC_LAUNCH_DATE` | No | ISO 8601 countdown target. Defaults to `2026-11-24T00:00:00+02:00` |
 | `NEXT_PUBLIC_APP_URL` | No | The public URL of this site |
 
@@ -243,7 +243,7 @@ cp .env.example .env.local
 
 ### Prerequisites
 - Node.js 18 LTS or higher
-- The `havenly-dashboard` or `havenly-backend` running locally on port 3000 (for the pre-registration form to work)
+- The `havenly-dashboard` or `havenly-backend` running locally on port 3000 (for the pre registration form to work)
 
 ### Steps
 
@@ -315,7 +315,7 @@ The marketing site connects to the backend for exactly **two operations**:
 
 | Form | Endpoint | Method | Auth |
 |---|---|---|---|
-| Pre-registration form | `/api/pre-registrations` | `POST` | None (public) |
+| Pre-registration form | `/api/pre registrations` | `POST` | None (public) |
 | Partner application form | `/api/ngo-partners` | `POST` | None (public) |
 
 Both endpoints are intentionally public — no API key required. The backend rate-limits them independently.
@@ -324,7 +324,7 @@ Both endpoints are intentionally public — no API key required. The backend rat
 
 | Environment | `NEXT_PUBLIC_DASHBOARD_API_URL` |
 |---|---|
-| Local dev (using dashboard's built-in API) | `http://localhost:3000` |
+| Local dev (using dashboard's built in API) | `http://localhost:3000` |
 | Local dev (using standalone backend) | `http://localhost:3001` |
 | Production | `https://api.havenly.co.za` |
 
@@ -434,11 +434,11 @@ havenly-marketing/
 ## 11. Build Roadmap
 
 ### Phase 1 — Done (this build)
-- [x] Homepage with countdown + pre-registration form
+- [x] Homepage with countdown + pre registration form
 - [x] Features page (The Stoic Guardian)
 - [x] Partners page with Gold Tier breakdown + application form
 - [x] Resources page with FAQ accordion + deployment cycle
-- [x] Safety Hub with SA emergency contacts, load-shedding checklist, neighbourhood watch guide, GBV resources
+- [x] Safety Hub with SA emergency contacts, load shedding checklist, neighbourhood watch guide, GBV resources
 - [x] Legal pages: Privacy Policy, Terms of Service, Emergency Protocol, Contact Support
 - [x] Navbar (transparent → blur on scroll, mobile hamburger)
 - [x] Enhanced Footer with company info, contact details, and all legal links
@@ -451,7 +451,7 @@ havenly-marketing/
 - [x] Environment configuration (.env.example + .env.local.example)
 
 ### Phase 2 — Next Sprint
-- [ ] Dynamic pre-registration counter (live from API)
+- [ ] Dynamic pre registration counter (live from API)
 - [ ] Add `sitemap.xml` and `robots.txt` for SEO
 - [ ] OpenGraph image per page for social media sharing
 - [ ] Analytics integration (Plausible or Vercel Analytics — no Google)
@@ -461,7 +461,7 @@ havenly-marketing/
 
 ### Phase 3 — Post-Launch
 - [ ] App deep-link redirects (once Flutter app is live)
-- [ ] Dynamic pre-registration counter (live from API)
+- [ ] Dynamic pre registration counter (live from API)
 - [ ] Tour map page (provinces, dates, venues)
 - [ ] Press kit download page
 

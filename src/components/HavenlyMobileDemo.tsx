@@ -171,7 +171,7 @@ export function HavenlySolutionsDemoSection() {
             </motion.p>
             <div className="space-y-6">
               {[
-                { title: 'Immediate Activation', desc: 'One-gesture protocol for emergency dispatch.' },
+                { title: 'Immediate Activation', desc: 'One gesture protocol for emergency dispatch.' },
                 { title: 'Offline Architecture', desc: 'Works without data or cellular service via Mesh protocols.' }
               ].map((f, i) => (
                 <motion.div 

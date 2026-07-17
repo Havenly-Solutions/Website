@@ -6,7 +6,7 @@ import RevealOnScroll from '@/components/ui/RevealOnScroll'
 
 export const metadata: Metadata = {
   title: 'Safety Hub — South African Emergency Guide',
-  description: 'Essential South African emergency contacts, load-shedding preparedness, neighbourhood watch integration, and GBV helplines. Always on — even offline.',
+  description: 'Essential South African emergency contacts, load shedding preparedness, neighbourhood watch integration, and GBV helplines. Always on — even offline.',
 }
 
 const EMERGENCY_CONTACTS = [
@@ -15,15 +15,15 @@ const EMERGENCY_CONTACTS = [
   { service: 'Netcare 911', number: '082 911', desc: 'Medical emergencies, ambulance dispatch, trauma care', color: 'bg-white/5', critical: false },
   { service: 'GBV Helpline', number: '0800 428 428', desc: 'Gender-Based Violence Command Centre — free, 24/7, confidential', color: 'bg-white/5', critical: false },
   { service: 'Childline SA', number: '116', desc: 'Child abuse, crisis counselling, and referral services', color: 'bg-white/5', critical: false },
-  { service: 'Suicide Crisis Line', number: '0800 567 567', desc: 'SADAG 24-hour mental health crisis support line', color: 'bg-white/5', critical: false },
+  { service: 'Suicide Crisis Line', number: '0800 567 567', desc: 'SADAG 24 hour mental health crisis support line', color: 'bg-white/5', critical: false },
   { service: 'Fire & Rescue', number: '10177', desc: 'Municipal fire, rescue, and disaster management', color: 'bg-white/5', critical: false },
   { service: 'National Sea Rescue', number: '082 990 5911', desc: 'Maritime search and rescue — coastal emergencies', color: 'bg-white/5', critical: false },
 ]
 
 const LOADSHEDDING_CHECKLIST = [
   { category: 'Perimeter Security', items: ['Test battery backup on electric fence during power', 'Confirm gate motor has manual override and you know how to use it', 'Ensure all exterior lights are on UPS or solar backup', 'Check that CCTV system has at least 4 hours battery runtime'] },
-  { category: 'Alarm System', items: ['Verify alarm system switches to battery automatically', 'Test panic buttons work during load-shedding', 'Confirm armed response has your current contact numbers', 'Ensure backup SIM in alarm communicator has airtime'] },
-  { category: 'Communication', items: ['Keep a fully charged powerbank dedicated to emergencies', 'Download Havenly Solutions before the next outage — works offline', 'Have your emergency contacts saved to SMS-accessible contacts', 'Know your SAPS station number for your area (not just 10111)'] },
+  { category: 'Alarm System', items: ['Verify alarm system switches to battery automatically', 'Test panic buttons work during load shedding', 'Confirm armed response has your current contact numbers', 'Ensure backup SIM in alarm communicator has airtime'] },
+  { category: 'Communication', items: ['Keep a fully charged powerbank dedicated to emergencies', 'Download Havenly Solutions before the next outage — works offline', 'Have your emergency contacts saved to SMS accessible contacts', 'Know your SAPS station number for your area (not just 10111)'] },
   { category: 'Family Plan', items: ['Every family member knows the rally point if separated', 'Children over 8 can dial SAPS 10111 independently', 'Medical equipment with power dependency has a backup plan', 'Torch in every bedroom — battery tested monthly'] },
 ]
 
@@ -36,11 +36,11 @@ const NEIGHBOURHOOD_WATCH = [
 
 const SA_SAFETY_GUIDES = [
   {
-    title: 'Load-Shedding Stage 6 Protocol',
+    title: 'Load Shedding Stage 6 Protocol',
     badge: 'CRITICAL',
     badgeColor: 'bg-nixtio-primary/10 text-nixtio-primary border-nixtio-primary/20',
-    desc: 'Extended Stage 6 and beyond creates prolonged security vulnerabilities. Criminals plan around outage schedules. Here\'s how to maintain a secure perimeter across a 4-hour outage window.',
-    tips: ['Electric fences need 6+ hour battery backup minimum at Stage 6', 'Solar gate motors outperform battery-only during consecutive outage days', 'Inform your armed response company of extended outage windows', 'Candles and open flames increase accidental fire risk — use LED torches only'],
+    desc: 'Extended Stage 6 and beyond creates prolonged security vulnerabilities. Criminals plan around outage schedules. Here\'s how to maintain a secure perimeter across a 4 hour outage window.',
+    tips: ['Electric fences need 6+ hour battery backup minimum at Stage 6', 'Solar gate motors outperform battery only during consecutive outage days', 'Inform your armed response company of extended outage windows', 'Candles and open flames increase accidental fire risk — use LED torches only'],
   },
   {
     title: 'Car Hijacking Prevention',
@@ -94,14 +94,14 @@ export default function SafetyHubPage() {
                 <span className="text-white/40">Hub.</span>
               </h1>
               <p className="text-white/60 font-medium text-lg md:text-xl leading-relaxed mb-10 max-w-2xl tracking-tight">
-                South African emergency contacts, load-shedding preparedness protocols, neighbourhood watch integration, and critical safety guides — all in one place. Always on, even offline.
+                South African emergency contacts, load shedding preparedness protocols, neighbourhood watch integration, and critical safety guides — all in one place. Always on, even offline.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="#contacts" className="w-full sm:w-auto bg-white text-black font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-white/90 transition-all text-base">
                   Emergency Contacts <ArrowRight size={18} />
                 </a>
                 <a href="#loadshedding" className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 backdrop-blur-md text-white font-bold rounded-xl text-base hover:bg-white/10 transition-colors flex items-center justify-center">
-                  Load-Shedding Guide
+                  Load Shedding Guide
                 </a>
               </div>
             </RevealOnScroll>
@@ -141,7 +141,7 @@ export default function SafetyHubPage() {
         </div>
       </section>
 
-      {/*  LOAD-SHEDDING PREPAREDNESS  */}
+      {/*  LOAD SHEDDING PREPAREDNESS  */}
       <section id="loadshedding" className="py-32 bg-[#0a0a0a] border-t border-white/5">
         <div className="max-w-[95rem] mx-auto px-6">
           <RevealOnScroll className="flex flex-col md:flex-row items-start justify-between gap-10 mb-20">
@@ -150,7 +150,7 @@ export default function SafetyHubPage() {
                 <Zap size={14} className="text-nixtio-primary" />
                 <span className="text-nixtio-primary text-[10px] uppercase tracking-widest font-bold">Critical Protocol</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">Load-Shedding<br />Preparedness Checklist.</h2>
+              <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">Load Shedding<br />Preparedness Checklist.</h2>
               <p className="text-white/60 text-lg md:text-xl leading-relaxed font-medium">
                 Stage 6 and beyond creates predictable security windows criminals exploit. This checklist closes every vulnerability before the lights go out.
               </p>

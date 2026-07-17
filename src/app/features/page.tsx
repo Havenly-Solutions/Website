@@ -112,7 +112,7 @@ export default function FeaturesPage() {
           </div >
         </section >
 
-    {/*  One-Press SOS  */ }
+    {/*  One Press SOS  */ }
     < section className = "py-24 bg-[#F8F9FA]" >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
@@ -136,7 +136,7 @@ export default function FeaturesPage() {
         <div>
           <p className="text-[#C0392B] text-xs uppercase tracking-widest font-bold mb-3">Critical Response</p>
           <h2 className="font-display font-black text-[#1A1A2E] text-5xl leading-tight mb-4">
-            ONE-PRESS SOS.<br />ZERO LATENCY.
+            ONE PRESS SOS.<br />ZERO LATENCY.
           </h2>
           <p className="text-[#1A1A2E]/80 text-base leading-relaxed mb-6">
             When seconds matter, navigation is a liability. HAVENLY SOLUTIONS bypasses menus, delivering your precise location and environmental audio to the Guardian Grid instantly.
@@ -231,7 +231,7 @@ export default function FeaturesPage() {
                 desc: 'No signal? HAVENLY SOLUTIONS automatically switches to encrypted low-bandwidth SMS packets to relay your SOS.',
               },
               {
-                title: 'Device-to-Device Mesh',
+                title: 'Device to Device Mesh',
                 desc: 'Leverage the Guardian Web — other HAVENLY SOLUTIONS devices act as relays to push signals to the cloud even in dead zones.',
               },
             ].map(({ title, desc }) => (
