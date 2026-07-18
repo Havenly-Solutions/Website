@@ -1063,7 +1063,7 @@ function HomeScreen({ activeDevice }: { activeDevice: 'iphone' | 'android' | 'ho
       <div style={{ padding: '20px', paddingBottom: '92px', height: 'calc(100% - 44px)', display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
           <div>
-            <div style={{ fontFamily: APP_FONT, fontSize: '12px', color: 'rgba(255,255,255,0.55)', marginBottom: 6 }}>
+            <div style={{ fontFamily: APP_FONT, fontSize: '12px', color: 'rgba(255,255,255,0.75)', marginBottom: 6 }}>
               Good morning
             </div>
             <div style={{ fontFamily: APP_FONT, fontSize: '20px', fontWeight: 700, color: TEXT_WHITE }}>
@@ -1081,8 +1081,8 @@ function HomeScreen({ activeDevice }: { activeDevice: 'iphone' | 'android' | 'ho
           </div>
         </div>
 
-        <div style={{ background: '#121A29', borderRadius: 24, padding: '18px 16px 18px 18px', marginBottom: 20, border: `1px solid rgba(255,255,255,0.08)` }}>
-          <div style={{ fontFamily: APP_FONT, fontSize: '9px', letterSpacing: '0.18em', color: APP_RED, textTransform: 'uppercase', marginBottom: 10 }}>
+        <div style={{ background: '#121A29', borderRadius: 24, padding: '18px 16px 18px 18px', marginBottom: 20, border: `1px solid rgba(255,255,255,0.12)` }}>
+          <div style={{ fontFamily: APP_FONT, fontSize: '9px', letterSpacing: '0.18em', color: '#FF7E70', textTransform: 'uppercase', marginBottom: 10 }}>
             MY ZONE
           </div>
           <div style={{ fontFamily: APP_FONT, fontSize: '16px', fontWeight: 700, color: TEXT_WHITE, marginBottom: 8 }}>
@@ -1159,13 +1159,13 @@ function SOSScreen() {
           </div>
         </div>
 
-        <div style={{ fontFamily: APP_FONT, fontSize: 13, color: 'rgba(255,255,255,0.45)', textAlign: 'center', marginBottom: 18 }}>
+        <div style={{ fontFamily: APP_FONT, fontSize: 13, color: 'rgba(255,255,255,0.85)', textAlign: 'center', marginBottom: 18 }}>
           Hold 2 seconds to activate
         </div>
 
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
           {['📍 GPS Active', '🔒 Encrypted', '📡 Mesh Ready'].map((pill) => (
-            <div key={pill} style={{ fontFamily: APP_FONT, fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>{pill}</div>
+            <div key={pill} style={{ fontFamily: APP_FONT, fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>{pill}</div>
           ))}
         </div>
       </div>
@@ -1202,7 +1202,7 @@ function AlertScreen() {
             <div style={{ position: 'absolute', width: 40, height: 40, borderRadius: 999, background: 'rgba(192,57,43,0.18)', animation: 'alert-pulse 1.6s ease-out infinite', zIndex: 0 }} />
             <div style={{ position: 'absolute', width: 70, height: 70, borderRadius: 999, background: 'rgba(192,57,43,0.12)', animation: 'alert-pulse 1.6s ease-out infinite 0.3s', zIndex: 0 }} />
           </div>
-          <div style={{ position: 'relative', textAlign: 'center', marginTop: 10, fontSize: 9, color: 'rgba(255,255,255,0.4)', fontFamily: APP_FONT }}>Live GPS</div>
+          <div style={{ position: 'relative', textAlign: 'center', marginTop: 10, fontSize: 9, color: 'rgba(255,255,255,0.65)', fontFamily: APP_FONT }}>Live GPS</div>
         </div>
 
         <div style={{ marginTop: 18, display: 'grid', gap: 10 }}>
@@ -1231,15 +1231,15 @@ function EvidenceScreen() {
               title: 'SOS Event',
               subtitle: '14 May 2026 · GPS + Audio · Chain of custody',
               status: 'SEALED',
-              statusColor: APP_RED,
-              statusBg: 'rgba(192,57,43,0.12)',
+              statusColor: TEXT_WHITE,
+              statusBg: APP_RED,
             },
             {
               title: 'SOS Event',
               subtitle: '09 May 2026 · GPS + Audio · SAPS reference #10374',
               status: 'SUBMITTED',
-              statusColor: '#27AE60',
-              statusBg: 'rgba(39,174,96,0.12)',
+              statusColor: '#FFFFFF',
+              statusBg: '#27AE60',
             },
           ].map((card) => (
             <div key={card.subtitle} style={{ background: APP_CARD_BG, borderRadius: 18, border: `1px solid ${BORDER_COLOR}`, padding: 16 }}>

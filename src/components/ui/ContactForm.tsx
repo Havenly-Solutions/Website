@@ -57,20 +57,20 @@ export default function ContactForm() {
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Your Name</label>
           <input required placeholder="Full Name"
             value={form.guestName} onChange={e => setForm(f => ({ ...f, guestName: e.target.value }))}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
         </div>
         <div className="col-span-2 sm:col-span-1">
           <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Contact Detail (Email/Phone)</label>
           <input required placeholder="How can we reach you?"
             value={form.guestContact} onChange={e => setForm(f => ({ ...f, guestContact: e.target.value }))}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
         </div>
       </div>
       <div>
         <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Subject</label>
         <input required placeholder="What is this regarding?"
           value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] transition-colors" />
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] transition-colors" />
       </div>
       <div>
         <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Category</label>
@@ -86,7 +86,7 @@ export default function ContactForm() {
         <label className="block text-[10px] text-gray-400 uppercase tracking-widest mb-1.5">Message</label>
         <textarea required rows={5} placeholder="Describe your request in detail..."
           value={form.body} onChange={e => setForm(f => ({ ...f, body: e.target.value }))}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-300 focus:outline-none focus:border-[#C0392B] resize-none" />
+          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#1A1A2E] placeholder-gray-500 focus:outline-none focus:border-[#C0392B] resize-none" />
       </div>
       {error && <p className="text-[#C0392B] text-xs mb-4">{error}</p>}
       <button type="submit" disabled={loading}

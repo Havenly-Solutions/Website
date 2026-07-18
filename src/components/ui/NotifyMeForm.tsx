@@ -68,7 +68,7 @@ export default function NotifyMeForm() {
         onChange={(e) => setEmail(e.target.value)}
         required
         placeholder="your@email.co.za"
-        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#D4A017]/40 transition-colors"
+        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#D4A017]/40 transition-colors"
       />
       <button
         type="submit"

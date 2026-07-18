@@ -44,7 +44,7 @@ export default function HomePage() {
                 <h1 className="text-5xl md:text-7xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
                   Your Haven. <br />
                   Your Community.<br />
-                  <span className="flicker text-[#D00000] hover:text-[#0B6E4F] hover:animate-none transition-colors duration-300 cursor-default">
+                  <span className="flicker text-[#FF3131] hover:text-[#00C851] hover:animate-none transition-colors duration-300 cursor-default">
                      Always On.
                   </span>
                 </h1>
