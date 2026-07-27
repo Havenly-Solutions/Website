@@ -6,9 +6,17 @@ import { useEffect } from 'react';
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
+
+    if (!key || key === 'YOUR_POSTHOG_KEY') {
+      console.warn('PostHog key is missing or placeholder. Skipping initialization.');
+      return;
+    }
+
     // Initialize PostHog
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '', {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://us.i.posthog.com',
+    posthog.init(key, {
+      api_host: host,
       person_profiles: 'identified_only',
       capture_pageview: false,
       persistence: 'localStorage+cookie',
