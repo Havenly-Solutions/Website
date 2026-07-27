@@ -37,12 +37,37 @@ export default function CookieBanner() {
     }
   }, [])
 
+  const saveToBackend = async (allPrefs: CookiePreferences) => {
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005';
+      let visitorId = localStorage.getItem('ph_visitor_id');
+      if (!visitorId) {
+        visitorId = Math.random().toString(36).substring(2, 15);
+        localStorage.setItem('ph_visitor_id', visitorId);
+      }
+
+      await fetch(`${apiUrl}/api/v1/marketing/forms/cookie-consent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          visitorId,
+          accepted: allPrefs.analytics || allPrefs.marketing,
+          preferences: allPrefs
+        }),
+      });
+    } catch (e) {
+      console.error('Failed to log cookie consent:', e);
+    }
+  }
+
   const accept = () => {
     const allPrefs: CookiePreferences = { necessary: true, analytics: true, marketing: true }
     localStorage.setItem('cookie-consent', JSON.stringify(allPrefs))
 
     // Opt-in to PostHog tracking
     posthog.opt_in_capturing()
+
+    saveToBackend(allPrefs)
 
     setShow(false)
     setShowPreferences(false)
@@ -53,6 +78,8 @@ export default function CookieBanner() {
 
     // Opt-out of PostHog tracking
     posthog.opt_out_capturing()
+
+    saveToBackend(DEFAULT_PREFERENCES)
 
     setShow(false)
     setShowPreferences(false)
@@ -67,6 +94,8 @@ export default function CookieBanner() {
     } else {
       posthog.opt_out_capturing()
     }
+
+    saveToBackend(preferences)
 
     setShow(false)
     setShowPreferences(false)
