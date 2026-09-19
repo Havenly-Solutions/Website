@@ -18,7 +18,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     posthog.init(key, {
       api_host: host,
       person_profiles: 'identified_only',
-      capture_pageview: false,
+      capture_pageview: 'history_change', // Capture the first load and every client-side route change
       persistence: 'localStorage+cookie',
       opt_out_capturing_by_default: true, // Respect privacy by default
     });
