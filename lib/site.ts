@@ -1,18 +1,19 @@
 export const SITE = {
   name: 'Havenly Solutions',
   legalName: 'Havenly Solutions (Pty) Ltd',
+  description: 'South Africa’s First Civic Technology Software Company',
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.havenly.solutions').replace(/\/$/, ''),
   email: 'info@havenly.solutions',
   reportEmail: 'report@havenly.solutions',
-  phone: '070 368 7327',
-  phoneHref: 'tel:+27703687327',
+  phone: '060 444 9364',
+  phoneHref: 'tel:+27604449364',
   locality: 'Johannesburg',
   region: 'Gauteng',
   country: 'South Africa',
-  launchIso: '2026-10-13T20:30:00+02:00',
-  launchLabel: '13 October 2026 • 20:30 SAST',
-  tagline: 'Connected safety. Trusted communication. Stronger communities.',
-  creditName: 'Theblacksheeptechcorp.com',
+  launchIso: '2026-10-13T00:00:00+02:00',
+  launchLabel: '13 October 2026',
+  tagline: 'Your Haven. Your Community. Always On',
+  creditName: 'The Black Sheep Tech Corp',
   creditUrl: 'https://theblacksheeptechcorp.com',
 } as const;
 
@@ -27,4 +28,5 @@ export const NAV_LINKS = [
   { href: '/partners', label: 'Partners' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+  { href: '/pre-register', label: 'Register' },
 ] as const;

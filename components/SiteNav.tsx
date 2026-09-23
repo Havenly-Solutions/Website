@@ -22,14 +22,14 @@ export function SiteNav() {
         <span className="wm">Havenly Solutions</span>
       </Link>
       <nav className="links" id="site-menu" aria-label="Main">
-        {NAV_LINKS.map((l) => (
+        {NAV_LINKS.filter((l) => l.href !== '/pre-register').map((l) => (
           <Link key={l.href} href={l.href} aria-current={pathname === l.href ? 'page' : undefined}>
             {l.label}
           </Link>
         ))}
       </nav>
       <div className="nav-r">
-        <Link className="btn btn-light btn-sm" href="/pre-register">Pre-Register</Link>
+        <Link className="btn btn-light btn-sm" href="/pre-register">Register</Link>
         <button
           className="burger"
           type="button"
