@@ -9,6 +9,7 @@ import SmoothScroll from '@/components/SmoothScroll'
 import GlobalLoader from '@/components/GlobalLoader'
 import { Suspense } from 'react'
 import { PostHogProvider } from '@/providers/PostHogProvider'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </GlobalLoader>
           </Suspense>
         </PostHogProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
