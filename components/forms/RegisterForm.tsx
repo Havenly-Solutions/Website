@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState, type ChangeEvent } from 'react';
-import { focusFirstInvalid, submitJson } from '@/lib/client';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { toast } from 'sonner';
+import { focusFirstInvalid, getApiUrl, submitJson, trackFormView } from '@/lib/client';
 import { COUNTRIES, INTERESTS, fieldErrors, phoneValid, preRegisterSchema, type FieldErrors } from '@/lib/schemas';
 import { SITE } from '@/lib/site';
 import { Icon } from '../Icon';
@@ -11,12 +12,24 @@ import { ShareButton } from './ShareButton';
 const EMPTY = { firstName: '', lastName: '', email: '', mobile: '', country: 'South Africa', city: '', interest: '', consent: false, hp: '' };
 type Values = typeof EMPTY;
 
-export function PreRegisterForm() {
+export function RegisterForm() {
   const started = useRef(Date.now());
   const [v, setV] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'busy' | 'done'>('idle');
   const [message, setMessage] = useState('');
+  const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
+  const isCooldownActive = cooldownUntil !== null && Date.now() < cooldownUntil;
+
+  useEffect(() => {
+    trackFormView('pre_registration');
+  }, []);
+
+  useEffect(() => {
+    if (!cooldownUntil) return;
+    const timeout = window.setTimeout(() => setCooldownUntil(null), Math.max(0, cooldownUntil - Date.now()));
+    return () => window.clearTimeout(timeout);
+  }, [cooldownUntil]);
 
   const bind = (key: keyof Values) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const value = e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
@@ -40,7 +53,7 @@ export function PreRegisterForm() {
     }
     setStatus('busy');
     setMessage('');
-    const result = await submitJson('/api/pre-register', { ...v, startedAt: started.current });
+    const result = await submitJson('/api/pre-register', { ...v, startedAt: started.current }, 'pre_registration');
     if (result.ok) return setStatus('done');
     setStatus('idle');
     setErrors(result.errors ?? {});
@@ -61,7 +74,7 @@ export function PreRegisterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate aria-label="Pre-registration">
+    <form onSubmit={onSubmit} noValidate aria-label="Registration form">
       <Honeypot value={v.hp} onChange={(hp) => setV((p) => ({ ...p, hp }))} />
       <div className="row2">
         <TextField id="firstName" label="First name" autoComplete="given-name" placeholder="e.g. Jane" value={v.firstName} onChange={bind('firstName')} error={errors.firstName} />
@@ -78,8 +91,8 @@ export function PreRegisterForm() {
         I agree to receive Havenly Solutions launch and product information.
       </ConsentField>
       <div className="form-msg" role="alert">{message}</div>
-      <button className="btn btn-dark" type="submit" disabled={status === 'busy'}>
-        {status === 'busy' ? 'Sending…' : 'Pre-Register for Havenly Solutions'}
+      <button className="btn btn-dark" type="submit" disabled={status === 'busy' || isCooldownActive}>
+        {status === 'busy' ? 'Sending…' : isCooldownActive ? 'Already sent — please wait' : 'Register for Havenly Solutions'}
       </button>
     </form>
   );

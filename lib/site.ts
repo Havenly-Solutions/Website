@@ -28,5 +28,5 @@ export const NAV_LINKS = [
   { href: '/partners', label: 'Partners' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
-  { href: '/pre-register', label: 'Register' },
+  { href: '/register', label: 'Register' },
 ] as const;

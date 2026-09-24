@@ -31,7 +31,7 @@ export function HomeHero() {
             <Countdown size="sm" />
           </div>
           <div className="hero-cta">
-            <Link className="btn btn-light" href="/pre-register">Pre-Register for Havenly Solutions</Link>
+            <Link className="btn btn-light" href="/register">Register for Havenly Solutions</Link>
             <Link className="btn btn-line-d" href="/how-it-works">Explore Havenly Solutions</Link>
           </div>
           <HeroSlider />

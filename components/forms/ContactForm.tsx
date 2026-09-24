@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState, type ChangeEvent } from 'react';
-import { focusFirstInvalid, submitJson } from '@/lib/client';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { toast } from 'sonner';
+import { focusFirstInvalid, getApiUrl, submitJson, trackFormView } from '@/lib/client';
 import { CONTACT_TOPICS, contactSchema, fieldErrors, type FieldErrors } from '@/lib/schemas';
 import { Icon } from '../Icon';
 import { ConsentField, Honeypot, SelectField, TextAreaField, TextField } from './fields';
@@ -15,6 +16,18 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'busy' | 'done'>('idle');
   const [message, setMessage] = useState('');
+  const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
+  const isCooldownActive = cooldownUntil !== null && Date.now() < cooldownUntil;
+
+  useEffect(() => {
+    trackFormView('helpdesk_ticket');
+  }, []);
+
+  useEffect(() => {
+    if (!cooldownUntil) return;
+    const timeout = window.setTimeout(() => setCooldownUntil(null), Math.max(0, cooldownUntil - Date.now()));
+    return () => window.clearTimeout(timeout);
+  }, [cooldownUntil]);
 
   const bind = (key: keyof Values) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const value = e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
@@ -24,7 +37,9 @@ export function ContactForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === 'busy') return;
+    if (status === 'busy' || isCooldownActive) return;
+    if ((v.hp ?? '').length > 0) return;
+
     const parsed = contactSchema.safeParse({ ...v, startedAt: started.current });
     if (!parsed.success) {
       setErrors(fieldErrors(parsed.error));
@@ -32,13 +47,23 @@ export function ContactForm() {
       focusFirstInvalid();
       return;
     }
+
     setStatus('busy');
     setMessage('');
-    const result = await submitJson('/api/contact', { ...v, startedAt: started.current });
-    if (result.ok) return setStatus('done');
+
+    const result = await submitJson('/api/contact', { ...v, startedAt: started.current }, 'helpdesk_ticket');
+
+    if (result.ok) {
+      setStatus('done');
+      setCooldownUntil(Date.now() + 30000);
+      toast.success('Your ticket has been received.');
+      return;
+    }
+
     setStatus('idle');
     setErrors(result.errors ?? {});
     setMessage(result.message);
+    toast.error(result.message);
     if (result.errors) focusFirstInvalid();
   }
 
@@ -65,7 +90,7 @@ export function ContactForm() {
         I agree that Havenly Solutions may contact me about this enquiry.
       </ConsentField>
       <div className="form-msg" role="alert">{message}</div>
-      <button className="btn btn-dark" type="submit" disabled={status === 'busy'}>{status === 'busy' ? 'Sending…' : 'Send message'}</button>
+      <button className="btn btn-dark" type="submit" disabled={status === 'busy' || isCooldownActive}>{status === 'busy' ? 'Sending…' : isCooldownActive ? 'Already sent — please wait' : 'Send message'}</button>
     </form>
   );
 }

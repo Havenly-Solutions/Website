@@ -6,7 +6,7 @@ import { LAUNCH_MS } from '@/lib/site';
 type Props = { size?: 'sm' | 'lg'; light?: boolean; showLabel?: boolean };
 const two = (n: number) => (n < 10 ? `0${n}` : String(n));
 
-/** Live countdown to launch (13 October 2026, 20:30 SAST). Renders a launch message instead of negative values. */
+/** Live countdown to launch (13 October 2026). Renders a launch message instead of negative values. */
 export function Countdown({ size = 'sm', light = false, showLabel = true }: Props) {
   const [left, setLeft] = useState<number | null>(null);
 

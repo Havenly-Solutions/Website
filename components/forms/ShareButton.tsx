@@ -7,7 +7,7 @@ export function ShareButton() {
   const [note, setNote] = useState('');
   const share = async () => {
     const text = `Havenly Solutions launches on 13 October 2026. Pre-register:`;
-    const url = `${SITE.url}/pre-register`;
+    const url = `${SITE.url}/register`;
     try {
       if (navigator.share) await navigator.share({ title: 'Havenly Solutions', text, url });
       else {

@@ -11,6 +11,7 @@ export const BANNERS: Record<string, Banner> = {
   about: { src: '/images/banners/about.jpg', position: 'center' },
   contact: { src: '/images/banners/contact.jpg', position: 'center' },
   faq: { src: '/images/banners/faq.jpg', position: 'center' },
+  register: { src: '/images/banners/pre-register.jpg', position: 'center' },
   'pre-register': { src: '/images/banners/pre-register.jpg', position: 'center' },
   'privacy-policy': { src: '/images/banners/privacy-policy.jpg', position: 'center' },
   terms: { src: '/images/banners/terms.jpg', position: 'center' },
@@ -64,10 +65,10 @@ export const FEATURES = [
 ];
 
 export const FAQ: { q: string; a: string; link?: { href: string; label: string } }[] = [
-  { q: 'What is Havenly Solutions?', a: 'Havenly Solutions is a South African technology company building a connected safety and community platform that brings together personal safety, communication, community and information.' },
+  { q: 'What is Havenly Solutions?', a: 'Havenly Solutions is South Africa’s First Civic Technology Software Company building a connected safety and community platform that brings together personal safety, communication, community and information.' },
   { q: 'What is the Havenly Solutions app?', a: 'The app is the consumer product. It combines SOS, trusted contacts, messaging, voice and video calling, community chat, a community feed, missing-person reporting and Jabu in one experience.' },
-  { q: 'When is Havenly Solutions launching?', a: 'The planned launch date is 13 October 2026 at 20:30 SAST.' },
-  { q: 'Can I pre-register?', a: 'Yes. Pre-registering tells us you want to be part of the launch and lets us send you launch information. It does not create an account.', link: { href: '/pre-register', label: 'Pre-register now' } },
+  { q: 'When is Havenly Solutions launching?', a: 'The planned launch date is 13 October 2026.' },
+  { q: 'Can I pre-register?', a: 'Yes. Pre-registering tells us you want to be part of the launch and lets us send you launch information. It does not create an account.', link: { href: '/register', label: 'Pre-register now' } },
   { q: 'Is Havenly Solutions only an SOS application?', a: 'No. It combines safety, communication, community and information features.' },
   { q: 'Can I message people?', a: 'Yes, subject to supported relationships and permissions.' },
   { q: 'Can I make voice and video calls?', a: 'Yes, subject to supported relationships and permissions.' },

@@ -91,8 +91,9 @@ export function CheckChips({ id, legend, options, values, onToggle, error }: { i
 
 export function Honeypot({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
-    <div className="hp" aria-hidden="true">
-      <label>Leave this field empty<input type="text" tabIndex={-1} autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} /></label>
+    <div className="hp" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+      <label htmlFor="_honeypot">Leave this field empty</label>
+      <input id="_honeypot" name="_honeypot" type="text" tabIndex={-1} autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} />
     </div>
   );
 }

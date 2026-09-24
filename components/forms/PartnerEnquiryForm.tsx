@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef, useState, type ChangeEvent } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import Link from 'next/link';
-import { focusFirstInvalid, submitJson } from '@/lib/client';
+import { toast } from 'sonner';
+import { focusFirstInvalid, getApiUrl, submitJson, trackFormView } from '@/lib/client';
 import {
   CONTACT_METHODS, COUNTRIES, DISPATCH_ANSWERS, ORG_TYPES, PARTNERSHIP_TYPES,
   fieldErrors, partnerSchema, phoneValid, type FieldErrors,
@@ -31,6 +32,18 @@ export function PartnerEnquiryForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'busy' | 'done'>('idle');
   const [message, setMessage] = useState('');
+  const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
+  const isCooldownActive = cooldownUntil !== null && Date.now() < cooldownUntil;
+
+  useEffect(() => {
+    trackFormView('partner_application');
+  }, []);
+
+  useEffect(() => {
+    if (!cooldownUntil) return;
+    const timeout = window.setTimeout(() => setCooldownUntil(null), Math.max(0, cooldownUntil - Date.now()));
+    return () => window.clearTimeout(timeout);
+  }, [cooldownUntil]);
 
   const set = (key: keyof Values, value: string | boolean) => {
     setV((prev) => ({ ...prev, [key]: value }));
@@ -48,7 +61,9 @@ export function PartnerEnquiryForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === 'busy') return;
+    if (status === 'busy' || isCooldownActive) return;
+    if ((v.hp ?? '').length > 0) return;
+
     const all = validate();
     const mine = Object.fromEntries(Object.entries(all).filter(([k]) => STEPS[step].fields.includes(k)));
     if (Object.keys(mine).length) {
@@ -71,12 +86,21 @@ export function PartnerEnquiryForm() {
       focusFirstInvalid();
       return;
     }
+
     setStatus('busy');
-    const result = await submitJson('/api/partner-enquiry', { ...v, startedAt: started.current });
-    if (result.ok) return setStatus('done');
+    const result = await submitJson('/api/partner-enquiry', { ...v, startedAt: started.current }, 'partner_application');
+
+    if (result.ok) {
+      setStatus('done');
+      setCooldownUntil(Date.now() + 60000);
+      toast.success('Your partnership application has been submitted.');
+      return;
+    }
+
     setStatus('idle');
     setErrors(result.errors ?? {});
     setMessage(result.message);
+    toast.error(result.message);
     if (result.errors) focusFirstInvalid();
   }
 
@@ -144,8 +168,8 @@ export function PartnerEnquiryForm() {
         <div className="form-msg" role="alert">{message}</div>
         <div className="actions">
           {step > 0 ? <button className="btn btn-line" type="button" onClick={() => { setMessage(''); setStep(step - 1); }}>Back</button> : <span />}
-          <button className="btn btn-dark" type="submit" disabled={status === 'busy'}>
-            {status === 'busy' ? 'Sending…' : step === STEPS.length - 1 ? 'Submit Partnership Enquiry' : 'Continue'}
+          <button className="btn btn-dark" type="submit" disabled={status === 'busy' || isCooldownActive}>
+            {status === 'busy' ? 'Sending…' : isCooldownActive ? 'Already sent — please wait' : step === STEPS.length - 1 ? 'Submit Partnership Enquiry' : 'Continue'}
           </button>
         </div>
       </form>

@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <>
       <PageHero slug="features" crumb="Features" title="Features" intro="Safety, communication, community and information in one connected experience."
-        right={<div className="banner-actions"><Link className="btn btn-light" href="/pre-register">Pre-Register</Link></div>} />
+        right={<div className="banner-actions"><Link className="btn btn-light" href="/register">Pre-Register</Link></div>} />
       <section className="sec"><div className="wrap"><FeatureGrid /></div></section>
       <FinalCta />
     </>

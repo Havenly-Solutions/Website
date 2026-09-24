@@ -36,7 +36,7 @@ export function SiteFooter() {
             <li><Link href="/about">About</Link></li>
             <li><Link href="/faq">FAQ</Link></li>
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/pre-register">Pre-Register</Link></li>
+            <li><Link href="/register">Register</Link></li>
           </ul>
         </div>
         <div>
@@ -48,6 +48,7 @@ export function SiteFooter() {
             <li><Link href="/eula">End User Licence Agreement</Link></li>
             <li><Link href="/acceptable-use-policy">Acceptable Use Policy</Link></li>
             <li><Link href="/disclaimer">Disclaimer</Link></li>
+            <li><Link href="/unsubscribe">Unsubscribe</Link></li>
             <li><CookieSettingsButton className="linklike" /></li>
           </ul>
         </div>

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ChatSection, CommSection, ContactsSection, FaqPreview, FeedSection, JabuSection, MissingSection, PartnerCta, Pillars, ResilienceSection, ResponderSection, SosSection, StepsSection, TrustSection, WhySection } from '@/components/Sections';
 import { Countdown } from '@/components/Countdown';
 import { HomeHero } from '@/components/HomeHero';
-import { PreRegisterForm } from '@/components/forms/PreRegisterForm';
+import { RegisterForm } from '@/components/forms/RegisterForm';
 import { Photo } from '@/components/Photo';
 import { SITE } from '@/lib/site';
 
@@ -24,7 +24,7 @@ export default function HomePage() {
             <div className="right">
               <Countdown size="sm" light />
               <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-                <Link className="btn btn-dark" href="/pre-register">Pre-Register</Link>
+                <Link className="btn btn-dark" href="/register">Register</Link>
                 <span className="xs">Planned Launch: {SITE.launchLabel}</span>
               </div>
             </div>
@@ -73,12 +73,12 @@ export default function HomePage() {
         <div className="wrap">
           <div className="panel">
             <div className="sec-head" style={{ justifyContent: 'center', textAlign: 'center', marginBottom: 24 }}>
-              <div><h2>The launch is getting closer.</h2><p style={{ margin: '8px auto 0' }}>Prepare before you need it. Planned launch: 13 October 2026 at 20:30 SAST.</p></div>
+              <div><h2>The launch is getting closer.</h2><p style={{ margin: '8px auto 0' }}>Prepare before you need it. Planned launch: 13 October 2026.</p></div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}><Countdown size="lg" /></div>
             <div className="g2-photo" style={{ alignItems: 'stretch' }}>
               <Photo src="/images/photos/red.jpg" alt="A young girl in a red headwrap raising her fist, with hills and the city behind her" minHeight={360} position="38% center" />
-              <div className="form-card"><PreRegisterForm /></div>
+              <div className="form-card"><RegisterForm /></div>
             </div>
           </div>
         </div>

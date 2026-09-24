@@ -23,7 +23,7 @@ export default function Page() {
             <p className="stmt">Safety should not feel complicated, and people should not feel disconnected when something important happens.</p>
             <p className="muted" style={{ marginTop: 16 }}>Planned launch: {SITE.launchLabel}.</p>
             <p style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <Link className="btn btn-dark" href="/pre-register">Pre-Register</Link>
+              <Link className="btn btn-dark" href="/register">Pre-Register</Link>
               <Link className="btn btn-line" href="/partners">Partner with us</Link>
             </p>
           </div>

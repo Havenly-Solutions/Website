@@ -6,7 +6,7 @@ prerenders all 24 routes; `npm run lint` and `npm run typecheck` are clean. But 
 few things need your input or a legal/ops review before this goes live.
 
 ## 1. Forms don't send anywhere yet
-The three forms (`/pre-register`, `/partners#apply`, `/contact`) validate correctly
+The three forms (`/register`, `/partners#apply`, `/contact`) validate correctly
 in the browser and on the server, but nothing is configured to receive the
 submissions. Set `FORMS_WEBHOOK_URL` (e.g. an n8n workflow) or `BACKEND_API_URL` in
 your environment — see `README.md` → *Environment variables*. Until then, the API

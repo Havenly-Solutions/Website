@@ -234,7 +234,7 @@ export function FinalCta() {
       <p style={{ margin: '10px auto 0', maxWidth: '60ch', fontSize: 'var(--t-sm)' }}>Havenly Solutions is building a connected safety and community experience designed to help people stay connected, informed and prepared.</p>
       <p style={{ marginTop: 14, fontSize: 'var(--t-sm)', color: '#fff' }}>Planned launch: {SITE.launchLabel}</p>
       <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginTop: 18 }}>
-        <Link className="btn btn-light" href="/pre-register">Pre-Register for Havenly Solutions</Link>
+        <Link className="btn btn-light" href="/register">Pre-Register for Havenly Solutions</Link>
         <Link className="btn btn-line-d" href="/partners#apply">Partner with Havenly Solutions</Link>
       </div>
     </div></div></section>

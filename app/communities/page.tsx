@@ -15,7 +15,7 @@ export default function Page() {
       <PageHero slug="communities" crumb="For Communities" title="How could Havenly Solutions help your community communicate and respond?" intro="Community chat, an information feed and missing-person awareness, connected to the rest of the platform.">
         <div className="banner-actions" style={{ marginTop: 20 }}>
           <Link className="btn btn-light" href="/contact">Talk to us about your community</Link>
-          <Link className="btn btn-line-d" href="/pre-register">Pre-Register</Link>
+          <Link className="btn btn-line-d" href="/register">Pre-Register</Link>
         </div>
       </PageHero>
       <div style={{ height: 32 }} />
