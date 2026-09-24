@@ -30,3 +30,5 @@ reports/
 responsive-audit/
 *.cjs
 RESPONSIVE_UI_REPAIR_REPORT.md
+.vercel
+.env*

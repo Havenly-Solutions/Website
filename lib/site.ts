@@ -1,8 +1,16 @@
+const getSiteUrl = (): string => {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (envUrl && (envUrl.startsWith('http://') || envUrl.startsWith('https://'))) {
+    return envUrl.replace(/\/$/, '');
+  }
+  return 'https://www.havenly.solutions';
+};
+
 export const SITE = {
   name: 'Havenly Solutions',
   legalName: 'Havenly Solutions (Pty) Ltd',
   description: 'South Africa’s First Civic Technology Software Company',
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.havenly.solutions').replace(/\/$/, ''),
+  url: getSiteUrl(),
   email: 'info@havenly.solutions',
   reportEmail: 'report@havenly.solutions',
   phone: '060 444 9364',
