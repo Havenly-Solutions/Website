@@ -1,0 +1,1102 @@
+[
+  {
+    "vp": {
+      "name": "home_mobile_nav_fixed_390.png",
+      "w": 390,
+      "h": 844,
+      "isMobile": true
+    },
+    "metrics": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "scrollWidth": 390,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 102,
+        "width": 390,
+        "height": 102,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 4,
+        "top": 102,
+        "right": 386,
+        "bottom": 160,
+        "width": 382,
+        "height": 58,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 18,
+        "top": 117,
+        "right": 154,
+        "bottom": 145,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": true,
+        "left": 334,
+        "top": 112,
+        "right": 372,
+        "bottom": 150,
+        "width": 38,
+        "height": 38,
+        "display": "grid"
+      },
+      "navDeskReg": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskLinks": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "hero": {
+        "visible": true,
+        "left": 4,
+        "top": 160,
+        "right": 386,
+        "bottom": 850,
+        "width": 382,
+        "height": 689,
+        "display": "flex"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 18,
+        "top": 160,
+        "right": 372,
+        "bottom": 826,
+        "width": 354,
+        "height": 665,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 18,
+        "top": 176,
+        "right": 372,
+        "bottom": 229,
+        "width": 354,
+        "height": 52,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 18,
+        "top": 243,
+        "right": 372,
+        "bottom": 305,
+        "width": 354,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 18,
+        "top": 398,
+        "right": 372,
+        "bottom": 500,
+        "width": 354,
+        "height": 102,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 18,
+        "top": 520,
+        "right": 372,
+        "bottom": 618,
+        "width": 354,
+        "height": 98,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 18,
+        "top": 638,
+        "right": 372,
+        "bottom": 674,
+        "width": 354,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": {
+      "openMetrics": {
+        "open": true,
+        "portalVisible": true,
+        "drawerLeft": 12,
+        "drawerTop": 12,
+        "drawerRight": 378,
+        "drawerBottom": 572,
+        "drawerWidth": 366,
+        "drawerHeight": 560,
+        "linksCount": 9,
+        "linksLabels": [
+          "Home",
+          "How It Works",
+          "Features",
+          "For Communities",
+          "Safe Hub",
+          "Partners",
+          "About",
+          "Contact",
+          "Register"
+        ]
+      },
+      "closedAgain": {
+        "portalExists": false
+      }
+    }
+  },
+  {
+    "vp": {
+      "name": "home_mobile_nav_fixed_430.png",
+      "w": 430,
+      "h": 932,
+      "isMobile": true
+    },
+    "metrics": {
+      "viewportWidth": 430,
+      "viewportHeight": 932,
+      "scrollWidth": 430,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 430,
+        "bottom": 102,
+        "width": 430,
+        "height": 102,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 4,
+        "top": 102,
+        "right": 426,
+        "bottom": 160,
+        "width": 422,
+        "height": 58,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 18,
+        "top": 117,
+        "right": 154,
+        "bottom": 145,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": true,
+        "left": 374,
+        "top": 112,
+        "right": 412,
+        "bottom": 150,
+        "width": 38,
+        "height": 38,
+        "display": "grid"
+      },
+      "navDeskReg": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskLinks": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "hero": {
+        "visible": true,
+        "left": 4,
+        "top": 160,
+        "right": 426,
+        "bottom": 856,
+        "width": 422,
+        "height": 696,
+        "display": "flex"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 19,
+        "top": 160,
+        "right": 411,
+        "bottom": 832,
+        "width": 392,
+        "height": 672,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 19,
+        "top": 176,
+        "right": 411,
+        "bottom": 234,
+        "width": 392,
+        "height": 58,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 19,
+        "top": 248,
+        "right": 411,
+        "bottom": 311,
+        "width": 392,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 19,
+        "top": 403,
+        "right": 411,
+        "bottom": 506,
+        "width": 392,
+        "height": 103,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 19,
+        "top": 526,
+        "right": 411,
+        "bottom": 624,
+        "width": 392,
+        "height": 98,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 19,
+        "top": 644,
+        "right": 411,
+        "bottom": 680,
+        "width": 392,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": {
+      "openMetrics": {
+        "open": true,
+        "portalVisible": true,
+        "drawerLeft": 13,
+        "drawerTop": 13,
+        "drawerRight": 417,
+        "drawerBottom": 573,
+        "drawerWidth": 404,
+        "drawerHeight": 560,
+        "linksCount": 9,
+        "linksLabels": [
+          "Home",
+          "How It Works",
+          "Features",
+          "For Communities",
+          "Safe Hub",
+          "Partners",
+          "About",
+          "Contact",
+          "Register"
+        ]
+      },
+      "closedAgain": {
+        "portalExists": false
+      }
+    }
+  },
+  {
+    "vp": {
+      "name": "home_mobile_nav_fixed_464.png",
+      "w": 464,
+      "h": 908,
+      "isMobile": true
+    },
+    "metrics": {
+      "viewportWidth": 464,
+      "viewportHeight": 908,
+      "scrollWidth": 464,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 464,
+        "bottom": 102,
+        "width": 464,
+        "height": 102,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 4,
+        "top": 102,
+        "right": 460,
+        "bottom": 160,
+        "width": 456,
+        "height": 58,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 18,
+        "top": 117,
+        "right": 154,
+        "bottom": 145,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": true,
+        "left": 408,
+        "top": 112,
+        "right": 446,
+        "bottom": 150,
+        "width": 38,
+        "height": 38,
+        "display": "grid"
+      },
+      "navDeskReg": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskLinks": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "hero": {
+        "visible": true,
+        "left": 4,
+        "top": 160,
+        "right": 460,
+        "bottom": 862,
+        "width": 456,
+        "height": 702,
+        "display": "flex"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 20,
+        "top": 160,
+        "right": 444,
+        "bottom": 838,
+        "width": 424,
+        "height": 678,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 20,
+        "top": 176,
+        "right": 444,
+        "bottom": 239,
+        "width": 424,
+        "height": 62,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 20,
+        "top": 253,
+        "right": 444,
+        "bottom": 315,
+        "width": 424,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 20,
+        "top": 408,
+        "right": 444,
+        "bottom": 512,
+        "width": 424,
+        "height": 105,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 20,
+        "top": 532,
+        "right": 444,
+        "bottom": 630,
+        "width": 424,
+        "height": 98,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 20,
+        "top": 650,
+        "right": 444,
+        "bottom": 686,
+        "width": 424,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": {
+      "openMetrics": {
+        "open": true,
+        "portalVisible": true,
+        "drawerLeft": 14,
+        "drawerTop": 14,
+        "drawerRight": 450,
+        "drawerBottom": 574,
+        "drawerWidth": 436,
+        "drawerHeight": 560,
+        "linksCount": 9,
+        "linksLabels": [
+          "Home",
+          "How It Works",
+          "Features",
+          "For Communities",
+          "Safe Hub",
+          "Partners",
+          "About",
+          "Contact",
+          "Register"
+        ]
+      },
+      "closedAgain": {
+        "portalExists": false
+      }
+    }
+  },
+  {
+    "vp": {
+      "name": "home_after_768.png",
+      "w": 768,
+      "h": 1024,
+      "isMobile": false
+    },
+    "metrics": {
+      "viewportWidth": 768,
+      "viewportHeight": 1024,
+      "scrollWidth": 753,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 753,
+        "bottom": 52,
+        "width": 753,
+        "height": 52,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 12,
+        "top": 52,
+        "right": 741,
+        "bottom": 116,
+        "width": 729,
+        "height": 64,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 35,
+        "top": 70,
+        "right": 171,
+        "bottom": 98,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": true,
+        "left": 680,
+        "top": 65,
+        "right": 718,
+        "bottom": 103,
+        "width": 38,
+        "height": 38,
+        "display": "grid"
+      },
+      "navDeskReg": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskLinks": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "hero": {
+        "visible": true,
+        "left": 12,
+        "top": 116,
+        "right": 741,
+        "bottom": 1053,
+        "width": 729,
+        "height": 937,
+        "display": "flex"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 35,
+        "top": 412,
+        "right": 718,
+        "bottom": 1021,
+        "width": 683,
+        "height": 609,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 35,
+        "top": 428,
+        "right": 718,
+        "bottom": 513,
+        "width": 683,
+        "height": 85,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 35,
+        "top": 527,
+        "right": 718,
+        "bottom": 569,
+        "width": 683,
+        "height": 42,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 35,
+        "top": 640,
+        "right": 718,
+        "bottom": 749,
+        "width": 683,
+        "height": 109,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 35,
+        "top": 769,
+        "right": 478,
+        "bottom": 813,
+        "width": 443,
+        "height": 44,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 35,
+        "top": 833,
+        "right": 718,
+        "bottom": 869,
+        "width": 683,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": null
+  },
+  {
+    "vp": {
+      "name": "home_after_1024.png",
+      "w": 1024,
+      "h": 768,
+      "isMobile": false
+    },
+    "metrics": {
+      "viewportWidth": 1024,
+      "viewportHeight": 768,
+      "scrollWidth": 1009,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 1009,
+        "bottom": 52,
+        "width": 1009,
+        "height": 52,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 12,
+        "top": 52,
+        "right": 997,
+        "bottom": 116,
+        "width": 985,
+        "height": 64,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 43,
+        "top": 70,
+        "right": 179,
+        "bottom": 98,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": true,
+        "left": 928,
+        "top": 65,
+        "right": 966,
+        "bottom": 103,
+        "width": 38,
+        "height": 38,
+        "display": "grid"
+      },
+      "navDeskReg": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskLinks": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "hero": {
+        "visible": true,
+        "left": 12,
+        "top": 116,
+        "right": 997,
+        "bottom": 864,
+        "width": 985,
+        "height": 748,
+        "display": "grid"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 517,
+        "top": 116,
+        "right": 966,
+        "bottom": 864,
+        "width": 450,
+        "height": 748,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 517,
+        "top": 148,
+        "right": 966,
+        "bottom": 282,
+        "width": 450,
+        "height": 134,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 622,
+        "top": 296,
+        "right": 966,
+        "bottom": 359,
+        "width": 344,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 725,
+        "top": 451,
+        "right": 966,
+        "bottom": 560,
+        "width": 241,
+        "height": 109,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 523,
+        "top": 580,
+        "right": 966,
+        "bottom": 624,
+        "width": 443,
+        "height": 44,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 517,
+        "top": 644,
+        "right": 966,
+        "bottom": 680,
+        "width": 450,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": null
+  },
+  {
+    "vp": {
+      "name": "home_after_1366.png",
+      "w": 1366,
+      "h": 768,
+      "isMobile": false
+    },
+    "metrics": {
+      "viewportWidth": 1366,
+      "viewportHeight": 768,
+      "scrollWidth": 1351,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 1351,
+        "bottom": 52,
+        "width": 1351,
+        "height": 52,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 12,
+        "top": 52,
+        "right": 1339,
+        "bottom": 116,
+        "width": 1327,
+        "height": 64,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 44,
+        "top": 70,
+        "right": 180,
+        "bottom": 98,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskReg": {
+        "visible": true,
+        "left": 1230,
+        "top": 66,
+        "right": 1307,
+        "bottom": 102,
+        "width": 77,
+        "height": 36,
+        "display": "flex"
+      },
+      "navDeskLinks": {
+        "visible": true,
+        "left": 390,
+        "top": 66,
+        "right": 1019,
+        "bottom": 102,
+        "width": 629,
+        "height": 37,
+        "display": "flex"
+      },
+      "hero": {
+        "visible": true,
+        "left": 12,
+        "top": 116,
+        "right": 1339,
+        "bottom": 864,
+        "width": 1327,
+        "height": 748,
+        "display": "grid"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 688,
+        "top": 116,
+        "right": 1298,
+        "bottom": 864,
+        "width": 611,
+        "height": 748,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 826,
+        "top": 148,
+        "right": 1298,
+        "bottom": 282,
+        "width": 472,
+        "height": 134,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 954,
+        "top": 296,
+        "right": 1298,
+        "bottom": 359,
+        "width": 344,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 1057,
+        "top": 451,
+        "right": 1298,
+        "bottom": 560,
+        "width": 241,
+        "height": 109,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 855,
+        "top": 580,
+        "right": 1298,
+        "bottom": 624,
+        "width": 443,
+        "height": 44,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 738,
+        "top": 644,
+        "right": 1298,
+        "bottom": 680,
+        "width": 560,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": null
+  },
+  {
+    "vp": {
+      "name": "home_after_1920.png",
+      "w": 1920,
+      "h": 1080,
+      "isMobile": false
+    },
+    "metrics": {
+      "viewportWidth": 1920,
+      "viewportHeight": 1080,
+      "scrollWidth": 1905,
+      "strip": {
+        "visible": true,
+        "left": 0,
+        "top": 0,
+        "right": 1905,
+        "bottom": 52,
+        "width": 1905,
+        "height": 52,
+        "display": "flex"
+      },
+      "nav": {
+        "visible": true,
+        "left": 12,
+        "top": 52,
+        "right": 1893,
+        "bottom": 116,
+        "width": 1881,
+        "height": 64,
+        "display": "flex"
+      },
+      "brand": {
+        "visible": true,
+        "left": 44,
+        "top": 70,
+        "right": 180,
+        "bottom": 98,
+        "width": 136,
+        "height": 28,
+        "display": "flex"
+      },
+      "burger": {
+        "visible": false,
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none"
+      },
+      "navDeskReg": {
+        "visible": true,
+        "left": 1784,
+        "top": 66,
+        "right": 1861,
+        "bottom": 102,
+        "width": 77,
+        "height": 36,
+        "display": "flex"
+      },
+      "navDeskLinks": {
+        "visible": true,
+        "left": 667,
+        "top": 66,
+        "right": 1296,
+        "bottom": 102,
+        "width": 629,
+        "height": 37,
+        "display": "flex"
+      },
+      "hero": {
+        "visible": true,
+        "left": 12,
+        "top": 116,
+        "right": 1893,
+        "bottom": 877,
+        "width": 1881,
+        "height": 761,
+        "display": "grid"
+      },
+      "heroCopy": {
+        "visible": true,
+        "left": 965,
+        "top": 116,
+        "right": 1845,
+        "bottom": 877,
+        "width": 881,
+        "height": 761,
+        "display": "flex"
+      },
+      "h1": {
+        "visible": true,
+        "left": 1325,
+        "top": 148,
+        "right": 1845,
+        "bottom": 296,
+        "width": 520,
+        "height": 148,
+        "display": "block"
+      },
+      "sub": {
+        "visible": true,
+        "left": 1501,
+        "top": 310,
+        "right": 1845,
+        "bottom": 372,
+        "width": 344,
+        "height": 62,
+        "display": "block"
+      },
+      "launch": {
+        "visible": true,
+        "left": 1604,
+        "top": 465,
+        "right": 1845,
+        "bottom": 573,
+        "width": 241,
+        "height": 109,
+        "display": "flex"
+      },
+      "heroCta": {
+        "visible": true,
+        "left": 1402,
+        "top": 593,
+        "right": 1845,
+        "bottom": 637,
+        "width": 443,
+        "height": 44,
+        "display": "flex"
+      },
+      "slider": {
+        "visible": true,
+        "left": 1285,
+        "top": 657,
+        "right": 1845,
+        "bottom": 693,
+        "width": 560,
+        "height": 36,
+        "display": "flex"
+      }
+    },
+    "h1OverlapsNav": false,
+    "hasHorizontalOverflow": false,
+    "drawerResults": null
+  }
+]

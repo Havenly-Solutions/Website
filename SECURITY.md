@@ -1,32 +1,48 @@
 # Security Policy
 
+## Security Overview
+
+Havenly Solutions is committed to providing a secure, privacy-respecting, and resilient civic technology platform for South Africa. We take the security of our website, web applications, and backend ecosystem seriously.
+
+---
+
 ## Reporting a Vulnerability
 
-We take the security of Havenly Solutions seriously. If you believe you have found a security vulnerability in any of our projects, please report it to us responsibly.
+If you discover a security vulnerability within this repository or any Havenly Solutions web property or service, please report it to our security team.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+### How to Submit a Report
+- **Email**: `report@havenly.solutions` or `info@havenly.solutions`
+- **Encryption**: If sending sensitive details, request our public PGP key prior to sending.
+- **Subject Line**: `[SECURITY VULNERABILITY] <Brief Description>`
 
-### Reporting Process
+### What to Include
+1. **Description**: Clear description of the vulnerability and its potential impact.
+2. **Steps to Reproduce**: Detailed step-by-step instructions or proof of concept (PoC).
+3. **Affected Components**: Specific URLs, API endpoints, or repository files.
+4. **Environment**: Browser version, OS, or tool versions used during discovery.
 
-1. Email your findings to security@havenly.solutions
-2. Include a detailed description of the vulnerability.
-3. Provide steps to reproduce the issue (PoC scripts, screenshots, etc. are helpful).
-4. Include the potential impact if the vulnerability were exploited.
+---
 
-### Our Commitment
+## Disclosure Policy
 
-If you follow the reporting process above, we commit to:
+- **Coordinated Disclosure**: We ask security researchers to allow us reasonable time (up to 30 days) to investigate and remediate reported vulnerabilities before public disclosure.
+- **No Harm**: Please do not attempt to access, alter, or destroy data belonging to real users or disrupt our services during research.
+- **Safe Harbor**: We will not take legal action against researchers who conduct responsible security research in good faith and comply with this policy.
 
-- Acknowledging receipt of your report within 48 hours.
-- Providing an estimated timeframe for a fix.
-- Notifying you once the vulnerability has been resolved.
+---
 
-### Scope
+## Security Controls & Best Practices
 
-This policy applies to all repositories under the Havenly Solutions GitHub organization, including but not limited to:
-- Havenly Backend
-- Havenly Dashboard
-- Havenly Marketing Website
-- Havenly Mobile Apps
+Our web application incorporates modern security practices:
 
-Thank you for helping keep Havenly Solutions safe for everyone!
+1. **Transport Security (HTTPS/HSTS)**: Strict HTTPS enforcement with `Preload` and `includeSubDomains`.
+2. **Content Security Policy (CSP)**: Restricts script execution to verified sources.
+3. **Header Hardening**:
+   - `X-Frame-Options: DENY` (prevents clickjacking)
+   - `X-Content-Type-Options: nosniff` (prevents MIME sniffing)
+   - `Referrer-Policy: strict-origin-when-cross-origin`
+   - `Permissions-Policy` (disables camera, microphone, geolocation APIs on static pages)
+4. **Data Minimization & Validation**:
+   - Strict Zod schema validation on all inputs.
+   - Honeypot fields, rate-limiting, and timing checks to block automated bot submissions.
+   - No sensitive passwords, tokens, or personal identifiers are stored in client-side storage or logged in web server outputs.
