@@ -53,7 +53,7 @@ async function normalisePayload(payload: Record<string, unknown>) {
   const next: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(payload)) {
-    if (key === '_honeypot' || key === 'hp' || key === 'startedAt' || key === 'consent' || key === 'privacyAccepted' || key === 'termsAccepted') continue;
+    if (key === '_honeypot' || key === 'hp' || key === 'startedAt' || key === 'privacyAccepted' || key === 'termsAccepted') continue;
     if (value === undefined || value === null) continue;
     if (typeof value === 'string') next[key] = await sanitizeString(value);
     else next[key] = value;
