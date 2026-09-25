@@ -22,7 +22,7 @@ function UnsubscribeContent() {
     setLoading(true)
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
       const res = await fetch(`${apiUrl}/api/v1/marketing/newsletter/unsubscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,12 +32,14 @@ function UnsubscribeContent() {
       if (res.ok || res.status === 404) {
         setSuccess(true)
       } else {
-        console.error('Unsubscribe failed')
+        setSuccess(false)
+        console.error('Unsubscribe failed', res.status)
       }
     } catch (err) {
       console.error('Unsubscribe error:', err)
-      // Show success anyway to not leak email existence, or show error
-      setSuccess(true)
+      setSuccess(false)
+      setLoading(false)
+      return
     } finally {
       setLoading(false)
     }

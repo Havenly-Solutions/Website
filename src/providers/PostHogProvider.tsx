@@ -20,7 +20,8 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       person_profiles: 'identified_only',
       capture_pageview: false,
       persistence: 'localStorage+cookie',
-      opt_out_capturing_by_default: true, // Respect privacy by default
+      opt_out_capturing_by_default: true,
+      opt_out_persistence_by_default: true,
     });
 
     // Check for existing consent

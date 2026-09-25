@@ -27,7 +27,6 @@ export default function NotifyMeForm() {
 
     try {
       const sanitizedData = {
-        firstName: 'Resources Page Notify', // Placeholder name
         email: DOMPurify.sanitize(email.trim()),
       }
 

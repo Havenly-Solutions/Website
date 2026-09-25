@@ -46,7 +46,7 @@ export default function CookieBanner() {
         localStorage.setItem('ph_visitor_id', visitorId);
       }
 
-      await fetch(`${apiUrl}/api/v1/marketing/forms/cookie-consent`, {
+      const response = await fetch(`${apiUrl}/api/v1/marketing/forms/cookie-consent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -55,6 +55,10 @@ export default function CookieBanner() {
           preferences: allPrefs
         }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`)
+      }
     } catch (e) {
       console.error('Failed to log cookie consent:', e);
     }

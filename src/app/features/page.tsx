@@ -168,7 +168,7 @@ export default function FeaturesPage() {
                   src="/court.jpg"
                   alt="Evidence Chain"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 1023px) 100vw, 50vw"
                   quality={80}
                   className="object-cover"
               />

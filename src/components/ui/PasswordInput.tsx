@@ -26,7 +26,7 @@ export default function PasswordInput({ id, name, value, onChange, placeholder, 
         type={visible ? 'text' : 'password'}
         placeholder={placeholder}
         required={required}
-        className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:border-nixtio-primary focus:ring-1 focus:ring-nixtio-primary text-black transition-colors shadow-sm"
+        className="w-full bg-white border border-gray-200 rounded-xl px-4 pr-12 py-3 text-sm font-medium focus:outline-none focus:border-nixtio-primary focus:ring-1 focus:ring-nixtio-primary text-black transition-colors shadow-sm"
       />
       <button
         type="button"

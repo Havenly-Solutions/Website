@@ -6,7 +6,7 @@ import Footer from '@/components/ui/Footer'
 import CookieBanner from '@/components/ui/CookieBanner'
 import { Toaster } from 'sonner'
 import SmoothScroll from '@/components/SmoothScroll'
-import GlobalLoader from '@/components/GlobalLoader'
+import GlobalLoader from '@/src/components/GlobalLoader'
 import { Suspense } from 'react'
 import { PostHogProvider } from '@/providers/PostHogProvider'
 

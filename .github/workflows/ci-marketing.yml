@@ -75,7 +75,7 @@ jobs:
         if: env.VERCEL_TOKEN != ''
         run: |
           npm install -g vercel
-          vercel deploy --yes --token="$VERCEL_TOKEN" \
+          vercel deploy --yes --prod --token="$VERCEL_TOKEN" \
             --build-env NEXT_PUBLIC_LAUNCH_DATE=2026-11-24 \
             --build-env NEXT_PUBLIC_HAVENLY_DOMAIN=havenly.co.za \
             --build-env NEXT_PUBLIC_DASHBOARD_API_URL=https://api.havenly.co.za

@@ -4,6 +4,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
+    qualities: [72, 75, 80, 85],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: 'https', hostname: 'api.havenly.solutions' },
@@ -60,7 +61,7 @@ const nextConfig = {
     ]
   }
 }
-const { withSentryConfig } = require('@sentry/nextjs');
+const { withSentryConfig } = require('@sentry/nextjs/config');
 
 module.exports = withSentryConfig(
   nextConfig,

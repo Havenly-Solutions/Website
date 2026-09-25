@@ -60,8 +60,13 @@ export default function PreRegForm() {
     setLoading(true)
     try {
       const names = form.name.trim().split(/\s+/)
-      const firstName = names[0] || 'Unknown'
-      const surname = names.slice(1).join(' ') || 'User'
+      const firstName = names[0] || ''
+      const surname = names.slice(1).join(' ')
+
+      if (!firstName) {
+        toast.error('Please enter your full name.')
+        return
+      }
 
       const sanitizedForm = {
         firstName: DOMPurify.sanitize(firstName),

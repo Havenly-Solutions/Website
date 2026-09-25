@@ -4,12 +4,12 @@ import '@fontsource-variable/outfit';
 import './globals.css';
 import { Suspense } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { CookieConsent } from '@/components/CookieConsent';
-import GlobalLoader from '@/components/GlobalLoader';
-import { SafetyStrip } from '@/components/SafetyStrip';
-import { SiteFooter } from '@/components/SiteFooter';
-import { AppToaster } from '@/components/ui/toaster';
-import { SITE } from '@/lib/site';
+import { CookieConsent } from '../components/CookieConsent';
+import { GlobalLoader } from '../components/GlobalLoader';
+import { SafetyStrip } from '../components/SafetyStrip';
+import { SiteFooter } from '../components/SiteFooter';
+import { AppToaster } from '../components/ui/toaster';
+import { SITE } from '../lib/site';
 
 const DESCRIPTION =
   'South Africa’s First Civic Technology Software Company. Your Haven. Your Community. Always On. Planned launch 13 October 2026. Pre-register today.';
@@ -43,18 +43,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-ZA">
       <body>
-        <Suspense fallback={null}>
-          <GlobalLoader>
-            <a className="skip" href="#main">Skip to content</a>
-            <SafetyStrip />
-            <main id="main" tabIndex={-1}>{children}</main>
-            <SiteFooter />
-            <CookieConsent />
-            <AppToaster />
-            <SpeedInsights />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }} />
-          </GlobalLoader>
-        </Suspense>
+        <GlobalLoader />
+        <a className="skip" href="#main">Skip to content</a>
+        <SafetyStrip />
+        <main id="main" tabIndex={-1}>{children}</main>
+        <SiteFooter />
+        <CookieConsent />
+        <AppToaster />
+        <SpeedInsights />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }} />
       </body>
     </html>
   );

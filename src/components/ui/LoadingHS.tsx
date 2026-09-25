@@ -1,8 +1,25 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export default function LoadingHS() {
+  const shouldReduceMotion = useReducedMotion()
+
+  if (shouldReduceMotion) {
+    return (
+      <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
+        <div className="flex items-center gap-4 px-4" aria-live="polite" aria-label="Loading Havenly Solutions">
+          <span className="text-white text-4xl md:text-6xl font-black tracking-tight uppercase">
+            Havenly
+          </span>
+          <span className="text-white text-4xl md:text-6xl font-black tracking-tight uppercase">
+            Solutions
+          </span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden">
       <motion.div
@@ -18,20 +35,22 @@ export default function LoadingHS() {
           duration: 3.3,
           repeat: Infinity,
           times: [
-            0.04,  // 130ms
-            0.05,  // 160ms (130+30)
-            0.07,  // 220ms (160+60)
-            0.09,  // 280ms (220+60)
-            0.13,  // 410ms (280+130)
-            0.70,  // 2310ms (410+1900)
-            0.74,  // 2440ms (2310+130)
-            0.75,  // 2470ms (2440+30)
-            0.87,  // 2870ms (2470+400)
-            0.97,  // 3190ms (2870+320)
-            1      // 3290ms (3190+100)
+            0.04,
+            0.05,
+            0.07,
+            0.09,
+            0.13,
+            0.70,
+            0.74,
+            0.75,
+            0.87,
+            0.97,
+            1
           ],
           ease: "linear"
         }}
+        aria-live="polite"
+        aria-label="Loading Havenly Solutions"
       >
         <span className="text-white text-4xl md:text-6xl font-black tracking-tight uppercase">
           Havenly

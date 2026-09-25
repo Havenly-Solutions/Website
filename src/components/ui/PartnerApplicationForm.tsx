@@ -55,6 +55,7 @@ export default function PartnerApplicationForm() {
       const sanitizedForm = {
         organisationName: DOMPurify.sanitize(form.orgName),
         liaisonName: DOMPurify.sanitize(form.liaisonName),
+        liaisonPhone: DOMPurify.sanitize(form.liaisonPhone),
         organisationType: DOMPurify.sanitize(form.orgType),
         email: DOMPurify.sanitize(form.email),
         registrationNumber: DOMPurify.sanitize(form.regNumber),

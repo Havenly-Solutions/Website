@@ -27,15 +27,32 @@ async function main() {
     },
   })
 
+  await prisma.posts.upsert({
+    where: { id: 'test-post-1' },
+    update: {
+      title: 'Hello Prisma Postgres!',
+      content: 'This is a test post from the seed script.',
+      authorId: user.id,
+    },
+    create: {
+      id: 'test-post-1',
+      title: 'Hello Prisma Postgres!',
+      content: 'This is a test post from the seed script.',
+      authorId: user.id,
+    },
+  })
+
   console.log({ user })
 }
 
 main()
   .then(async () => {
     await prisma.$disconnect()
+    await pool.end()
   })
   .catch(async (e) => {
     console.error(e)
     await prisma.$disconnect()
+    await pool.end()
     process.exit(1)
   })
