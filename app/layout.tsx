@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from 'next';
 import '@fontsource-variable/inter';
 import '@fontsource-variable/outfit';
 import './globals.css';
+import { Suspense } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { CookieConsent } from '@/components/CookieConsent';
-import { GlobalLoader } from '@/components/GlobalLoader';
+import GlobalLoader from '@/components/GlobalLoader';
 import { SafetyStrip } from '@/components/SafetyStrip';
 import { SiteFooter } from '@/components/SiteFooter';
 import { AppToaster } from '@/components/ui/toaster';
@@ -42,15 +43,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-ZA">
       <body>
-        <GlobalLoader />
-        <a className="skip" href="#main">Skip to content</a>
-        <SafetyStrip />
-        <main id="main" tabIndex={-1}>{children}</main>
-        <SiteFooter />
-        <CookieConsent />
-        <AppToaster />
-        <SpeedInsights />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }} />
+        <Suspense fallback={null}>
+          <GlobalLoader>
+            <a className="skip" href="#main">Skip to content</a>
+            <SafetyStrip />
+            <main id="main" tabIndex={-1}>{children}</main>
+            <SiteFooter />
+            <CookieConsent />
+            <AppToaster />
+            <SpeedInsights />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }} />
+          </GlobalLoader>
+        </Suspense>
       </body>
     </html>
   );

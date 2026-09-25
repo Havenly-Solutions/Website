@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import LoadingHS from '@/components/ui/LoadingHS'
 import { AnimatePresence } from 'framer-motion'
 
-export default function GlobalLoader({ children }: { children: React.ReactNode }) {
+export default function GlobalLoader({ children }: { children?: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -36,7 +36,7 @@ export default function GlobalLoader({ children }: { children: React.ReactNode }
         {loading && <LoadingHS key="loader" />}
       </AnimatePresence>
       <div className={loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
-        {children}
+        {children ?? null}
       </div>
     </>
   )
