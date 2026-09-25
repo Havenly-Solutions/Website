@@ -29,9 +29,9 @@ export function phoneValid(value: string, country: string): boolean {
 }
 
 const text = (label: string, min = 1, max = 200) =>
-  z.string({ required_error: `Enter ${label}.` }).trim().min(min, `Enter ${label}.`).max(max, `${label[0].toUpperCase()}${label.slice(1)} is too long.`);
-const email = z.string({ required_error: 'Enter a valid email address.' }).trim().max(254).email('Enter a valid email address.');
-const consent = (message: string) => z.literal(true, { errorMap: () => ({ message }) });
+  z.string().trim().min(min, `Enter ${label}.`).max(max, `${label[0].toUpperCase()}${label.slice(1)} is too long.`);
+const email = z.string().trim().max(254).email('Enter a valid email address.');
+const consent = (message: string) => z.literal(true, { message });
 
 /** Anti-spam fields present on every public form. `hp` is a honeypot and must stay empty. */
 const guard = { hp: z.string().max(0).optional().default(''), startedAt: z.number().optional() };
@@ -42,9 +42,9 @@ export const preRegisterSchema = z
     lastName: text('your last name', 1, 80),
     email,
     mobile: z.string().trim().min(1, 'Enter your mobile number.').max(30),
-    country: z.enum(COUNTRIES, { errorMap: () => ({ message: 'Choose your country.' }) }),
+    country: z.enum(COUNTRIES, { message: 'Choose your country.' }),
     city: z.string().trim().max(120).optional().default(''),
-    interest: z.enum(INTERESTS, { errorMap: () => ({ message: 'Choose what you are most interested in.' }) }),
+    interest: z.enum(INTERESTS, { message: 'Choose what you are most interested in.' }),
     consent: consent('Tick the box to confirm you would like to receive launch information.'),
     ...guard,
   })
@@ -62,9 +62,9 @@ export const preRegisterSchema = z
 export const partnerSchema = z
   .object({
     orgName: text('your organization name', 2, 200),
-    orgType: z.enum(ORG_TYPES, { errorMap: () => ({ message: 'Choose an organization type.' }) }),
+    orgType: z.enum(ORG_TYPES, { message: 'Choose an organization type.' }),
     regNo: z.string().trim().max(60).optional().default(''),
-    country: z.enum(COUNTRIES, { errorMap: () => ({ message: 'Choose your country.' }) }),
+    country: z.enum(COUNTRIES, { message: 'Choose your country.' }),
     region: text('your province or region', 2, 120),
     serviceArea: text('your service area', 2, 300),
     website: z.string().trim().max(300).optional().default('').refine(
@@ -72,11 +72,11 @@ export const partnerSchema = z
     contactName: text('the contact person\'s name', 2, 120),
     email,
     phone: z.string().trim().min(1, 'Enter a phone number.').max(30),
-    preferredContact: z.enum(CONTACT_METHODS, { errorMap: () => ({ message: 'Choose a contact method.' }) }),
-    partnershipType: z.enum(PARTNERSHIP_TYPES, { errorMap: () => ({ message: 'Choose a partnership type.' }) }),
+    preferredContact: z.enum(CONTACT_METHODS, { message: 'Choose a contact method.' }),
+    partnershipType: z.enum(PARTNERSHIP_TYPES, { message: 'Choose a partnership type.' }),
     description: text('a short description of your organization', 10, 2000),
     support: text('how your organization could support users', 10, 2000),
-    dispatch: z.enum(DISPATCH_ANSWERS, { errorMap: () => ({ message: 'Choose an option.' }) }),
+    dispatch: z.enum(DISPATCH_ANSWERS, { message: 'Choose an option.' }),
     consent: consent('Tick the box to allow Havenly Solutions to contact you.'),
     ...guard,
   })
@@ -89,7 +89,7 @@ export const partnerSchema = z
 export const contactSchema = z.object({
   name: text('your name', 2, 120),
   email,
-  topic: z.enum(CONTACT_TOPICS, { errorMap: () => ({ message: 'Choose a topic.' }) }),
+  topic: z.enum(CONTACT_TOPICS, { message: 'Choose a topic.' }),
   message: text('a message of at least 10 characters', 10, 4000),
   consent: consent('Tick the box to allow us to reply.'),
   ...guard,
