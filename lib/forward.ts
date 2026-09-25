@@ -9,9 +9,9 @@ export class NotConfiguredError extends Error {
 }
 
 const BACKEND_PATHS: Record<SubmissionKind, string> = {
-  'pre-register': '/api/v1/dashboard/helpdesk/tickets',
-  'partner-enquiry': '/api/v1/dashboard/ngo-partners/apply',
-  contact: '/api/v1/dashboard/helpdesk/tickets',
+  'pre-register': '/api/v1/marketing/pre-registrations',
+  'partner-enquiry': '/api/v1/marketing/customer-service',
+  contact: '/api/v1/marketing/customer-service',
 };
 
 async function post(url: string, headers: Record<string, string>, body: unknown): Promise<void> {
@@ -31,35 +31,46 @@ async function post(url: string, headers: Record<string, string>, body: unknown)
   }
 }
 
-function buildBackendPayload(kind: SubmissionKind, data: Record<string, unknown>): Record<string, unknown> {
+export function buildBackendPayload(kind: SubmissionKind, data: Record<string, unknown>): Record<string, unknown> {
   if (kind === 'pre-register') {
     return {
-      guestName: `${data.firstName ?? ''} ${data.lastName ?? ''}`.trim(),
-      guestContact: data.email,
-      subject: `Pre-registration: ${data.interest ?? 'Havenly Solutions Launch'}`,
-      category: 'Customer / Pre-launch Enquiries',
-      body: `Pre-registration submission:\n\nFirst Name: ${data.firstName}\nLast Name: ${data.lastName}\nEmail: ${data.email}\nMobile: ${data.mobile}\nCountry: ${data.country}\nCity: ${data.city || 'N/A'}\nInterest: ${data.interest}`,
+      email: data.email,
+      firstName: data.firstName,
+      surname: data.lastName ?? '',
+      province: (data.country as string | undefined) ?? 'Other',
+      phone: data.mobile ?? '',
+      source: 'website',
+      tierInterest: 'FREE',
     };
   }
   if (kind === 'contact') {
     return {
-      guestName: data.name,
-      guestContact: data.email,
-      subject: data.topic || 'Customer / Pre-launch Enquiries',
-      category: data.topic || 'Customer / Pre-launch Enquiries',
-      body: data.message,
+      name: data.name,
+      email: data.email,
+      subject: data.topic || 'General Enquiry',
+      category: data.topic || 'GENERAL',
+      message: data.message,
+      phone: data.phone ?? '',
     };
   }
   if (kind === 'partner-enquiry') {
     return {
-      organisationName: data.orgName,
-      liaisonName: data.contactName,
-      organisationType: data.orgType,
+      name: data.contactName ?? data.orgName,
       email: data.email,
-      registrationNumber: data.regNo || 'N/A',
-      operatingRegion: data.region,
-      missionStatement: `${data.description}\n\nSupport offered: ${data.support}`,
-      liaisonPhone: data.phone,
+      subject: `Partnership enquiry: ${data.orgName ?? 'New partner application'}`,
+      category: 'PARTNERSHIP',
+      message: [
+        `Organisation: ${data.orgName ?? 'N/A'}`,
+        `Type: ${data.orgType ?? 'N/A'}`,
+        `Region: ${data.region ?? 'N/A'}`,
+        `Service area: ${data.serviceArea ?? 'N/A'}`,
+        `Website: ${data.website ?? 'N/A'}`,
+        `Description: ${data.description ?? 'N/A'}`,
+        `Support offered: ${data.support ?? 'N/A'}`,
+        `Preferred contact: ${data.preferredContact ?? 'N/A'}`,
+        `Partnership type: ${data.partnershipType ?? 'N/A'}`,
+      ].join('\n'),
+      phone: data.phone ?? '',
     };
   }
   return data;

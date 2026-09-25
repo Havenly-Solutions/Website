@@ -29,16 +29,10 @@ export async function POST(req: NextRequest) {
     // Forward unsubscribe request to live backend
     const backend = process.env.BACKEND_API_URL || 'https://api.havenly.solutions';
     try {
-      await fetch(`${backend.replace(/\/$/, '')}/api/v1/dashboard/helpdesk/tickets`, {
+      await fetch(`${backend.replace(/\/$/, '')}/api/v1/marketing/newsletter/unsubscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          guestName: 'Newsletter Subscriber',
-          guestContact: email,
-          subject: 'Unsubscribe Request',
-          category: 'Customer / Pre-launch Enquiries',
-          body: `Unsubscribe Request:\n\nEmail: ${email}\nReason: ${reason || 'User requested unsubscribe via unsubscribe screen.'}\nAction: Remove from automated marketing and launch update lists.`,
-        }),
+        body: JSON.stringify({ email, reason }),
         cache: 'no-store',
       });
     } catch (err) {

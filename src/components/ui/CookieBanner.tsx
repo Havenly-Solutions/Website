@@ -39,7 +39,7 @@ export default function CookieBanner() {
 
   const saveToBackend = async (allPrefs: CookiePreferences) => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005';
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions').replace(/\/+$/, '');
       let visitorId = localStorage.getItem('ph_visitor_id');
       if (!visitorId) {
         visitorId = Math.random().toString(36).substring(2, 15);

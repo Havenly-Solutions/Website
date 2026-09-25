@@ -18,11 +18,19 @@ export default function ContactForm() {
     e.preventDefault()
     setLoading(true); setError('')
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-      const res = await fetch(`${apiUrl}/api/v1/dashboard/helpdesk/tickets`, {
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions').replace(/\/+$/, '')
+      const payload = {
+        name: form.guestName,
+        email: form.guestContact,
+        subject: form.subject,
+        category: form.category,
+        message: form.body,
+        phone: form.guestContact,
+      }
+      const res = await fetch(`${apiUrl}/api/v1/marketing/customer-service`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       })
       const data = await res.json()
       if (!res.ok) {

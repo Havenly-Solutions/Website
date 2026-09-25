@@ -281,6 +281,22 @@ button{font:inherit}
 .hero-tag{position:absolute;left:0;top:18%;z-index:2;font-size:var(--t-xs);color:var(--on-dark-2);max-width:170px;line-height:1.45}
 .hero-tag b{display:block;color:#fff;font-weight:500;font-size:var(--t-sm)}
 
+@media (min-width: 641px) {
+  .hero-fig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    position: relative;
+  }
+  .hero-tag {
+    position: static;
+    z-index: auto;
+    max-width: 220px;
+    flex: 0 1 220px;
+  }
+}
+
 .hero-copy{
   align-self:flex-start;
   text-align:left;
@@ -788,8 +804,19 @@ main{overflow-x:hidden}
     gap: 24px;
     padding-bottom: 0;
   }
-  .hero-fig { display: flex; align-self: end; margin-top: 0; }
+  .hero-fig {
+    display: flex;
+    align-self: end;
+    justify-content: flex-start;
+    margin-top: 0;
+    gap: 18px;
+  }
   .hero-fig img.jabu { height: min(430px, 60vw); }
+  .hero-tag {
+    position: static;
+    max-width: 220px;
+    flex: 0 1 220px;
+  }
 
   .hero-copy {
     text-align: right;

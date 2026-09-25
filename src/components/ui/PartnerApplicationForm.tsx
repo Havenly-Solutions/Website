@@ -63,11 +63,25 @@ export default function PartnerApplicationForm() {
         missionStatement: DOMPurify.sanitize(form.missionStatement)
       }
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions'
-      const res = await fetch(`${apiUrl}/api/v1/dashboard/ngo-partners/apply`, {
+      const apiUrl = (process.env.NEXT_PUBLIC_API_URL || 'https://api.havenly.solutions').replace(/\/+$/, '')
+      const payload = {
+        name: sanitizedForm.liaisonName,
+        email: sanitizedForm.email,
+        phone: sanitizedForm.liaisonPhone,
+        subject: `Partnership enquiry: ${sanitizedForm.organisationName}`,
+        category: 'PARTNERSHIP',
+        message: [
+          `Organisation: ${sanitizedForm.organisationName}`,
+          `Type: ${sanitizedForm.organisationType}`,
+          `Registration number: ${sanitizedForm.registrationNumber || 'N/A'}`,
+          `Operating region: ${sanitizedForm.operatingRegion || 'N/A'}`,
+          `Mission / capabilities: ${sanitizedForm.missionStatement || 'N/A'}`,
+        ].join('\n'),
+      }
+      const res = await fetch(`${apiUrl}/api/v1/marketing/customer-service`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sanitizedForm)
+        body: JSON.stringify(payload)
       })
       
       if (res.status === 201) {
